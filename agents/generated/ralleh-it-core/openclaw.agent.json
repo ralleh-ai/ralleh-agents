@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "openclaw-agent-manifest.v1",
+  "agent": {
+    "id": "ralleh-it-core",
+    "name": "Ralleh IT Core",
+    "role": "it",
+    "skills": [
+      "GitHub",
+      "AgentBrowser",
+      "DiagramMaker",
+      "Cortex",
+      "Engram",
+      "PromptDefense",
+      "TokenDoctor",
+      "OpenClawA2A",
+      "Caddy",
+      "Tailscale",
+      "Docker",
+      "Restic",
+      "GoRuntime",
+      "HostingerVps",
+      "SQLite",
+      "Postgres",
+      "Pgvector",
+      "Redis",
+      "Qdrant",
+      "GoogleSheets",
+      "Gog",
+      "VerificationBeforeDone",
+      "OperatingProtocol"
+    ]
+  },
+  "openclaw": {
+    "bootstrap": {
+      "mustRead": [
+        "README.md",
+        "IDENTITY.md",
+        "SOUL.md",
+        "GUIDELINES.md",
+        "WORKFLOWS.md",
+        "SKILLS.md"
+      ],
+      "mustCheck": [
+        "source-of-truth",
+        "target-environment",
+        "verification-gate"
+      ]
+    },
+    "models": {
+      "primaryClass": "strong-reasoning",
+      "fallbackClass": "fast-efficient",
+      "specialistClass": "coding-specialist",
+      "defaultReasoning": "high"
+    },
+    "tools": {
+      "categories": [
+        "code",
+        "files",
+        "browser",
+        "research",
+        "task-ledger",
+        "memory",
+        "diagramming"
+      ],
+      "policy": "least-privilege",
+      "allowedModes": [
+        "read",
+        "plan",
+        "validate",
+        "execute-safe",
+        "delegate"
+      ],
+      "blockedWithoutApproval": [
+        "destructive-production-change",
+        "credential-change",
+        "routing-change"
+      ]
+    },
+    "approvals": {
+      "mode": "explicit-for-risky",
+      "alwaysConfirm": [
+        "destructive-production-changes",
+        "credential-rotation",
+        "dns-routing-changes",
+        "security-sensitive-changes"
+      ],
+      "allowWithoutApproval": [
+        "read-only-investigation",
+        "draft-planning",
+        "safe-local-validation"
+      ],
+      "requiredFor": [
+        "production-writes",
+        "security-sensitive-actions",
+        "destructive-ops"
+      ],
+      "notRequiredFor": [
+        "read-only-diagnosis",
+        "local-validation",
+        "draft-planning"
+      ]
+    },
+    "verification": {
+      "requiredEvidence": [
+        "live-inspection-or-test",
+        "named-verification-gate"
+      ],
+      "subagentCompletionIsProof": false
+    }
+  }
+}
