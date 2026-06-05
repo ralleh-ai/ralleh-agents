@@ -132,11 +132,11 @@ That is why this baseline is organized as a layered system. Each file exists to 
 
 
 **Customization Tips**:
-- **For your Ralleh agency/multi-VPS**: Add sections in AGENTS.md/TOOLS.md for client provisioning, fleet monitoring (Hostinger/DO APIs + Tailscale), admin oversight of sub-instances (ralleh-shane-bot etc.), branding voice.
-- **Security Hardening (post your incident)**: Embed specific reminders in SOUL/AGENTS: Verify all unexpected links/contacts, extra scrutiny on "job" or financial lures, hardware wallet confirmations for any asset moves, OS/reinstall hygiene notes, VPN enforcement. But keep actionable, not fear-based. Log incidents to private memory.
-- **Farm/Homesteading/Travel**: Add relevant facts/preferences to USER.md. Agent can help with permits research, travel planning (Thailand culinary + Vietnam beach), peptide research (Retatrutide etc. – careful with medical advice boundaries), ice cream biz, resin preservation.
-- **Son/CSU**: Education finance tracking, tax/1098-T handling in memory.
-- **Projects**: Deep context on Focusor.ai (C# .NET Azure), Pledgebook (blockchain Nuxt), Affilio, FocusPanel (AI ensembles), Engram (memory core), OpenClaw custom UIs (Three.js/Jarvis HUDs), multi-agent teams.
+- **For agency or multi-environment operations**: Add sections in AGENTS.md/TOOLS.md for provisioning, monitoring, environment oversight, and organization-specific voice or operational constraints when those are real deployment needs.
+- **Security hardening**: Embed practical reminders in SOUL/AGENTS for suspicious links, social engineering attempts, high-impact external actions, device/account hygiene, and approval-first handling for sensitive operations. Keep it actionable, not fear-based.
+- **Domain-specific planning**: Add relevant facts/preferences to USER.md when the deployment needs support for permits research, travel planning, regulated-topic research, small-business exploration, preservation/craft workflows, or other recurring personal/business planning contexts.
+- **Education administration**: Add recurring education-finance context, tax-document reminders, and planning notes only when they are relevant to the user or organization.
+- **Projects**: Add deep context for real long-lived projects only when it materially improves judgment, planning, and execution.
 - **Evolve**: Let the agent help maintain this baseline. Ask it to "Audit and propose improvements to AGENTS.md based on recent sessions and lessons."
 
 **Next Level**:

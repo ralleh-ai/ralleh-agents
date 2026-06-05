@@ -93,7 +93,7 @@
    - Per-agent overrides for specialized sub-agents.
 
 2. **Security Hardening (Post-Incident Priority)**:
-   - Review and reinforce in SOUL.md/AGENTS.md: Verification protocols, "confirm before" lists, scam/malware pattern recognition (fake jobs, drainers, social engineering), crypto hygiene (hardware wallet only, never direct handling by agent), VPN enforcement notes, input sanitization awareness.
+   - Review and reinforce in SOUL.md/AGENTS.md: Verification protocols, "confirm before" lists, scam/malware pattern recognition, secure handling of sensitive actions, environment-hygiene notes, and input-sanitization awareness.
    - Workspace: Ensure no secrets in files (use env or secure stores). Git history clean or .gitignore sensitive if ever added.
    - macOS/VPS: Remind of update practices, fresh install benefits, monitoring.
    - Test: Agent should flag suspicious hypothetical inputs correctly and default to caution + confirm.

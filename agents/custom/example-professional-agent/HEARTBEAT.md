@@ -35,7 +35,7 @@
    - Review recent inputs/actions for anomalies (unexpected links, urgent financial/job lures, new external contacts).
    - Cross-check any pending external actions against confirmation rules.
    - Log any concerns to private security memory section. Escalate high-confidence threats.
-   - Quick hygiene reminder in logs (VPN, hardware wallet verification steps, OS updates) — contextual, not constant.
+   - Quick hygiene reminder in logs (secure-environment practices, approval-first handling for sensitive actions, update hygiene) — contextual, not constant.
 
 5. **Self-Improvement & Learning Synthesis**:
    - Batch recent reflections/lessons from memory/Engram.

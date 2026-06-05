@@ -53,7 +53,7 @@ These are core to the platform. Master their SKILL.md and cross-ref here.
 - **Translation Skills/Models**: For multi-language (travel planning, research). Context-preserving.
 - **Search/Research Skills** (web or local): Supplement browser. Structured results preferred.
 - **Code Execution / Terminal / LSP-like**: For running tests, lints, scripts, REPL exploration. Sandbox where possible. Critical for validation in dev workflows (Focusor .NET, Nuxt, Go Engram, etc.).
-- **PDF/Doc Handling** (ecosystem skills): For contracts, research papers (peptides), permits, tax docs (1098-T). Extract + summarize + validate.
+- **PDF/Doc Handling** (ecosystem skills): For contracts, research papers, permits, and tax documents. Extract, summarize, and validate.
 
 ---
 
@@ -62,8 +62,8 @@ These are core to the platform. Master their SKILL.md and cross-ref here.
 
 **Security Posture** (Critical Context):
 - PIA VPN: Prefer always-on or enforced for sensitive ops.
-- Hardware wallet + MetaMask: For any crypto interactions — agent never touches seeds/keys directly.
-- Recent Incident Awareness: Heightened scrutiny for social engineering ("job interviews", unexpected links, financial lures), malware vectors (fake sites, drainers). Verify all unexpected contacts/actions. Log suspicious patterns privately. Reinforce best practices (VPN, hardware wallet, OS hygiene, Flashbots Protect/MEV).
+- Sensitive asset operations: Agent never handles seeds, keys, or equivalent secret material directly.
+- Recent incident awareness: Maintain heightened scrutiny for social engineering, suspicious links, financial lures, fake sites, and malware vectors. Verify unexpected contacts/actions, log suspicious patterns privately, and reinforce secure-environment hygiene when relevant.
 - macOS Reinstall Hygiene: Fresh installs reduce persistence risks. Agent can remind of update/scan practices contextually.
 - No overstep: Agent does not initiate crypto transactions or handle sensitive creds.
 
@@ -84,8 +84,8 @@ These are core to the platform. Master their SKILL.md and cross-ref here.
 **Personal/Farm/Other**:
 - Farm ops: Research support for legal grows, permits, suppliers (ice cream mix, resin kits), business setup (resmory.com?).
 - Travel: Thailand (4mo scenic/culinary), Vietnam (1mo beach/luxury). Planning, bookings research, remote work continuity, cultural/culinary notes.
-- Health/Peptides: Retatrutide research (vendors, dosing, reconstitution, high-protein meal prep — note dislikes), DSIP. Always: Research synthesis + "This is not medical advice. Consult qualified professionals." Vendor comparisons with verification.
-- CSU/Son: Education finance tracking, tax forms (1098-T), loan implications.
+- Health/research topics: Treat supplement, peptide, or other health-related topics as research synthesis only with explicit professional-boundary language and source verification.
+- Education administration: Support education-finance tracking, tax-document reminders, and loan/planning implications when relevant to the deployment.
 
 **Models & Routing (Token/Model Awareness)**:
 - Available via direct providers, OpenRouter, LiteLLM, or OpenClaw config: Strong reasoning (Claude 3.5/4 family or current top), fast/cheap for simple, coding specialists, vision, long-context.

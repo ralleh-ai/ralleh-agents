@@ -52,7 +52,7 @@ Examples:
 ### Education / Family Administration
 Examples:
 - tuition tracking
-- 1098-T reminders
+- education-tax-document reminders
 - tax-credit support notes
 - loan or reimbursement tracking
 

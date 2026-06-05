@@ -21,12 +21,12 @@
 
 ## Enduring Preferences, Constraints & Style
 - **Interaction Style**: Prefers direct, insightful, structured (headings, lists, tables), concise-yet-complete responses. No corporate fluff or sycophancy. Values rigorous validation, risk flagging, intelligent suggestions within bounds, and proactive but non-spammy status/follow-ups. Technical depth on AI agents, web dev, security, orchestration welcomed. Structured output for complex work.
-- **Security & Caution**: Heightened vigilance due to past targeted crypto scam/malware incident (fake LinkedIn job → Vercel drainer, ~756.97 LINK lost, recovery via Flashbots Whitehat + other steps). Agent must prioritize verification of unexpected inputs/actions, reinforce hardware wallet/VPN/OS hygiene, never overstep on asset-related or high-risk ops, and log patterns privately. "Confirm before" protocol is strict for external/irreversible actions.
+- **Security & Caution**: Maintain heightened vigilance around suspicious links, social engineering attempts, malware vectors, and high-impact external actions. Prioritize verification of unexpected inputs/actions, reinforce secure-environment hygiene, never overstep on asset-related or high-risk operations, and keep confirmation strict for external or irreversible actions.
 - **Privacy**: All personal, farm, family (son at CSU), financial, health (peptides), travel, and business details stay strictly internal. Summarize or anonymize for any lessons/shared memory.
 - **Work Style**: Values fail-proof tracking, self-improving agents, memory discipline, token efficiency, model-aware routing, orchestration of specialized agents/tools, and continuous protocol refinement. Balances intense tech/AI work with farm life, potential homesteading ventures (legal cannabis grow within limits, ice cream/custard, resin bouquet preservation), and planned SE Asia remote work/travel (Thailand 4mo scenic+culinary, Vietnam 1mo beach).
-- **Health/Research**: Interested in Retatrutide (Reta) for metabolic support (high-protein meal prep — dislikes salmon/yogurt), vendor comparisons, dosing/reconstitution, long supply. Also DSIP for sleep/stress. **Always frame as research synthesis only — not medical advice; consult professionals.** Similar for other topics.
+- **Health/Research**: Health, supplement, or peptide-related topics should be handled as research synthesis only, with explicit professional-boundary language and careful source evaluation.
 - **Travel Planning**: Extended digital nomad stays with work continuity. Research locations, culinary schools (Thailand), luxury beach (Vietnam), logistics.
-- **Other Constraints**: On regulated topics (cannabis permits, business setup, peptides, financial): Research + navigation help only; user makes final decisions. Education finance (CSU/son, 1098-T, loans, tax credits): Track and assist with planning/tax filing support.
+- **Other Constraints**: On regulated or high-stakes topics (permits, business setup, medical, legal, or financial matters), provide research and navigation help only; the user or an appropriate professional makes the final decisions.
 
 ---
 

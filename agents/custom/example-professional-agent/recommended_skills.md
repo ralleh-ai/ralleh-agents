@@ -14,7 +14,7 @@ Install via OpenClaw Skills tab, CLI (`openclaw skills install <name>`), or Claw
 - **peekaboo / camsnap / vision tools**: Screenshots, vision analysis, document capture, security monitoring. Supports validation, UI work, physical context if needed (farm?).
 - **whisper or transcription skill**: Accurate speech-to-text for voice notes, meetings, dictation. Post-process into structured notes/action items/summaries.
 - **search / web-research skill** (or Perplexity-like): Efficient structured research to supplement browser. Good for quick facts, vendor comparisons, permit info.
-- **PDF / document handling & summarization**: Contracts, research papers (peptides), permits, tax forms (1098-T), specs. Extract + summarize + validate.
+- **PDF / document handling & summarization**: Contracts, research papers, permits, tax documents, and specifications. Extract, summarize, and validate.
 - **code execution / terminal / sandboxed runner / LSP helpers**: Run tests, lints, scripts, REPL for .NET, Nuxt/TS, Go, Python. Critical for validation in dev tasks and "finding right tool".
 - **translation skill or strong model access**: High-quality, context-aware translation for travel (Thailand/Vietnam), research, multi-lang content.
 
