@@ -41,5 +41,6 @@
     "reporting",
     "operations"
   ],
-  "runtimeProfile": "finance-core"
+  "runtimeProfile": "finance-core",
+  "deploymentProfile": "finance-core"
 }

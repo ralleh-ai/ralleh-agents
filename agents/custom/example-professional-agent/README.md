@@ -110,38 +110,26 @@ This template draws from established agent best practices, with strong emphasis 
 - **Lessons & Improvement**: Dedicated namespace or tags in Engram/MEMORY for "postmortems", "optimizations", "model_performance". Heartbeat triggers periodic synthesis.
 - **Token Optimization**: Summarize long memories before injecting; agent instructed to be ruthless with context.
 
-## Incorporating All Desired Capabilities
+## Capability Philosophy
 
-The **AGENTS.md** is engineered to make the agent natively excel at:
-- **Analyze Inputs**: Structured breakdown, context gathering (files, memory, tools), ambiguity resolution.
-- **Plan**: Step-by-step with milestones, dependencies, risks, success criteria. Use workflows/ or Canvas.
-- **Delegate**: Clear handoffs to sub-agents/humans/tools with context packages, deadlines, check-in cadence.
-- **Optimize**: Token use, workflows, model choice, parallelization where safe.
-- **Orchestrate**: Multi-step, multi-agent, long-running workflows with status dashboards (memory or Canvas).
-- **Manage Tasks**: Structured tracking (todos in memory or files), priorities, dependencies, completion validation.
-- **Manage and Improve Agents**: Self and sub-agent performance reviews, prompt tuning suggestions, skill gap identification.
-- **Multi-Tasking**: Prioritization matrix, safe parallelism, context switching discipline.
-- **Fail Proof Task Tracking**: Atomic ops, read-before-write, git, validation, rollback plans, redundant logging.
-- **Long running tasks**: Milestone decomposition + heartbeat monitoring + async/background via skills/nodes.
-- **Automation**: Cron/heartbeat triggers, workflow execution, self-triggering improvements.
-- **Self Learning and Improvement**: Reflection protocols, lesson logging, A/B testing approaches, prompt evolution.
-- **Danger Detection**: Security checklists (phishing, injection, asset risks, malware), source verification, anomaly detection in inputs/actions.
-- **System Maintenance**: Health checks (gateway, skills, models, VPS/agents status), updates, cleanup (memory bloat, logs), optimization.
-- **Validate**: Multi-stage checks (logic, facts, code execution/tests, peer/model review, user confirmation for critical).
-- **Token Awareness and Optimization**: Conciseness rules, summarization before context bloat, efficient tool calls, model cost/performance routing, feedback in reflections.
-- **Agent Model Assignment**: Task profiling → best model/agent match (reasoning depth, speed, cost, strengths). Fallbacks.
-- **Model Evaluations**: Periodic or post-task scoring (accuracy, efficiency, adherence), logs for tuning.
-- **Creating, Planning, Orchestration Workflows**: Library in workflows/, dynamic creation with templates + customization.
-- **Finding the right tool for the job**: Decision framework in AGENTS.md + detailed TOOLS.md with capabilities, limits, examples.
-- **Following Up / Checking In / Status Tracking**: Proactive scheduled pings via heartbeat/calendar, transparent progress in shared memory/channels.
-- **Self Improving**: As above + propose changes to own files (with user approval for core).
-- **Learns From Mistakes**: Structured postmortems, root cause, preventive updates to protocols/memory.
-- **Doesn't overstep bounds**: Explicit "confirm before X" lists (external comms, file writes in sensitive dirs, financial/crypto, public actions). Scope enforcement.
-- **Follows Protocol**: Checklists for common scenarios (new project intake, security incident, delegation, validation gates).
-- **Consensus**: For high-stakes or ambiguous: Parallel model/agent consults + synthesis, or structured voting if tool-supported.
-- **Transcribe / Summarize / Translate**: Dedicated skills + instructions for high-quality output, token-efficient summaries.
-- **Log / Take Notes**: Automatic structured logging for key events; note-taking workflows.
-- **Health Check**: Built into heartbeat and session start; comprehensive self + system diagnostics.
+An ideal baseline agent is not defined by the number of features it lists, but by the quality of its internal coordination. The strongest agents are composed so that identity, memory, workflow, tool choice, verification, and restraint all reinforce one another instead of competing for control.
+
+A serious baseline should cultivate a set of mutually supporting capabilities:
+
+- **Perception with judgment**: the agent should be able to gather context from files, tools, memory, and live systems, but more importantly distinguish signal from noise, current truth from stale artifacts, and evidence from assumption.
+- **Planning with consequence awareness**: planning is not merely sequencing steps. It is anticipating risk, naming dependencies, defining verification, and preserving rollback before confidence becomes action.
+- **Execution with bounded initiative**: a good agent moves quickly on safe work and deliberately on risky work. It should know when initiative is an advantage and when restraint is intelligence.
+- **Orchestration with clarity**: delegation is only useful when context, ownership, and success criteria survive the handoff. The baseline should make coordination a first-class capability, not an improvisation.
+- **Memory with selective permanence**: the system should remember what changes future behavior and let go of what merely consumes space. Durable lessons, recurring patterns, and meaningful preferences belong close at hand; noise does not.
+- **Verification as a habit, not a patch**: great agents do not treat verification as an afterthought. They are designed so that claims, completions, and recommendations naturally terminate in evidence.
+- **Model and tool fit**: intelligence is partly choosing the right level of intelligence. The baseline should encourage model selection, tool posture, and runtime behavior that match the real risk and complexity of the task.
+- **Self-correction and evolution**: the agent should become sharper through use. Repeated failure modes, friction points, and successful patterns should leave marks on the system in the right file, workflow, or profile.
+- **Safety through structure**: the ideal baseline does not depend on vague caution. It encodes boundaries in role definitions, runtime profiles, approval posture, and verification gates so that good behavior is the default path.
+
+The deeper point is that excellence in agents is architectural. A powerful agent is not simply “smart.” It is composed well. It has the right distinctions between enduring and transient knowledge, between role and tool, between identity and workflow, between permission and capability, between action and proof.
+
+That is why this baseline is organized as a layered system. Each file exists to specialize one dimension of behavior while remaining aligned with the others. The goal is not verbosity. The goal is coherence. Coherence is what allows an agent to scale in complexity without becoming confused, bloated, or reckless.
+
 
 **Customization Tips**:
 - **For your Ralleh agency/multi-VPS**: Add sections in AGENTS.md/TOOLS.md for client provisioning, fleet monitoring (Hostinger/DO APIs + Tailscale), admin oversight of sub-instances (ralleh-shane-bot etc.), branding voice.
@@ -170,6 +158,3 @@ This is a living baseline. Run it, use it on real work, then ask the agent (or m
 - workflows/ examples (planning, delegation, security)
 - Full setup is copy-paste ready. Git commit after customization.
 
-Welcome to a truly professional-grade OpenClaw agent. The claw is the law. 🦞
-
-*Built for Ralleh / your ops – optimized [Current Date context]. Evolve it relentlessly.*

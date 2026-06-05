@@ -1,0 +1,48 @@
+{
+  "id": "it-core",
+  "name": "IT Core Deployment Policy",
+  "sessionPolicy": {
+    "defaultReasoning": "high",
+    "allowBackgroundWork": true,
+    "requireTaskLedgerForLongWork": true
+  },
+  "modelPolicy": {
+    "primaryClass": "strong-reasoning",
+    "fallbackClass": "fast-efficient",
+    "specialistClass": "coding-specialist"
+  },
+  "toolPolicy": {
+    "allowedModes": [
+      "read",
+      "plan",
+      "validate",
+      "execute-safe",
+      "delegate"
+    ],
+    "blockedWithoutApproval": [
+      "destructive-production-change",
+      "credential-change",
+      "routing-change"
+    ]
+  },
+  "approvalPolicy": {
+    "mode": "explicit-for-risky",
+    "requiredFor": [
+      "production-writes",
+      "security-sensitive-actions",
+      "destructive-ops"
+    ],
+    "notRequiredFor": [
+      "read-only-diagnosis",
+      "local-validation",
+      "draft-planning"
+    ]
+  },
+  "verificationPolicy": {
+    "requiredEvidence": [
+      "live-inspection-or-test",
+      "named-verification-gate"
+    ],
+    "subagentCompletionIsProof": false
+  }
+}

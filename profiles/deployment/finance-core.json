@@ -1,0 +1,27 @@
+{
+  "id": "finance-core",
+  "name": "Finance Core Deployment Policy",
+  "sessionPolicy": {
+    "defaultReasoning": "high",
+    "allowBackgroundWork": true,
+    "requireTaskLedgerForLongWork": true
+  },
+  "modelPolicy": {
+    "primaryClass": "strong-reasoning",
+    "fallbackClass": "fast-efficient",
+    "specialistClass": "review-specialist"
+  },
+  "toolPolicy": {
+    "allowedModes": ["read", "reconcile", "summarize", "draft", "delegate"],
+    "blockedWithoutApproval": ["money-movement", "bookkeeping-write", "final-filing"]
+  },
+  "approvalPolicy": {
+    "mode": "read-only-first",
+    "requiredFor": ["money-actions", "system-of-record-writes", "refunds", "filings"],
+    "notRequiredFor": ["report-drafts", "expense-review", "read-only-reconciliation"]
+  },
+  "verificationPolicy": {
+    "requiredEvidence": ["named-source", "named-period", "explicit-assumptions-or-gaps"],
+    "subagentCompletionIsProof": false
+  }
+}

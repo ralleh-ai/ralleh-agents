@@ -3,6 +3,7 @@ import path from 'node:path';
 import { copyDir, exists, readJson, removeIfExists, replaceInFile, walkFiles, writeJson } from './fs.js';
 import { loadRole } from './roles.js';
 import { loadRuntimeProfile } from './runtime.js';
+import { loadDeploymentProfile } from './deployment.js';
 import { legacyRoleSkillsExists, legacyRoleSkillsPath, parseLegacyRoleSkills, resolveSkillsByName } from './skills.js';
 import type { AgentConfig, AgentRecord, SkillRef, TemplateRecord } from '../types/index.js';
 
@@ -60,6 +61,8 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
   const roleRecord = role ? loadRole(root, role) : null;
   const runtimeProfileId = config.runtimeProfile || roleRecord?.runtimeProfile || null;
   const runtimeProfile = runtimeProfileId ? loadRuntimeProfile(root, runtimeProfileId) : null;
+  const deploymentProfileId = roleRecord?.deploymentProfile || null;
+  const deploymentProfile = deploymentProfileId ? loadDeploymentProfile(root, deploymentProfileId) : null;
   const templateId = config.template || roleRecord?.defaultTemplate;
   const id = config.id;
   const name = config.name;
@@ -119,7 +122,8 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
     role,
     skills: selected.resolved.map((s) => s.name),
     skillSources: selected.sources,
-    runtimeProfile: runtimeProfile?.id || null
+    runtimeProfile: runtimeProfile?.id || null,
+    deploymentProfile: deploymentProfileId || null
   };
 
   writeJson(path.join(targetPath, 'agent.json'), agentRecord);
@@ -145,6 +149,9 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
     });
     if (runtimeProfile) {
       writeJson(path.join(targetPath, 'runtime.json'), runtimeProfile);
+    }
+    if (deploymentProfile) {
+      writeJson(path.join(targetPath, 'deployment.json'), deploymentProfile);
     }
   }
 
@@ -232,6 +239,10 @@ export function validateRegistry(root: string): { templates: number; agents: num
     if (agent.runtimeProfile) {
       const runtimePath = path.join(root, 'profiles', 'runtime', `${agent.runtimeProfile}.json`);
       if (!exists(runtimePath)) errors.push(`Unknown runtimeProfile '${agent.runtimeProfile}' for agent '${agent.id}'`);
+    }
+    if (agent.deploymentProfile) {
+      const deploymentPath = path.join(root, 'profiles', 'deployment', `${agent.deploymentProfile}.json`);
+      if (!exists(deploymentPath)) errors.push(`Unknown deploymentProfile '${agent.deploymentProfile}' for agent '${agent.id}'`);
     }
   }
 

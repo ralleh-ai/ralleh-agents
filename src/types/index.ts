@@ -52,6 +52,7 @@ export interface AgentRecord {
   skills?: string[];
   skillSources?: string[];
   runtimeProfile?: string | null;
+  deploymentProfile?: string | null;
 }
 
 export interface SkillRef {
@@ -68,6 +69,7 @@ export interface RoleRecord {
   defaultSkills: string[];
   optionalSkills?: string[];
   runtimeProfile?: string;
+  deploymentProfile?: string;
   tags?: string[];
 }
 

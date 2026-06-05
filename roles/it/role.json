@@ -54,5 +54,6 @@
     "engineering",
     "infrastructure"
   ],
-  "runtimeProfile": "it-core"
+  "runtimeProfile": "it-core",
+  "deploymentProfile": "it-core"
 }

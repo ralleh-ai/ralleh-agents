@@ -44,5 +44,6 @@
   "skillSources": [
     "roles/it/role.json"
   ],
-  "runtimeProfile": "it-core"
+  "runtimeProfile": "it-core",
+  "deploymentProfile": "it-core"
 }

@@ -65,7 +65,8 @@
     "skillSources": [
       "roles/finance/role.json"
     ],
-    "runtimeProfile": "finance-core"
+    "runtimeProfile": "finance-core",
+    "deploymentProfile": "finance-core"
   },
   {
     "id": "ralleh-it-core",
@@ -113,7 +114,8 @@
     "skillSources": [
       "roles/it/role.json"
     ],
-    "runtimeProfile": "it-core"
+    "runtimeProfile": "it-core",
+    "deploymentProfile": "it-core"
   },
   {
     "id": "ralleh-sales-core",
@@ -145,6 +147,7 @@
     "skillSources": [
       "roles/sales/role.json"
     ],
-    "runtimeProfile": "sales-core"
+    "runtimeProfile": "sales-core",
+    "deploymentProfile": "sales-core"
   }
 ]

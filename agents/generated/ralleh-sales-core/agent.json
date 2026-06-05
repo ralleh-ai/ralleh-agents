@@ -28,5 +28,6 @@
   "skillSources": [
     "roles/sales/role.json"
   ],
-  "runtimeProfile": "sales-core"
+  "runtimeProfile": "sales-core",
+  "deploymentProfile": "sales-core"
 }

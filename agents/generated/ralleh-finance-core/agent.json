@@ -32,5 +32,6 @@
   "skillSources": [
     "roles/finance/role.json"
   ],
-  "runtimeProfile": "finance-core"
+  "runtimeProfile": "finance-core",
+  "deploymentProfile": "finance-core"
 }

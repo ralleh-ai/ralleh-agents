@@ -1,0 +1,50 @@
+{
+  "id": "sales-core",
+  "name": "Sales Core Deployment Policy",
+  "sessionPolicy": {
+    "defaultReasoning": "medium",
+    "allowBackgroundWork": true,
+    "requireTaskLedgerForLongWork": true
+  },
+  "modelPolicy": {
+    "primaryClass": "clear-writer",
+    "fallbackClass": "fast-efficient",
+    "specialistClass": "strong-reasoning"
+  },
+  "toolPolicy": {
+    "allowedModes": [
+      "read",
+      "draft",
+      "qualify",
+      "summarize",
+      "delegate"
+    ],
+    "blockedWithoutApproval": [
+      "external-send",
+      "crm-write",
+      "pricing-commitment"
+    ]
+  },
+  "approvalPolicy": {
+    "mode": "draft-first",
+    "requiredFor": [
+      "outreach-send",
+      "calendar-invite",
+      "crm-write",
+      "contractual-language"
+    ],
+    "notRequiredFor": [
+      "drafting",
+      "qualification",
+      "pipeline-analysis"
+    ]
+  },
+  "verificationPolicy": {
+    "requiredEvidence": [
+      "source-backed-claims",
+      "explicit-next-action",
+      "clear-approval-state"
+    ],
+    "subagentCompletionIsProof": false
+  }
+}
