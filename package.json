@@ -13,7 +13,10 @@
     "audit:roles:report": "npm run build && node dist/cli/audit-roles.js",
     "audit:runtime": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js",
     "phase7:check": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js",
-    "phase8:check": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js"
+    "phase8:check": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js",
+    "list:roles": "npm run build && node dist/cli/list-roles.js",
+    "list:templates": "npm run build && node dist/cli/list-templates.js",
+    "scaffold:config": "npm run build && node dist/cli/scaffold-config.js"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
