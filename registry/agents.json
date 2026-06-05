@@ -2,7 +2,7 @@
   {
     "id": "example-professional-agent",
     "name": "Example Professional Agent",
-    "kind": "generated",
+    "kind": "custom",
     "sourceTemplate": "professional-baseline",
     "version": "1.0.0",
     "status": "draft",
@@ -12,6 +12,23 @@
       "example",
       "baseline"
     ],
-    "path": "agents/generated/example-professional-agent"
+    "path": "agents/custom/example-professional-agent"
+  },
+  {
+    "id": "ralleh-core",
+    "name": "Ralleh Core",
+    "kind": "generated",
+    "sourceTemplate": "professional-baseline",
+    "templateVersion": "2.0.0",
+    "version": "1.0.0",
+    "status": "draft",
+    "owner": "Ralleh",
+    "purpose": "Primary generated agent used as the first real instance from the professional baseline.",
+    "tags": [
+      "core",
+      "ralleh",
+      "baseline"
+    ],
+    "path": "agents/generated/ralleh-core"
   }
 ]

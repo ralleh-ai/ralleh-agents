@@ -1,64 +1,46 @@
 # ralleh-agents
 
-Ralleh agent registry and generation system.
+Ralleh agent registry, template library, and generation system.
 
-This repository has two jobs:
+This repository has four jobs:
 
-1. **Generate new agents from proven templates**
-2. **Store and manage customized agents** after they diverge from their template
+1. generate new agents from reusable templates
+2. store generated agents
+3. promote heavily customized agents into a custom library
+4. keep templates and registries validated through scripts and CI
 
 ## Structure
 
 ```text
 ralleh-agents/
-├── templates/                  # Source templates used to generate agents
-│   └── professional-baseline/  # Imported baseline from the provided archive
+├── templates/
+│   └── professional-baseline/
+│       └── template.json
 ├── agents/
-│   ├── generated/              # Agents created from templates
-│   └── custom/                 # Hand-tuned / promoted agents
+│   ├── generated/
+│   └── custom/
 ├── registry/
-│   ├── templates.json          # Template catalog
-│   └── agents.json             # Agent catalog
+│   ├── templates.json
+│   └── agents.json
 ├── schemas/
-│   ├── template.schema.json
-│   └── agent.schema.json
 ├── scripts/
-│   ├── new-agent.js            # Generate a new agent from a template
-│   └── validate-registry.js    # Basic registry validation
+│   ├── new-agent.js
+│   ├── promote-agent.js
+│   └── validate-registry.js
+├── examples/
 ├── docs/
-│   └── architecture.md
-└── examples/
-    └── agent.config.example.json
+└── .github/workflows/validate.yml
 ```
 
-## Current baseline
+## Core flows
 
-The initial baseline was imported from the provided `professional_agent_baseline_template` archive and preserved under:
+### 1) Generate an agent from config
 
-- `templates/professional-baseline/`
+```bash
+node scripts/new-agent.js --config examples/agent.config.example.json
+```
 
-That template includes:
-
-- `SOUL.md`
-- `IDENTITY.md`
-- `USER.md`
-- `AGENTS.md`
-- `TOOLS.md`
-- `HEARTBEAT.md`
-- `BOOTSTRAP.md`
-- `MEMORY.md`
-- `memory/`
-- `workflows/`
-- `skills_notes/`
-- `docs/`
-- `openclaw.json.example`
-- `recommended_skills.md`
-
-## Agent lifecycle
-
-### 1) Generate from template
-
-Create a new generated agent from the professional baseline:
+### 2) Generate with flags
 
 ```bash
 node scripts/new-agent.js \
@@ -68,70 +50,57 @@ node scripts/new-agent.js \
   --kind generated
 ```
 
-This will create:
+### 3) Promote a generated agent to custom
 
-- `agents/generated/support-ops/`
-- `agents/generated/support-ops/agent.json`
+```bash
+node scripts/promote-agent.js support-ops
+```
 
-### 2) Customize
+### 4) Validate registry integrity
 
-Adjust the generated agent's prompt files, memory, workflows, and local docs.
+```bash
+node scripts/validate-registry.js
+```
 
-### 3) Promote when heavily customized
+## Template model
 
-If an agent diverges too far from its source template, move it to:
+Each template is a folder plus metadata file:
 
-- `agents/custom/<agent-id>/`
+- template folder: reusable files to copy
+- `template.json`: version, description, tags, and template metadata
 
-and update `registry/agents.json`.
+The template registry in `registry/templates.json` tracks the available catalog.
 
-## Rules
+## Agent model
 
-- **Templates stay reusable** and should not contain instance-specific secrets.
-- **Generated agents** should keep `sourceTemplate` metadata.
-- **Custom agents** can diverge, but still keep a valid `agent.json`.
-- Prefer updating templates when improvements are broadly reusable.
-- Prefer promoting to `custom` when the specialization is business-specific or no longer template-safe.
+Each agent has:
 
-## Metadata
+- a folder under `agents/generated/` or `agents/custom/`
+- an `agent.json` manifest
+- a registry record in `registry/agents.json`
 
-Each template and agent should carry structured metadata for tooling and automation.
+Generated agents should retain `sourceTemplate` metadata.
+Custom agents may diverge significantly, but should still remain valid and registered.
 
-### Template metadata
+## Current baseline
 
-- `id`
-- `name`
-- `version`
-- `description`
-- `path`
-- `baselineFiles`
-- `tags`
+- `professional-baseline` — a reusable, standardized operating baseline for capable agents
 
-### Agent metadata
+## Validation
 
-- `id`
-- `name`
-- `kind`
-- `sourceTemplate`
-- `version`
-- `status`
-- `owner`
-- `purpose`
-- `tags`
-- `path`
+Validation currently checks:
+- template paths exist
+- `template.json` exists for each template
+- agent paths exist
+- `agent.json` exists for each registered agent
+- registry ids are unique
+- registry and on-disk agent identity match
 
-## Notes
+GitHub Actions runs validation on push and pull request.
 
-This repo is intentionally repo-first and filesystem-native:
+## First real generated agent
 
-- templates are just folders
-- agents are just folders
-- registry files make automation easier
-- scripts provide repeatable generation and validation
+This repo includes:
+- `agents/generated/example-professional-agent/` from the initial scaffold
 
-## Next recommended steps
-
-- add more templates (`sales`, `support`, `research`, `engineering`)
-- add placeholder rendering for more files
-- add JSON schema validation
-- add CI to validate registry consistency on every PR
+You can generate the next real agent instance from the config example or add new config files under `examples/`.

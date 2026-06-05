@@ -2,8 +2,8 @@
   {
     "id": "professional-baseline",
     "name": "Professional Baseline",
-    "version": "1.0.0",
-    "description": "Imported baseline from the provided professional_agent_baseline_template archive.",
+    "version": "2.0.0",
+    "description": "Reusable professional agent baseline with strong operating protocols, bounded autonomy, layered memory, and validation discipline.",
     "path": "templates/professional-baseline",
     "baselineFiles": [
       "SOUL.md",
