@@ -1,99 +1,103 @@
 {
   "role": "it",
-  "source": "../ralleh-skills/agents/it/SKILLS.md",
+  "source": "roles/it/role.json",
   "skills": [
     {
       "name": "GitHub",
-      "path": "../../skills/Platforms/GitHub/README.md"
+      "path": "../ralleh-skills/skills/Platforms/GitHub/README.md"
     },
     {
       "name": "AgentBrowser",
-      "path": "../../skills/Automation/AgentBrowser/README.md"
+      "path": "../ralleh-skills/skills/Automation/AgentBrowser/README.md"
     },
     {
       "name": "DiagramMaker",
-      "path": "../../skills/Visualization/DiagramMaker/README.md"
+      "path": "../ralleh-skills/skills/Visualization/DiagramMaker/README.md"
     },
     {
       "name": "Cortex",
-      "path": "../../skills/TaskManagement/Cortex/README.md"
+      "path": "../ralleh-skills/skills/TaskManagement/Cortex/README.md"
     },
     {
       "name": "Engram",
-      "path": "../../skills/Memory/Engram/README.md"
+      "path": "../ralleh-skills/skills/Memory/Engram/README.md"
     },
     {
       "name": "PromptDefense",
-      "path": "../../skills/Security/PromptDefense/README.md"
+      "path": "../ralleh-skills/skills/Security/PromptDefense/README.md"
     },
     {
       "name": "TokenDoctor",
-      "path": "../../skills/Observability/TokenDoctor/README.md"
+      "path": "../ralleh-skills/skills/Observability/TokenDoctor/README.md"
     },
     {
       "name": "OpenClawA2A",
-      "path": "../../skills/Communication/OpenClawA2A/README.md"
+      "path": "../ralleh-skills/skills/Communication/OpenClawA2A/README.md"
     },
     {
       "name": "Caddy",
-      "path": "../../skills/Infrastructure/Caddy/README.md"
+      "path": "../ralleh-skills/skills/Infrastructure/Caddy/README.md"
     },
     {
       "name": "Tailscale",
-      "path": "../../skills/Infrastructure/Tailscale/README.md"
+      "path": "../ralleh-skills/skills/Infrastructure/Tailscale/README.md"
     },
     {
       "name": "Docker",
-      "path": "../../skills/Infrastructure/Docker/README.md"
+      "path": "../ralleh-skills/skills/Infrastructure/Docker/README.md"
     },
     {
       "name": "Restic",
-      "path": "../../skills/Infrastructure/Restic/README.md"
+      "path": "../ralleh-skills/skills/Infrastructure/Restic/README.md"
     },
     {
       "name": "GoRuntime",
-      "path": "../../skills/Infrastructure/GoRuntime/README.md"
+      "path": "../ralleh-skills/skills/Infrastructure/GoRuntime/README.md"
     },
     {
       "name": "HostingerVps",
-      "path": "../../skills/Infrastructure/HostingerVps/README.md"
+      "path": "../ralleh-skills/skills/Infrastructure/HostingerVps/README.md"
     },
     {
       "name": "SQLite",
-      "path": "../../skills/Data/SQLite/README.md"
+      "path": "../ralleh-skills/skills/Data/SQLite/README.md"
     },
     {
       "name": "Postgres",
-      "path": "../../skills/Data/Postgres/README.md"
+      "path": "../ralleh-skills/skills/Data/Postgres/README.md"
     },
     {
       "name": "Pgvector",
-      "path": "../../skills/Data/Pgvector/README.md"
+      "path": "../ralleh-skills/skills/Data/Pgvector/README.md"
     },
     {
       "name": "Redis",
-      "path": "../../skills/Data/Redis/README.md"
+      "path": "../ralleh-skills/skills/Data/Redis/README.md"
     },
     {
       "name": "Qdrant",
-      "path": "../../skills/Data/Qdrant/README.md"
+      "path": "../ralleh-skills/skills/Data/Qdrant/README.md"
     },
     {
       "name": "GoogleSheets",
-      "path": "../../skills/Productivity/GoogleSheets/README.md"
+      "path": "../ralleh-skills/skills/Productivity/GoogleSheets/README.md"
     },
     {
       "name": "Gog",
-      "path": "../../skills/Productivity/Gog/README.md"
+      "path": "../ralleh-skills/skills/Productivity/Gog/README.md"
     },
     {
-      "name": "Office365Connector",
-      "path": "../../skills/Productivity/Office365Connector/README.md"
+      "name": "VerificationBeforeDone",
+      "path": "../ralleh-skills/skills/Engineering/VerificationBeforeDone/README.md"
     },
     {
-      "name": "CalendarScheduler",
-      "path": "../../skills/Productivity/CalendarScheduler/README.md"
+      "name": "OperatingProtocol",
+      "path": "../ralleh-skills/skills/Foundation/OperatingProtocol/README.md"
     }
+  ],
+  "selectedOptionalSkills": [
+    "GoogleSheets",
+    "Gog"
   ],
   "extraSkills": [
     "VerificationBeforeDone",

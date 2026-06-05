@@ -1,0 +1,15 @@
+{
+  "id": "sales",
+  "name": "Sales",
+  "description": "Lead qualification, outreach support, pipeline hygiene, scheduling, and sales operations role.",
+  "defaultTemplate": "professional-baseline",
+  "defaultSkills": [
+    "LinkedInManager",
+    "GoogleSheets",
+    "CalendarScheduler",
+    "Gog",
+    "Office365Connector"
+  ],
+  "optionalSkills": ["GoogleAds", "GoogleAnalytics", "AgentBrowser", "Cortex", "Engram", "PromptDefense"],
+  "tags": ["role", "sales", "pipeline", "outreach"]
+}

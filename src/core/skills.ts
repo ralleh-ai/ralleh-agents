@@ -1,26 +1,50 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { RoleSkillSet, SkillRef } from '../types/index.js';
+import type { SkillRef } from '../types/index.js';
 
-function parseMarkdownSkillLinks(content: string): SkillRef[] {
+function parseSkillMap(content: string): SkillRef[] {
   const matches = [...content.matchAll(/\[`([^`]+)`\]\(([^)]+README\.md)\)/g)];
   return matches.map((m) => ({ name: m[1], path: m[2] }));
 }
 
-export function loadRoleSkills(skillsRepoRoot: string, roleId: string): RoleSkillSet {
-  const roleSkillsPath = path.join(skillsRepoRoot, 'agents', roleId, 'SKILLS.md');
-  if (!fs.existsSync(roleSkillsPath)) {
-    throw new Error(`Role skills file not found: ${roleSkillsPath}`);
+export function loadSkillCatalog(skillsRepoRoot: string): SkillRef[] {
+  const readmes: string[] = [];
+  const skillsRoot = path.join(skillsRepoRoot, 'skills');
+  for (const family of fs.readdirSync(skillsRoot)) {
+    const familyPath = path.join(skillsRoot, family);
+    if (!fs.statSync(familyPath).isDirectory()) continue;
+    for (const skillName of fs.readdirSync(familyPath)) {
+      const readmePath = path.join(familyPath, skillName, 'README.md');
+      if (fs.existsSync(readmePath)) {
+        readmes.push(readmePath);
+      }
+    }
   }
-  const content = fs.readFileSync(roleSkillsPath, 'utf8');
-  const skills = parseMarkdownSkillLinks(content);
-  return {
-    roleId,
-    sourcePath: path.relative(process.cwd(), roleSkillsPath),
-    skills
-  };
+  return readmes
+    .map((readmePath) => ({ name: path.basename(path.dirname(readmePath)), path: path.relative(process.cwd(), readmePath) }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export function roleExists(skillsRepoRoot: string, roleId: string): boolean {
-  return fs.existsSync(path.join(skillsRepoRoot, 'agents', roleId, 'SKILLS.md'));
+export function resolveSkillsByName(skillsRepoRoot: string, names: string[]): SkillRef[] {
+  const catalog = loadSkillCatalog(skillsRepoRoot);
+  const byName = new Map(catalog.map((skill) => [skill.name, skill]));
+  return names.map((name) => {
+    const skill = byName.get(name);
+    if (!skill) throw new Error(`Skill not found in ralleh-skills catalog: ${name}`);
+    return skill;
+  });
+}
+
+export function legacyRoleSkillsPath(skillsRepoRoot: string, roleId: string): string {
+  return path.join(skillsRepoRoot, 'agents', roleId, 'SKILLS.md');
+}
+
+export function legacyRoleSkillsExists(skillsRepoRoot: string, roleId: string): boolean {
+  return fs.existsSync(legacyRoleSkillsPath(skillsRepoRoot, roleId));
+}
+
+export function parseLegacyRoleSkills(skillsRepoRoot: string, roleId: string): SkillRef[] {
+  const filePath = legacyRoleSkillsPath(skillsRepoRoot, roleId);
+  if (!fs.existsSync(filePath)) return [];
+  return parseSkillMap(fs.readFileSync(filePath, 'utf8'));
 }

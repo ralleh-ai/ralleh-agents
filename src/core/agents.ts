@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { copyDir, exists, readJson, removeIfExists, replaceInFile, walkFiles, writeJson } from './fs.js';
-import { loadRoleSkills } from './skills.js';
-import type { AgentConfig, AgentRecord, TemplateRecord } from '../types/index.js';
+import { loadRole } from './roles.js';
+import { legacyRoleSkillsExists, legacyRoleSkillsPath, parseLegacyRoleSkills, resolveSkillsByName } from './skills.js';
+import type { AgentConfig, AgentRecord, SkillRef, TemplateRecord } from '../types/index.js';
 
 function normalizeMultiline(value: string[] | string | undefined, fallback: string): string {
   if (Array.isArray(value)) return value.map((v) => `- ${v}`).join('\n');
@@ -22,13 +23,33 @@ export function loadConfig(root: string, cliArgs: Record<string, string | boolea
   return { ...config, ...inline } as AgentConfig;
 }
 
+function buildRoleSkillSelection(root: string, skillsRepoRoot: string, roleId: string, selectedOptionalSkills: string[] = [], extraSkills: string[] = []): { resolved: SkillRef[]; sources: string[] } {
+  const role = loadRole(root, roleId);
+  const allowedOptional = new Set(role.optionalSkills || []);
+  for (const skill of selectedOptionalSkills) {
+    if (!allowedOptional.has(skill)) {
+      throw new Error(`Optional skill '${skill}' is not allowed for role '${roleId}'`);
+    }
+  }
+  const names = [...role.defaultSkills, ...selectedOptionalSkills, ...extraSkills];
+  const resolved = resolveSkillsByName(skillsRepoRoot, [...new Set(names)]);
+  const sources = [`roles/${roleId}/role.json`];
+  if (legacyRoleSkillsExists(skillsRepoRoot, roleId)) {
+    sources.push(path.relative(process.cwd(), legacyRoleSkillsPath(skillsRepoRoot, roleId)) + ' [deprecated-reference]');
+    parseLegacyRoleSkills(skillsRepoRoot, roleId);
+  }
+  return { resolved, sources };
+}
+
 export function createAgent(root: string, skillsRepoRoot: string, config: AgentConfig): AgentRecord {
-  const templateId = config.template;
+  const role = config.role || null;
+  const roleRecord = role ? loadRole(root, role) : null;
+  const templateId = config.template || roleRecord?.defaultTemplate;
   const id = config.id;
   const name = config.name;
   const kind = config.kind || 'generated';
   if (!templateId || !id || !name) {
-    throw new Error('template, id, and name are required');
+    throw new Error('template, id, and name are required (template may come from role defaultTemplate)');
   }
   const templatePath = path.join(root, 'templates', templateId);
   if (!exists(templatePath)) {
@@ -50,7 +71,7 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
     '[CLIENT_NAME_OR_COMPANY]': config.clientName || 'Example Client',
     '[CHOOSE_APPROPRIATE_EMOJI]': config.emoji || '🤖',
     '[PRIMARY_LOCATION_OR_TIMEZONE]': config.timezone || 'UTC',
-    '[CLIENT_ROLE_OR_BUSINESS_DESCRIPTION]': config.roleDescription || 'AI-assisted business, team, or personal operating environment',
+    '[CLIENT_ROLE_OR_BUSINESS_DESCRIPTION]': config.roleDescription || roleRecord?.description || 'AI-assisted business, team, or personal operating environment',
     '[LIST_MAJOR_PROJECTS_OR_RESPONSIBILITIES_WITH_BRIEF_STATUS]': normalizeMultiline(config.projectsSummary, '- Define major projects here'),
     '[DESCRIBE_ANY_KNOWN_SECURITY_CONCERNS_OR_PAST_INCIDENTS_AT_HIGH_LEVEL_ONLY — e.g. heightened caution around unexpected links, attachments, and social engineering]': config.securityContext || 'Heightened caution around unexpected links, attachments, and social engineering attempts.',
     '[DIRECT / STRUCTURED / CONCISE / DETAILED — any specific style notes]': config.communicationStyle || 'Direct, structured, concise',
@@ -64,13 +85,7 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
 
   for (const file of walkFiles(targetPath)) replaceInFile(file, replacements);
 
-  const role = config.role || null;
-  const roleSkills = role ? loadRoleSkills(skillsRepoRoot, role) : null;
-  const skillNames = [
-    ...(roleSkills?.skills.map((s) => s.name) || []),
-    ...(config.extraSkills || [])
-  ];
-
+  const selected = role ? buildRoleSkillSelection(root, skillsRepoRoot, role, config.selectedOptionalSkills || [], config.extraSkills || []) : { resolved: [], sources: [] };
   const agentRecord: AgentRecord = {
     id,
     name,
@@ -84,31 +99,29 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
     tags: normalizeTags(config.tags),
     path: path.relative(root, targetPath),
     role,
-    skills: [...new Set(skillNames)],
-    skillSources: roleSkills ? [roleSkills.sourcePath] : []
+    skills: selected.resolved.map((s) => s.name),
+    skillSources: selected.sources
   };
 
   writeJson(path.join(targetPath, 'agent.json'), agentRecord);
-  if (roleSkills) {
+  if (role) {
     const rendered = [
       `# SKILLS.md - ${name}`,
       '',
-      `Role source: ${role}`,
-      `Skill source: ${roleSkills.sourcePath}`,
-      '',
+      `Role source: roles/${role}/role.json`,
+      ...(selected.sources.length > 1 ? [`Legacy reference: ${selected.sources.slice(1).join(', ')}`, ''] : ['']),
       '## Selected Skills',
       '',
-      ...roleSkills.skills.map((skill) => `- ${skill.name} — ${skill.path}`),
-      ...(config.extraSkills?.length ? ['', '## Extra Skills', '', ...config.extraSkills.map((s) => `- ${s}`)] : [])
+      ...selected.resolved.map((skill) => `- ${skill.name} — ${skill.path}`)
     ].join('\n');
-    const skillsPath = path.join(targetPath, 'SKILLS.md');
+    fs.writeFileSync(path.join(targetPath, 'SKILLS.md'), rendered + '\n');
     writeJson(path.join(targetPath, 'skills.json'), {
       role,
-      source: roleSkills.sourcePath,
-      skills: roleSkills.skills,
+      source: `roles/${role}/role.json`,
+      skills: selected.resolved,
+      selectedOptionalSkills: config.selectedOptionalSkills || [],
       extraSkills: config.extraSkills || []
     });
-    fs.writeFileSync(skillsPath, rendered + '\n');
   }
 
   const registryPath = path.join(root, 'registry', 'agents.json');
@@ -142,12 +155,17 @@ export function promoteAgent(root: string, id: string): AgentRecord {
   return agent;
 }
 
-export function validateRegistry(root: string): { templates: number; agents: number } {
+export function validateRegistry(root: string): { templates: number; agents: number; roles: number } {
   const templates = readJson<TemplateRecord[]>(path.join(root, 'registry', 'templates.json'));
   const agents = readJson<AgentRecord[]>(path.join(root, 'registry', 'agents.json'));
   const templateIds = new Set<string>();
   const agentIds = new Set<string>();
   const errors: string[] = [];
+
+  const rolesDir = path.join(root, 'roles');
+  const roles = fs.existsSync(rolesDir)
+    ? fs.readdirSync(rolesDir).filter((name) => fs.existsSync(path.join(rolesDir, name, 'role.json')))
+    : [];
 
   for (const template of templates) {
     if (templateIds.has(template.id)) errors.push(`Duplicate template id: ${template.id}`);
@@ -155,6 +173,14 @@ export function validateRegistry(root: string): { templates: number; agents: num
     const p = path.join(root, template.path);
     if (!exists(p)) errors.push(`Missing template path: ${template.path}`);
     if (!exists(path.join(p, 'template.json'))) errors.push(`Missing template.json in ${template.path}`);
+  }
+
+  for (const roleId of roles) {
+    const rolePath = path.join(root, 'roles', roleId, 'role.json');
+    const role = readJson<{ defaultTemplate: string }>(rolePath);
+    if (!templates.find((t) => t.id === role.defaultTemplate)) {
+      errors.push(`Role '${roleId}' references unknown defaultTemplate '${role.defaultTemplate}'`);
+    }
   }
 
   for (const agent of agents) {
@@ -176,8 +202,11 @@ export function validateRegistry(root: string): { templates: number; agents: num
     if (agent.sourceTemplate && !templates.find((t) => t.id === agent.sourceTemplate)) {
       errors.push(`Unknown sourceTemplate '${agent.sourceTemplate}' for agent '${agent.id}'`);
     }
+    if (agent.role && !roles.includes(agent.role)) {
+      errors.push(`Unknown role '${agent.role}' for agent '${agent.id}'`);
+    }
   }
 
   if (errors.length) throw new Error(errors.join('\n'));
-  return { templates: templates.length, agents: agents.length };
+  return { templates: templates.length, agents: agents.length, roles: roles.length };
 }

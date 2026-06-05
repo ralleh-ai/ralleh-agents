@@ -1,100 +1,60 @@
 # ralleh-agents
 
-Ralleh agent registry, template library, and generation system.
+Ralleh agent registry, template library, role system, and generation engine.
 
-This repository generates and manages agents from reusable templates, with role-based skill selection sourced from `ralleh-skills`.
+## Ownership split
 
-## Core model
+### `ralleh-agents`
+Owns:
+- templates
+- roles
+- generated agents
+- custom agents
+- role composition
+- agent manifests and registry
+
+### `ralleh-skills`
+Owns:
+- reusable skills
+- golden runbooks
+- capability documentation
+- workflow and safety guidance
+
+This prevents duplication.
+
+## Composition model
 
 An agent is composed from:
 - a template
-- agent metadata
-- an optional role
-- role-derived skills from `ralleh-skills`
-- optional extra skills
+- a local role definition in `roles/`
+- selected skills from `ralleh-skills`
+- agent-specific metadata and overrides
 
-## Tooling stack
+## Current roles
+- `it`
+- `sales`
+- `finance`
 
-The generator and registry tooling are written in TypeScript for stronger typing and maintainability.
+## Commands
 
-## Repo structure
-
-```text
-ralleh-agents/
-├── templates/
-├── agents/
-│   ├── generated/
-│   └── custom/
-├── registry/
-├── schemas/
-├── src/
-│   ├── cli/
-│   ├── core/
-│   └── types/
-├── dist/
-├── examples/
-└── .github/workflows/
+```bash
+npm install
+npm run build
+npm run generate -- --config examples/agent.config.example.json
+npm run promote -- ralleh-it-core
+npm run validate
 ```
 
-## Skills source of truth
+## Skills integration
 
-This repo does not invent its own standalone skills taxonomy.
-It reads role skill definitions from:
-- `ralleh-skills/agents/<role>/SKILLS.md`
+The generator resolves skill names from `ralleh-skills`.
 
-Default local path:
+Default location:
 - `~/ .openclaw/workspace/ralleh-skills`
 
 Override with:
 - `RALLEH_SKILLS_REPO=/path/to/ralleh-skills`
 
-## Commands
+## Direction
 
-Install dependencies:
-
-```bash
-npm install
-```
-
-Build:
-
-```bash
-npm run build
-```
-
-Generate from config:
-
-```bash
-npm run generate -- --config examples/agent.config.example.json
-```
-
-Promote to custom:
-
-```bash
-npm run promote -- ralleh-it-core
-```
-
-Validate registry:
-
-```bash
-npm run validate
-```
-
-## Role-aware generation
-
-If you set:
-
-```json
-"role": "it"
-```
-
-then the generator will:
-- read `ralleh-skills/agents/it/SKILLS.md`
-- extract linked skills
-- store them in `agent.json`
-- generate `SKILLS.md`
-- generate `skills.json`
-
-## Current direction
-
-Before adding more templates like `ops`, the skills library integration comes first. That way custom agents can be created with the correct skill set for their role.
+Role data is now owned here. The old role-agent material in `ralleh-skills/agents/*` should be treated as legacy and phased out to avoid duplication.

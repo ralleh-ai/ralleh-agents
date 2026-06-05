@@ -40,7 +40,7 @@
     "version": "1.0.0",
     "status": "draft",
     "owner": "Ralleh",
-    "purpose": "Primary generated IT-focused agent using the professional baseline and Ralleh skills library role mapping.",
+    "purpose": "Primary generated IT-focused agent using the professional baseline and locally owned role composition.",
     "tags": [
       "core",
       "ralleh",
@@ -71,13 +71,12 @@
       "Qdrant",
       "GoogleSheets",
       "Gog",
-      "Office365Connector",
-      "CalendarScheduler",
       "VerificationBeforeDone",
       "OperatingProtocol"
     ],
     "skillSources": [
-      "../ralleh-skills/agents/it/SKILLS.md"
+      "roles/it/role.json",
+      "../ralleh-skills/agents/it/SKILLS.md [deprecated-reference]"
     ]
   }
 ]

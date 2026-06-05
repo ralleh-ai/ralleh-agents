@@ -1,0 +1,21 @@
+{
+  "id": "finance",
+  "name": "Finance",
+  "description": "Bookkeeping, expense review, reporting, payments, and finance operations role.",
+  "defaultTemplate": "professional-baseline",
+  "defaultSkills": [
+    "Bookkeeper",
+    "ExpenseTracker",
+    "FinancialReporter",
+    "Stripe",
+    "GoogleSheets",
+    "Gog",
+    "Office365Connector",
+    "CalendarScheduler",
+    "Cortex",
+    "Engram",
+    "PromptDefense"
+  ],
+  "optionalSkills": [],
+  "tags": ["role", "finance", "reporting", "operations"]
+}

@@ -33,14 +33,18 @@ export interface SkillRef {
   path: string;
 }
 
-export interface RoleSkillSet {
-  roleId: string;
-  sourcePath: string;
-  skills: SkillRef[];
+export interface RoleRecord {
+  id: string;
+  name: string;
+  description: string;
+  defaultTemplate: string;
+  defaultSkills: string[];
+  optionalSkills?: string[];
+  tags?: string[];
 }
 
 export interface AgentConfig {
-  template: string;
+  template?: string;
   id: string;
   name: string;
   kind?: AgentKind;
@@ -64,4 +68,5 @@ export interface AgentConfig {
   tags?: string[] | string;
   role?: string;
   extraSkills?: string[];
+  selectedOptionalSkills?: string[];
 }
