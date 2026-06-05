@@ -1,0 +1,17 @@
+{
+  "name": "ralleh-agents",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "validate": "npm run build && node dist/cli/validate-registry.js",
+    "generate": "npm run build && node dist/cli/new-agent.js",
+    "promote": "npm run build && node dist/cli/promote-agent.js"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.3"
+  }
+}

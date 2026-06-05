@@ -12,5 +12,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate registry
-        run: node scripts/validate-registry.js
+      - run: npm install
+      - run: npm run build
+      - run: node dist/cli/validate-registry.js

@@ -1,0 +1,49 @@
+{
+  "id": "ralleh-it-core",
+  "name": "Ralleh IT Core",
+  "kind": "generated",
+  "sourceTemplate": "professional-baseline",
+  "templateVersion": "2.0.0",
+  "version": "1.0.0",
+  "status": "draft",
+  "owner": "Ralleh",
+  "purpose": "Primary generated IT-focused agent using the professional baseline and Ralleh skills library role mapping.",
+  "tags": [
+    "core",
+    "ralleh",
+    "it",
+    "baseline"
+  ],
+  "path": "agents/generated/ralleh-it-core",
+  "role": "it",
+  "skills": [
+    "GitHub",
+    "AgentBrowser",
+    "DiagramMaker",
+    "Cortex",
+    "Engram",
+    "PromptDefense",
+    "TokenDoctor",
+    "OpenClawA2A",
+    "Caddy",
+    "Tailscale",
+    "Docker",
+    "Restic",
+    "GoRuntime",
+    "HostingerVps",
+    "SQLite",
+    "Postgres",
+    "Pgvector",
+    "Redis",
+    "Qdrant",
+    "GoogleSheets",
+    "Gog",
+    "Office365Connector",
+    "CalendarScheduler",
+    "VerificationBeforeDone",
+    "OperatingProtocol"
+  ],
+  "skillSources": [
+    "../ralleh-skills/agents/it/SKILLS.md"
+  ]
+}

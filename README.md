@@ -2,105 +2,99 @@
 
 Ralleh agent registry, template library, and generation system.
 
-This repository has four jobs:
+This repository generates and manages agents from reusable templates, with role-based skill selection sourced from `ralleh-skills`.
 
-1. generate new agents from reusable templates
-2. store generated agents
-3. promote heavily customized agents into a custom library
-4. keep templates and registries validated through scripts and CI
+## Core model
 
-## Structure
+An agent is composed from:
+- a template
+- agent metadata
+- an optional role
+- role-derived skills from `ralleh-skills`
+- optional extra skills
+
+## Tooling stack
+
+The generator and registry tooling are written in TypeScript for stronger typing and maintainability.
+
+## Repo structure
 
 ```text
 ralleh-agents/
 ├── templates/
-│   └── professional-baseline/
-│       └── template.json
 ├── agents/
 │   ├── generated/
 │   └── custom/
 ├── registry/
-│   ├── templates.json
-│   └── agents.json
 ├── schemas/
-├── scripts/
-│   ├── new-agent.js
-│   ├── promote-agent.js
-│   └── validate-registry.js
+├── src/
+│   ├── cli/
+│   ├── core/
+│   └── types/
+├── dist/
 ├── examples/
-├── docs/
-└── .github/workflows/validate.yml
+└── .github/workflows/
 ```
 
-## Core flows
+## Skills source of truth
 
-### 1) Generate an agent from config
+This repo does not invent its own standalone skills taxonomy.
+It reads role skill definitions from:
+- `ralleh-skills/agents/<role>/SKILLS.md`
+
+Default local path:
+- `~/ .openclaw/workspace/ralleh-skills`
+
+Override with:
+- `RALLEH_SKILLS_REPO=/path/to/ralleh-skills`
+
+## Commands
+
+Install dependencies:
 
 ```bash
-node scripts/new-agent.js --config examples/agent.config.example.json
+npm install
 ```
 
-### 2) Generate with flags
+Build:
 
 ```bash
-node scripts/new-agent.js \
-  --template professional-baseline \
-  --id support-ops \
-  --name "Support Ops" \
-  --kind generated
+npm run build
 ```
 
-### 3) Promote a generated agent to custom
+Generate from config:
 
 ```bash
-node scripts/promote-agent.js support-ops
+npm run generate -- --config examples/agent.config.example.json
 ```
 
-### 4) Validate registry integrity
+Promote to custom:
 
 ```bash
-node scripts/validate-registry.js
+npm run promote -- ralleh-it-core
 ```
 
-## Template model
+Validate registry:
 
-Each template is a folder plus metadata file:
+```bash
+npm run validate
+```
 
-- template folder: reusable files to copy
-- `template.json`: version, description, tags, and template metadata
+## Role-aware generation
 
-The template registry in `registry/templates.json` tracks the available catalog.
+If you set:
 
-## Agent model
+```json
+"role": "it"
+```
 
-Each agent has:
+then the generator will:
+- read `ralleh-skills/agents/it/SKILLS.md`
+- extract linked skills
+- store them in `agent.json`
+- generate `SKILLS.md`
+- generate `skills.json`
 
-- a folder under `agents/generated/` or `agents/custom/`
-- an `agent.json` manifest
-- a registry record in `registry/agents.json`
+## Current direction
 
-Generated agents should retain `sourceTemplate` metadata.
-Custom agents may diverge significantly, but should still remain valid and registered.
-
-## Current baseline
-
-- `professional-baseline` — a reusable, standardized operating baseline for capable agents
-
-## Validation
-
-Validation currently checks:
-- template paths exist
-- `template.json` exists for each template
-- agent paths exist
-- `agent.json` exists for each registered agent
-- registry ids are unique
-- registry and on-disk agent identity match
-
-GitHub Actions runs validation on push and pull request.
-
-## First real generated agent
-
-This repo includes:
-- `agents/generated/example-professional-agent/` from the initial scaffold
-
-You can generate the next real agent instance from the config example or add new config files under `examples/`.
+Before adding more templates like `ops`, the skills library integration comes first. That way custom agents can be created with the correct skill set for their role.

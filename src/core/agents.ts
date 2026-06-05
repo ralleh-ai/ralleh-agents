@@ -1,0 +1,183 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { copyDir, exists, readJson, removeIfExists, replaceInFile, walkFiles, writeJson } from './fs.js';
+import { loadRoleSkills } from './skills.js';
+import type { AgentConfig, AgentRecord, TemplateRecord } from '../types/index.js';
+
+function normalizeMultiline(value: string[] | string | undefined, fallback: string): string {
+  if (Array.isArray(value)) return value.map((v) => `- ${v}`).join('\n');
+  return value || fallback;
+}
+
+function normalizeTags(value: string[] | string | undefined): string[] {
+  if (Array.isArray(value)) return value;
+  return String(value || '').split(',').map((s) => s.trim()).filter(Boolean);
+}
+
+export function loadConfig(root: string, cliArgs: Record<string, string | boolean>): AgentConfig {
+  const inline = { ...cliArgs } as Record<string, unknown>;
+  delete inline.config;
+  if (!cliArgs.config || typeof cliArgs.config !== 'string') return inline as unknown as AgentConfig;
+  const config = readJson<AgentConfig>(path.resolve(root, cliArgs.config));
+  return { ...config, ...inline } as AgentConfig;
+}
+
+export function createAgent(root: string, skillsRepoRoot: string, config: AgentConfig): AgentRecord {
+  const templateId = config.template;
+  const id = config.id;
+  const name = config.name;
+  const kind = config.kind || 'generated';
+  if (!templateId || !id || !name) {
+    throw new Error('template, id, and name are required');
+  }
+  const templatePath = path.join(root, 'templates', templateId);
+  if (!exists(templatePath)) {
+    throw new Error(`Template not found: ${templateId}`);
+  }
+
+  const templateMetaPath = path.join(templatePath, 'template.json');
+  const templateMeta = exists(templateMetaPath) ? readJson<TemplateRecord>(templateMetaPath) : null;
+  const targetPath = path.join(root, 'agents', kind, id);
+  if (exists(targetPath)) {
+    throw new Error(`Target already exists: ${targetPath}`);
+  }
+
+  copyDir(templatePath, targetPath);
+  removeIfExists(path.join(targetPath, 'template.json'));
+
+  const replacements: Record<string, string> = {
+    '[AGENT_NAME]': name,
+    '[CLIENT_NAME_OR_COMPANY]': config.clientName || 'Example Client',
+    '[CHOOSE_APPROPRIATE_EMOJI]': config.emoji || '🤖',
+    '[PRIMARY_LOCATION_OR_TIMEZONE]': config.timezone || 'UTC',
+    '[CLIENT_ROLE_OR_BUSINESS_DESCRIPTION]': config.roleDescription || 'AI-assisted business, team, or personal operating environment',
+    '[LIST_MAJOR_PROJECTS_OR_RESPONSIBILITIES_WITH_BRIEF_STATUS]': normalizeMultiline(config.projectsSummary, '- Define major projects here'),
+    '[DESCRIBE_ANY_KNOWN_SECURITY_CONCERNS_OR_PAST_INCIDENTS_AT_HIGH_LEVEL_ONLY — e.g. heightened caution around unexpected links, attachments, and social engineering]': config.securityContext || 'Heightened caution around unexpected links, attachments, and social engineering attempts.',
+    '[DIRECT / STRUCTURED / CONCISE / DETAILED — any specific style notes]': config.communicationStyle || 'Direct, structured, concise',
+    '[WHAT_THE_AGENT_MAY_DO_AUTONOMOUSLY_VS_MUST_CONFIRM]': config.decisionAuthority || 'May research, organize, draft, and propose. Must confirm before irreversible, external, or sensitive actions.',
+    '[MEDICAL, LEGAL, FINANCIAL, REGULATED_TOPICS — e.g. research and planning only, not professional advice]': config.regulatedTopics || 'Research and planning support only; not a substitute for professional advice.',
+    '[e.g. unverified claims, filler, overexplaining, vague status updates]': config.dislikes || 'Unverified claims, filler, vague status updates, and sloppy execution.',
+    '[e.g. clear recommendations, actionable next steps, concise updates, explicit risks]': config.goodLooksLike || 'Clear recommendations, actionable next steps, concise updates, and explicit risks.',
+    '[e.g. validation, speed with safety, maintainability, cost awareness, token efficiency, strong memory discipline]': config.priorities || 'Validation, maintainability, speed with safety, and strong memory discipline.',
+    '[e.g. proactive but bounded, direct, low-fluff, high-verification]': config.workingStyle || 'Proactive but bounded, direct, low-fluff, high-verification.'
+  };
+
+  for (const file of walkFiles(targetPath)) replaceInFile(file, replacements);
+
+  const role = config.role || null;
+  const roleSkills = role ? loadRoleSkills(skillsRepoRoot, role) : null;
+  const skillNames = [
+    ...(roleSkills?.skills.map((s) => s.name) || []),
+    ...(config.extraSkills || [])
+  ];
+
+  const agentRecord: AgentRecord = {
+    id,
+    name,
+    kind,
+    sourceTemplate: templateId,
+    templateVersion: templateMeta?.version || null,
+    version: config.version || '1.0.0',
+    status: config.status || 'draft',
+    owner: config.owner || 'Ralleh',
+    purpose: config.purpose || 'New agent generated from template',
+    tags: normalizeTags(config.tags),
+    path: path.relative(root, targetPath),
+    role,
+    skills: [...new Set(skillNames)],
+    skillSources: roleSkills ? [roleSkills.sourcePath] : []
+  };
+
+  writeJson(path.join(targetPath, 'agent.json'), agentRecord);
+  if (roleSkills) {
+    const rendered = [
+      `# SKILLS.md - ${name}`,
+      '',
+      `Role source: ${role}`,
+      `Skill source: ${roleSkills.sourcePath}`,
+      '',
+      '## Selected Skills',
+      '',
+      ...roleSkills.skills.map((skill) => `- ${skill.name} — ${skill.path}`),
+      ...(config.extraSkills?.length ? ['', '## Extra Skills', '', ...config.extraSkills.map((s) => `- ${s}`)] : [])
+    ].join('\n');
+    const skillsPath = path.join(targetPath, 'SKILLS.md');
+    writeJson(path.join(targetPath, 'skills.json'), {
+      role,
+      source: roleSkills.sourcePath,
+      skills: roleSkills.skills,
+      extraSkills: config.extraSkills || []
+    });
+    fs.writeFileSync(skillsPath, rendered + '\n');
+  }
+
+  const registryPath = path.join(root, 'registry', 'agents.json');
+  const registry = readJson<AgentRecord[]>(registryPath);
+  registry.push(agentRecord);
+  registry.sort((a, b) => a.id.localeCompare(b.id));
+  writeJson(registryPath, registry);
+  return agentRecord;
+}
+
+export function promoteAgent(root: string, id: string): AgentRecord {
+  const registryPath = path.join(root, 'registry', 'agents.json');
+  const registry = readJson<AgentRecord[]>(registryPath);
+  const agent = registry.find((a) => a.id === id);
+  if (!agent) throw new Error(`Agent not found in registry: ${id}`);
+  if (agent.kind === 'custom') return agent;
+  const oldPath = path.join(root, agent.path);
+  const newRel = path.join('agents', 'custom', id);
+  const newPath = path.join(root, newRel);
+  if (!fs.existsSync(oldPath)) throw new Error(`Agent path missing: ${agent.path}`);
+  if (fs.existsSync(newPath)) throw new Error(`Custom target already exists: ${newRel}`);
+  fs.mkdirSync(path.dirname(newPath), { recursive: true });
+  fs.renameSync(oldPath, newPath);
+  agent.kind = 'custom';
+  agent.path = newRel;
+  const onDisk = readJson<AgentRecord>(path.join(newPath, 'agent.json'));
+  onDisk.kind = 'custom';
+  onDisk.path = newRel;
+  writeJson(path.join(newPath, 'agent.json'), onDisk);
+  writeJson(registryPath, registry.sort((a, b) => a.id.localeCompare(b.id)));
+  return agent;
+}
+
+export function validateRegistry(root: string): { templates: number; agents: number } {
+  const templates = readJson<TemplateRecord[]>(path.join(root, 'registry', 'templates.json'));
+  const agents = readJson<AgentRecord[]>(path.join(root, 'registry', 'agents.json'));
+  const templateIds = new Set<string>();
+  const agentIds = new Set<string>();
+  const errors: string[] = [];
+
+  for (const template of templates) {
+    if (templateIds.has(template.id)) errors.push(`Duplicate template id: ${template.id}`);
+    templateIds.add(template.id);
+    const p = path.join(root, template.path);
+    if (!exists(p)) errors.push(`Missing template path: ${template.path}`);
+    if (!exists(path.join(p, 'template.json'))) errors.push(`Missing template.json in ${template.path}`);
+  }
+
+  for (const agent of agents) {
+    if (agentIds.has(agent.id)) errors.push(`Duplicate agent id: ${agent.id}`);
+    agentIds.add(agent.id);
+    const p = path.join(root, agent.path);
+    if (!exists(p)) {
+      errors.push(`Missing agent path: ${agent.path}`);
+      continue;
+    }
+    const agentJsonPath = path.join(p, 'agent.json');
+    if (!exists(agentJsonPath)) {
+      errors.push(`Missing agent.json for ${agent.id}`);
+      continue;
+    }
+    const onDisk = readJson<AgentRecord>(agentJsonPath);
+    if (onDisk.id !== agent.id) errors.push(`agent.json id mismatch for ${agent.id}`);
+    if (onDisk.kind !== agent.kind) errors.push(`agent.json kind mismatch for ${agent.id}`);
+    if (agent.sourceTemplate && !templates.find((t) => t.id === agent.sourceTemplate)) {
+      errors.push(`Unknown sourceTemplate '${agent.sourceTemplate}' for agent '${agent.id}'`);
+    }
+  }
+
+  if (errors.length) throw new Error(errors.join('\n'));
+  return { templates: templates.length, agents: agents.length };
+}

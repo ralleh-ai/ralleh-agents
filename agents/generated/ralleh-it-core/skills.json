@@ -1,0 +1,102 @@
+{
+  "role": "it",
+  "source": "../ralleh-skills/agents/it/SKILLS.md",
+  "skills": [
+    {
+      "name": "GitHub",
+      "path": "../../skills/Platforms/GitHub/README.md"
+    },
+    {
+      "name": "AgentBrowser",
+      "path": "../../skills/Automation/AgentBrowser/README.md"
+    },
+    {
+      "name": "DiagramMaker",
+      "path": "../../skills/Visualization/DiagramMaker/README.md"
+    },
+    {
+      "name": "Cortex",
+      "path": "../../skills/TaskManagement/Cortex/README.md"
+    },
+    {
+      "name": "Engram",
+      "path": "../../skills/Memory/Engram/README.md"
+    },
+    {
+      "name": "PromptDefense",
+      "path": "../../skills/Security/PromptDefense/README.md"
+    },
+    {
+      "name": "TokenDoctor",
+      "path": "../../skills/Observability/TokenDoctor/README.md"
+    },
+    {
+      "name": "OpenClawA2A",
+      "path": "../../skills/Communication/OpenClawA2A/README.md"
+    },
+    {
+      "name": "Caddy",
+      "path": "../../skills/Infrastructure/Caddy/README.md"
+    },
+    {
+      "name": "Tailscale",
+      "path": "../../skills/Infrastructure/Tailscale/README.md"
+    },
+    {
+      "name": "Docker",
+      "path": "../../skills/Infrastructure/Docker/README.md"
+    },
+    {
+      "name": "Restic",
+      "path": "../../skills/Infrastructure/Restic/README.md"
+    },
+    {
+      "name": "GoRuntime",
+      "path": "../../skills/Infrastructure/GoRuntime/README.md"
+    },
+    {
+      "name": "HostingerVps",
+      "path": "../../skills/Infrastructure/HostingerVps/README.md"
+    },
+    {
+      "name": "SQLite",
+      "path": "../../skills/Data/SQLite/README.md"
+    },
+    {
+      "name": "Postgres",
+      "path": "../../skills/Data/Postgres/README.md"
+    },
+    {
+      "name": "Pgvector",
+      "path": "../../skills/Data/Pgvector/README.md"
+    },
+    {
+      "name": "Redis",
+      "path": "../../skills/Data/Redis/README.md"
+    },
+    {
+      "name": "Qdrant",
+      "path": "../../skills/Data/Qdrant/README.md"
+    },
+    {
+      "name": "GoogleSheets",
+      "path": "../../skills/Productivity/GoogleSheets/README.md"
+    },
+    {
+      "name": "Gog",
+      "path": "../../skills/Productivity/Gog/README.md"
+    },
+    {
+      "name": "Office365Connector",
+      "path": "../../skills/Productivity/Office365Connector/README.md"
+    },
+    {
+      "name": "CalendarScheduler",
+      "path": "../../skills/Productivity/CalendarScheduler/README.md"
+    }
+  ],
+  "extraSkills": [
+    "VerificationBeforeDone",
+    "OperatingProtocol"
+  ]
+}
