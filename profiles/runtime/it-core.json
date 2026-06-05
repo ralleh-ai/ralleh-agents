@@ -1,0 +1,23 @@
+{
+  "id": "it-core",
+  "name": "IT Core Runtime Profile",
+  "modelProfile": {
+    "defaultModelClass": "strong-reasoning",
+    "escalationModelClass": "coding-specialist",
+    "simpleTaskModelClass": "fast-efficient"
+  },
+  "toolProfile": {
+    "policy": "least-privilege",
+    "allowedCategories": ["code", "files", "browser", "research", "task-ledger", "memory", "diagramming"],
+    "notes": "Production-impacting tools require explicit approval posture and verification gates."
+  },
+  "approvalProfile": {
+    "defaultMode": "confirm-risky",
+    "alwaysConfirm": ["destructive-production-changes", "credential-rotation", "dns-routing-changes", "security-sensitive-changes"],
+    "allowWithoutApproval": ["read-only-investigation", "draft-planning", "safe-local-validation"]
+  },
+  "bootstrapProfile": {
+    "mustRead": ["README.md", "IDENTITY.md", "SOUL.md", "GUIDELINES.md", "WORKFLOWS.md", "SKILLS.md"],
+    "mustCheck": ["source-of-truth", "target-environment", "verification-gate"]
+  }
+}

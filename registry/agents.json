@@ -64,7 +64,8 @@
     ],
     "skillSources": [
       "roles/finance/role.json"
-    ]
+    ],
+    "runtimeProfile": "finance-core"
   },
   {
     "id": "ralleh-it-core",
@@ -111,7 +112,8 @@
     ],
     "skillSources": [
       "roles/it/role.json"
-    ]
+    ],
+    "runtimeProfile": "it-core"
   },
   {
     "id": "ralleh-sales-core",
@@ -142,6 +144,7 @@
     ],
     "skillSources": [
       "roles/sales/role.json"
-    ]
+    ],
+    "runtimeProfile": "sales-core"
   }
 ]

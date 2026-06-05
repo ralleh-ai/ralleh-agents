@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { copyDir, exists, readJson, removeIfExists, replaceInFile, walkFiles, writeJson } from './fs.js';
 import { loadRole } from './roles.js';
+import { loadRuntimeProfile } from './runtime.js';
 import { legacyRoleSkillsExists, legacyRoleSkillsPath, parseLegacyRoleSkills, resolveSkillsByName } from './skills.js';
 import type { AgentConfig, AgentRecord, SkillRef, TemplateRecord } from '../types/index.js';
 
@@ -57,6 +58,8 @@ function applyRoleOverlay(root: string, roleId: string, targetPath: string): str
 export function createAgent(root: string, skillsRepoRoot: string, config: AgentConfig): AgentRecord {
   const role = config.role || null;
   const roleRecord = role ? loadRole(root, role) : null;
+  const runtimeProfileId = config.runtimeProfile || roleRecord?.runtimeProfile || null;
+  const runtimeProfile = runtimeProfileId ? loadRuntimeProfile(root, runtimeProfileId) : null;
   const templateId = config.template || roleRecord?.defaultTemplate;
   const id = config.id;
   const name = config.name;
@@ -115,7 +118,8 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
     path: path.relative(root, targetPath),
     role,
     skills: selected.resolved.map((s) => s.name),
-    skillSources: selected.sources
+    skillSources: selected.sources,
+    runtimeProfile: runtimeProfile?.id || null
   };
 
   writeJson(path.join(targetPath, 'agent.json'), agentRecord);
@@ -139,6 +143,9 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
       selectedOptionalSkills: config.selectedOptionalSkills || [],
       extraSkills: config.extraSkills || []
     });
+    if (runtimeProfile) {
+      writeJson(path.join(targetPath, 'runtime.json'), runtimeProfile);
+    }
   }
 
   const registryPath = path.join(root, 'registry', 'agents.json');
@@ -221,6 +228,10 @@ export function validateRegistry(root: string): { templates: number; agents: num
     }
     if (agent.role && !roles.includes(agent.role)) {
       errors.push(`Unknown role '${agent.role}' for agent '${agent.id}'`);
+    }
+    if (agent.runtimeProfile) {
+      const runtimePath = path.join(root, 'profiles', 'runtime', `${agent.runtimeProfile}.json`);
+      if (!exists(runtimePath)) errors.push(`Unknown runtimeProfile '${agent.runtimeProfile}' for agent '${agent.id}'`);
     }
   }
 

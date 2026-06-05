@@ -10,7 +10,8 @@
     "generate": "npm run build && node dist/cli/new-agent.js",
     "promote": "npm run build && node dist/cli/promote-agent.js",
     "audit:roles": "npm run build && node dist/cli/audit-roles.js",
-    "audit:roles:report": "npm run build && node dist/cli/audit-roles.js"
+    "audit:roles:report": "npm run build && node dist/cli/audit-roles.js",
+    "audit:runtime": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

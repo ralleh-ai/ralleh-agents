@@ -21,7 +21,26 @@
     "recommended_skills.md": "template",
     "openclaw.json.example": "template"
   },
-  "defaultSkills": ["LinkedInManager","GoogleSheets","CalendarScheduler","Gog","Office365Connector"],
-  "optionalSkills": ["GoogleAds", "GoogleAnalytics", "AgentBrowser", "Cortex", "Engram", "PromptDefense"],
-  "tags": ["role", "sales", "pipeline", "outreach"]
+  "defaultSkills": [
+    "LinkedInManager",
+    "GoogleSheets",
+    "CalendarScheduler",
+    "Gog",
+    "Office365Connector"
+  ],
+  "optionalSkills": [
+    "GoogleAds",
+    "GoogleAnalytics",
+    "AgentBrowser",
+    "Cortex",
+    "Engram",
+    "PromptDefense"
+  ],
+  "tags": [
+    "role",
+    "sales",
+    "pipeline",
+    "outreach"
+  ],
+  "runtimeProfile": "sales-core"
 }

@@ -22,8 +22,37 @@
     "openclaw.json.example": "template"
   },
   "defaultSkills": [
-    "GitHub","AgentBrowser","DiagramMaker","Cortex","Engram","PromptDefense","TokenDoctor","OpenClawA2A","Caddy","Tailscale","Docker","Restic","GoRuntime","HostingerVps","SQLite","Postgres","Pgvector","Redis","Qdrant"
+    "GitHub",
+    "AgentBrowser",
+    "DiagramMaker",
+    "Cortex",
+    "Engram",
+    "PromptDefense",
+    "TokenDoctor",
+    "OpenClawA2A",
+    "Caddy",
+    "Tailscale",
+    "Docker",
+    "Restic",
+    "GoRuntime",
+    "HostingerVps",
+    "SQLite",
+    "Postgres",
+    "Pgvector",
+    "Redis",
+    "Qdrant"
   ],
-  "optionalSkills": ["GoogleSheets", "Gog", "Office365Connector", "CalendarScheduler"],
-  "tags": ["role", "it", "engineering", "infrastructure"]
+  "optionalSkills": [
+    "GoogleSheets",
+    "Gog",
+    "Office365Connector",
+    "CalendarScheduler"
+  ],
+  "tags": [
+    "role",
+    "it",
+    "engineering",
+    "infrastructure"
+  ],
+  "runtimeProfile": "it-core"
 }

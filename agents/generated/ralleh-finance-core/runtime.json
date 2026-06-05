@@ -1,0 +1,51 @@
+{
+  "id": "finance-core",
+  "name": "Finance Core Runtime Profile",
+  "modelProfile": {
+    "defaultModelClass": "strong-reasoning",
+    "escalationModelClass": "review-specialist",
+    "simpleTaskModelClass": "fast-efficient"
+  },
+  "toolProfile": {
+    "policy": "least-privilege",
+    "allowedCategories": [
+      "documents",
+      "spreadsheets",
+      "research",
+      "task-ledger",
+      "memory"
+    ],
+    "notes": "Money-moving or system-of-record writes require approval."
+  },
+  "approvalProfile": {
+    "defaultMode": "read-only-first",
+    "alwaysConfirm": [
+      "money-movement",
+      "bookkeeping-writes",
+      "refunds",
+      "subscription-changes",
+      "final-filings"
+    ],
+    "allowWithoutApproval": [
+      "report-drafts",
+      "expense-review",
+      "read-only-reconciliation"
+    ]
+  },
+  "bootstrapProfile": {
+    "mustRead": [
+      "README.md",
+      "IDENTITY.md",
+      "SOUL.md",
+      "GUIDELINES.md",
+      "WORKFLOWS.md",
+      "SKILLS.md"
+    ],
+    "mustCheck": [
+      "entity",
+      "period",
+      "currency",
+      "source-of-truth"
+    ]
+  }
+}

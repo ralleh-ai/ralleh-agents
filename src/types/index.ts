@@ -12,6 +12,30 @@ export interface TemplateRecord {
   tags?: string[];
 }
 
+export interface RuntimeProfile {
+  id: string;
+  name: string;
+  modelProfile: {
+    defaultModelClass: string;
+    escalationModelClass: string;
+    simpleTaskModelClass: string;
+  };
+  toolProfile: {
+    policy: string;
+    allowedCategories: string[];
+    notes?: string;
+  };
+  approvalProfile: {
+    defaultMode: string;
+    alwaysConfirm: string[];
+    allowWithoutApproval: string[];
+  };
+  bootstrapProfile: {
+    mustRead: string[];
+    mustCheck: string[];
+  };
+}
+
 export interface AgentRecord {
   id: string;
   name: string;
@@ -27,6 +51,7 @@ export interface AgentRecord {
   role?: string | null;
   skills?: string[];
   skillSources?: string[];
+  runtimeProfile?: string | null;
 }
 
 export interface SkillRef {
@@ -42,6 +67,7 @@ export interface RoleRecord {
   composition: Record<string, CompositionOwner>;
   defaultSkills: string[];
   optionalSkills?: string[];
+  runtimeProfile?: string;
   tags?: string[];
 }
 
@@ -71,6 +97,7 @@ export interface AgentConfig {
   role?: string;
   extraSkills?: string[];
   selectedOptionalSkills?: string[];
+  runtimeProfile?: string;
 }
 
 export interface RoleAuditIssue {

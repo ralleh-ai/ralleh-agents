@@ -21,7 +21,25 @@
     "recommended_skills.md": "template",
     "openclaw.json.example": "template"
   },
-  "defaultSkills": ["Bookkeeper","ExpenseTracker","FinancialReporter","Stripe","GoogleSheets","Gog","Office365Connector","CalendarScheduler","Cortex","Engram","PromptDefense"],
+  "defaultSkills": [
+    "Bookkeeper",
+    "ExpenseTracker",
+    "FinancialReporter",
+    "Stripe",
+    "GoogleSheets",
+    "Gog",
+    "Office365Connector",
+    "CalendarScheduler",
+    "Cortex",
+    "Engram",
+    "PromptDefense"
+  ],
   "optionalSkills": [],
-  "tags": ["role", "finance", "reporting", "operations"]
+  "tags": [
+    "role",
+    "finance",
+    "reporting",
+    "operations"
+  ],
+  "runtimeProfile": "finance-core"
 }
