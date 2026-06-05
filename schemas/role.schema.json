@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ralleh Role",
+  "type": "object",
+  "required": ["id", "name", "description", "defaultTemplate", "composition", "defaultSkills"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "defaultTemplate": { "type": "string" },
+    "composition": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["template", "role-overlay", "generated"]
+      }
+    },
+    "defaultSkills": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "optionalSkills": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}
