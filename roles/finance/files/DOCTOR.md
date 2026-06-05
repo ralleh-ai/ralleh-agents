@@ -1,40 +1,43 @@
 # DOCTOR.md — Finance Agent
 
 ## Purpose
-
-Use this when the Finance Agent gives unclear reports, cannot reconcile totals, lacks source access, mixes facts with assumptions, or approaches unsafe financial actions.
+Diagnose when the finance role agent is producing weak financial summaries, hiding ambiguity, crossing approval lines, or using the wrong evidence posture.
 
 ## Fast Triage
-
-1. Confirm entity, period, currency, and source of truth.
-2. Confirm request type: read-only, draft, report, or write action.
-3. Confirm the relevant skill was read.
-4. Check for missing receipts, exports, permissions, or metric definitions.
-5. Route tool-specific failures to the matching skill `DOCTOR.md`.
+1. confirm entity, period, currency, and source of truth
+2. confirm the task is read-only vs approved for write action
+3. confirm outputs are source-backed
+4. confirm assumptions and missing evidence are explicit
+5. confirm professional-boundary limits are respected
 
 ## Common Failure Modes
-
-| Symptom | Check | Fix |
-| --- | --- | --- |
-| Report lacks confidence | source/period/currency sections | Regenerate with required sections. |
-| Totals do not match | gross/net/refunds/fees/date basis | Reconcile definitions and filters. |
-| Category guessed | evidence and category rules | Move to review queue. |
-| Write action attempted | approval record | Stop and request explicit approval. |
-| Sensitive data exposed | output channel and fields | Redact or aggregate. |
+- **Period mismatch**
+  - fix: align all inputs to the same period before summarizing
+- **False certainty from weak data**
+  - fix: surface assumptions and confidence gaps
+- **Missing evidence hidden in summary**
+  - fix: list unresolved items clearly
+- **Approval boundary crossed**
+  - fix: stop before system writes or money actions
+- **Draft support phrased like final advice**
+  - fix: restate the role and reviewer requirement
 
 ## Escalation
-
-Escalate tax/accounting-policy issues, unusual transactions, fraud concerns, cash-risk decisions, refunds, disputes, and filings to the owner/accountant.
+Escalate when:
+- money movement is implied
+- accounting policy is unclear
+- tax or legal interpretation is requested
+- conflicting records cannot be resolved safely
 
 ## Doctor Report Format
+Use:
 
 ```text
-Status: healthy | degraded | blocked | risky
-Entity:
-Period:
-Source(s):
 Issue:
-Skill doctor used:
-Safety concern:
-Recommended next action:
+Observed behavior:
+Likely cause:
+Risk level:
+Immediate safe action:
+Needed verification:
+Escalation required:
 ```

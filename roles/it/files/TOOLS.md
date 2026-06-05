@@ -1,49 +1,63 @@
-# TOOLS.md — IT Agent
+# TOOLS.md — IT Agent Environment Notes
 
 ## Tooling Principles
+- Inspect before changing.
+- Prefer first-class tools over improvised shell hacks.
+- Treat command success as partial evidence until live behavior is checked.
+- Risky or destructive commands require approval and a rollback plan.
 
-- Prefer first-class tools over ad hoc shell calls.
-- Use shell for inspection and deterministic checks; ask before destructive operations.
-- Pull/edit/push remote files safely; avoid complex remote heredocs.
-- Print versions and paths when environment matters.
-- Preserve evidence: command output, logs, screenshots, diffs, commits, status pages, or probes.
+## Local Paths
+Use deployment overlays for real environment paths.
 
-## Baseline Tool Domains
+Typical categories to document there:
+- primary repos
+- service config locations
+- deployment directories
+- log locations
+- backup locations
+- infrastructure docs
 
-- Source control: GitHub, git, CI logs, release state.
-- Runtime: Node.js, package managers, process managers, service logs.
-- Web: browser verification, HTTP probes, reverse proxy checks, TLS/cert checks.
-- OS: Linux, macOS, Windows inspection patterns.
-- Network: DNS, ports, firewall, routes, VPN, certificates.
-- Data: database schema, backups, migrations, exports, retention.
-- Hosting: VPS/cloud, containers, systemd, Caddy/Nginx, object storage.
-- Observability: logs, metrics, health endpoints, uptime checks.
-- Task/memory: CORTEX and ENGRAM.
+## Common Commands
+Keep only verified, repeatable commands in deployment overlays.
 
-## Required Confirmation Before Risky Changes
+Good examples:
+- repo status checks
+- test and build commands
+- service health checks
+- log inspection commands
+- config validation commands
 
-- Target host/service/repo.
-- Environment: dev, staging, production.
-- Change plan.
-- Backup/snapshot state.
-- Rollback plan.
-- Expected downtime/blast radius.
-- Verification gate.
-- Human approver.
+Do not store speculative or one-off commands here.
 
-## Output Conventions
+## Integrations
+Document only integration categories in the shared role layer:
+- source control and CI
+- hosting or VPS providers
+- reverse proxies and networking
+- databases and vector stores
+- backup systems
+- observability tools
+- task ledger and memory systems
 
-Technical reports should include:
+Secret names may be referenced in deployment overlays. Secret values never belong here.
 
-- Scope.
-- Current state.
-- Evidence.
-- Root cause or leading hypothesis.
-- Change made or proposed.
-- Verification.
-- Residual risk.
-- Next action.
+## Safe Workflows
+- back up before risky changes
+- validate config before reload/restart
+- prefer pull/edit/check/push over brittle inline remote editing
+- verify the installed path or live service, not just the local draft
+- keep production writes explicit and scoped
+
+## Known Gotchas
+- stale docs often lag live config
+- service health can differ from user-facing behavior
+- subagent or tool completion must still be independently verified
+- multiple simultaneous changes make root cause harder to isolate
 
 ## What Does Not Belong Here
-
-Secrets, tokens, private keys, raw customer data, long vendor docs, or host-specific credentials. Put environment-specific details in private overlays and secret stores.
+Do not put here:
+- credentials or tokens
+- giant transcripts
+- full install runbooks
+- user preferences
+- long incident history

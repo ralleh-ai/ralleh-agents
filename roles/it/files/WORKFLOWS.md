@@ -1,133 +1,112 @@
 # IT Workflows
 
 ## Workflow Index
+- diagnosis and triage
+- change planning
+- implementation verification
+- incident review and follow-up
 
-- Incident response.
-- Architecture review.
-- Deployment hardening.
-- Data migration.
-- Cross-platform troubleshooting.
-- Repository/CI review.
+## Diagnosis and Triage
+**Purpose**: identify likely cause without making the situation worse.
 
-## Incident Response
+**Inputs**:
+- affected system or repo
+- observed symptoms
+- recent changes if known
+- source of truth for live state
 
-Purpose: restore service safely and learn from failure.
+**Steps**:
+1. confirm target environment
+2. inspect logs, status, config, and recent changes
+3. separate facts from assumptions
+4. identify likely causes and safest next step
 
-Inputs: symptom, service, environment, recent changes, logs, monitoring, customer impact.
+**Outputs**:
+- findings summary
+- likely cause or narrowed hypotheses
+- recommended next action
 
-Steps:
+**Verification**:
+- evidence is named and relevant to the real system
 
-1. Create/resume CORTEX incident task.
-2. Declare severity and blast radius.
-3. Freeze risky unrelated changes.
-4. Gather evidence: status, logs, health checks, recent deploys, config.
-5. Identify mitigation before permanent fix.
-6. Apply approved reversible fix.
-7. Verify service and user-facing behavior.
-8. Record cause, prevention, and follow-ups.
+**Escalation**:
+- if blast radius or ownership is unclear, stop and escalate
 
-Outputs: incident summary, cause, fix, verification, prevention tasks.
+## Change Planning
+**Purpose**: make risky work explicit before execution.
 
-Verification: live health/user flow plus logs/metrics stable.
+**Inputs**:
+- change request
+- target system
+- constraints
+- approval state
 
-## Architecture Review
+**Steps**:
+1. define desired outcome
+2. define risk and rollback
+3. define verification gate
+4. identify whether backup or maintenance window is required
 
-Purpose: evaluate a system design before implementation or scale-up.
+**Outputs**:
+- implementation plan
+- rollback plan
+- verification checklist
 
-Inputs: product goal, constraints, diagrams/docs, repo, data model, traffic assumptions, security needs.
+**Verification**:
+- plan names concrete evidence for success
 
-Steps:
+**Escalation**:
+- if rollback is missing or risk is unclear, do not execute
 
-1. Identify purpose and boundaries.
-2. Map components and data flow.
-3. Identify trust zones and external dependencies.
-4. Review failure modes and scaling path.
-5. Review observability, backup, and rollback.
-6. Produce recommendations prioritized by risk and value.
-7. Create diagram when helpful.
+## Implementation Verification
+**Purpose**: confirm the change actually worked.
 
-Outputs: architecture verdict, diagram, risks, recommendations, next decisions.
+**Inputs**:
+- changed files, services, or systems
+- expected behavior
 
-Verification: recommendations tie to stated constraints and evidence.
+**Steps**:
+1. run the smallest meaningful checks
+2. inspect the live target
+3. confirm user-facing behavior when relevant
+4. record blocker if verification fails
 
-## Deployment Hardening
+**Outputs**:
+- verified outcome or named blocker
 
-Purpose: make deployment safer, repeatable, and observable.
+**Verification**:
+- tests, screenshots, logs, diffs, or direct inspection
 
-Inputs: repo, deploy target, runtime, config, secrets, proxy, health checks, rollback path.
+**Escalation**:
+- if only partial evidence exists, report partial confidence
 
-Steps:
+## Incident Review and Follow-Up
+**Purpose**: turn an incident into a better system.
 
-1. Inspect current deployment path.
-2. Confirm environment and owner.
-3. Check git status, build/test, config, secrets, migrations.
-4. Verify health check and logs.
-5. Confirm backup/rollback.
-6. Apply approved hardening changes.
-7. Verify live endpoint and user flow.
+**Inputs**:
+- incident summary
+- evidence
+- resolution steps
 
-Outputs: hardening checklist, changes, verification evidence, residual risks.
+**Steps**:
+1. summarize what happened
+2. identify root cause or best-known cause
+3. identify what should change
+4. capture durable lesson if warranted
 
-Verification: build/test plus live health/user-flow evidence.
+**Outputs**:
+- brief post-incident summary
+- recommended preventive change
 
-## Data Migration
+**Verification**:
+- lesson or follow-up is recorded in the right place
 
-Purpose: move or transform data without loss.
-
-Inputs: source, target, schema, row counts, backups, downtime window, validation queries.
-
-Steps:
-
-1. Define source/target and success criteria.
-2. Back up source and confirm restore path.
-3. Dry-run migration on sample or staging when possible.
-4. Validate counts, checksums, and critical records.
-5. Plan rollback and communication.
-6. Execute only after approval.
-7. Validate post-migration and monitor.
-
-Outputs: migration plan, validation results, rollback plan, final evidence.
-
-Verification: counts/checksums/spot checks match expected results.
-
-## Cross-Platform Troubleshooting
-
-Purpose: diagnose OS-specific failures without applying wrong commands.
-
-Inputs: OS, shell, runtime version, path, failing command, expected behavior.
-
-Steps:
-
-1. Confirm OS and shell.
-2. Confirm tool versions and paths.
-3. Reproduce safely.
-4. Identify OS-specific syntax/path/env differences.
-5. Apply smallest fix.
-6. Verify on the target OS.
-
-Outputs: cause, OS-specific fix, verification.
-
-Verification: command succeeds on target OS.
-
-## Repository/CI Review
-
-Purpose: determine whether a repo or PR is safe to ship.
-
-Inputs: repo, branch/PR, CI runs, diff, tests, deployment target.
-
-Steps:
-
-1. Inspect git status/branch.
-2. Review diff and changed risk areas.
-3. Inspect CI status and failed logs.
-4. Run local tests when appropriate.
-5. Verify config/secrets are not committed.
-6. Produce ship/block recommendation.
-
-Outputs: verdict, risks, required fixes, verification evidence.
-
-Verification: CI/local checks and targeted inspection support verdict.
+**Escalation**:
+- if the cause is still uncertain, say so explicitly
 
 ## What Belongs in examples/
-
-Concrete incident reports, architecture review packets, hardening checklists, and migration plans belong in `examples/`.
+Use examples for:
+- architecture review packets
+- incident summaries
+- hardening plans
+- migration plans

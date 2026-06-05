@@ -1,115 +1,109 @@
 # Finance Workflows
 
 ## Workflow Index
+- expense review
+- reporting draft
+- reconciliation support
+- close preparation
 
-- Monthly close packet.
-- Expense approval review.
-- Budget forecast/variance review.
-- Stripe revenue reconciliation.
-- Missing document queue.
+## Expense Review
+**Purpose**: organize expenses and missing evidence for review.
 
-## Monthly Close Packet
+**Inputs**:
+- expense records
+- receipts or missing-evidence notes
+- period and entity
 
-Purpose: prepare a review-ready monthly close packet.
+**Steps**:
+1. confirm period and source
+2. match evidence where available
+3. flag missing or unclear items
+4. prepare summary for review
 
-Inputs:
+**Outputs**:
+- expense review packet
+- missing-evidence list
 
-- Entity, month, currency, accounting source, Stripe export/report, bank/card exports, receipt source.
+**Verification**:
+- every flagged item names the reason it remains unresolved
 
-Steps:
+**Escalation**:
+- if policy or tax treatment is unclear, escalate to the owner/accountant
 
-1. Create or resume CORTEX task.
-2. Confirm sources and period.
-3. Gather read-only summaries.
-4. Reconcile Stripe gross/net/fees/refunds/payouts.
-5. Review uncategorized and missing receipts.
-6. Prepare variance notes and decisions needed.
-7. Output packet for owner/accountant review.
+## Reporting Draft
+**Purpose**: prepare a source-backed summary without overstating certainty.
 
-Outputs:
+**Inputs**:
+- approved source reports
+- reporting period
+- currency and entity context
 
-- Close summary.
-- Review queue.
-- Missing documents.
-- Reconciliation differences.
-- Questions for owner/accountant.
+**Steps**:
+1. confirm source and period
+2. summarize major findings
+3. note assumptions and anomalies
+4. identify review questions
 
-Verification:
+**Outputs**:
+- report draft
+- anomaly list
 
-- Source totals checked and named.
-- Differences listed or marked none found.
+**Verification**:
+- source, period, and assumptions are explicit
 
-## Expense Approval Review
+**Escalation**:
+- if numbers conflict materially, do not smooth over them
 
-Purpose: evaluate submitted expenses for completeness and review readiness.
+## Reconciliation Support
+**Purpose**: help compare related records and surface mismatches.
 
-Inputs: expense list, receipts, policy/rules, period, submitter/project.
+**Inputs**:
+- platform exports
+- payment or accounting records
+- period context
 
-Steps:
+**Steps**:
+1. align sources to the same period
+2. compare totals and categories
+3. flag mismatches and unknowns
+4. prepare reviewer notes
 
-1. Match expenses to receipts.
-2. Check duplicates and missing business purpose.
-3. Categorize using approved rules.
-4. Flag exceptions and decisions.
-5. Prepare approval summary.
+**Outputs**:
+- reconciliation summary
+- mismatch list
 
-Outputs: approved-to-review list, exceptions, missing evidence, totals by category.
+**Verification**:
+- each mismatch is tied to a named source pair
 
-Verification: total expenses match source list; every exception has reason.
+**Escalation**:
+- if a mismatch implies money movement or write action, escalate
 
-## Budget Forecast and Variance Review
+## Close Preparation
+**Purpose**: help the owner or accountant prepare a cleaner period close.
 
-Purpose: compare actuals to budget and produce a forward-looking review.
+**Inputs**:
+- period checklist
+- reports and evidence
+- open issues
 
-Inputs: budget, actuals, forecast assumptions, period, currency.
+**Steps**:
+1. summarize period readiness
+2. identify missing docs or unresolved items
+3. prepare review checklist
+4. assign next actions where possible
 
-Steps:
+**Outputs**:
+- close-prep summary
+- unresolved items list
 
-1. Confirm metric definitions.
-2. Compare actuals to budget by category.
-3. Identify material variances.
-4. Separate known causes from hypotheses.
-5. Draft forecast notes and decisions needed.
+**Verification**:
+- unresolved items and approval needs are explicit
 
-Outputs: variance table, forecast assumptions, risks, owner decisions.
-
-Verification: totals match source budget/actuals; assumptions are labeled.
-
-## Stripe Revenue Reconciliation
-
-Purpose: reconcile Stripe activity to finance reports.
-
-Inputs: Stripe reporting period, payments, refunds, fees, disputes, invoices, subscriptions, payouts.
-
-Steps:
-
-1. Confirm test/live mode and account.
-2. Pull read-only Stripe summaries.
-3. Define gross revenue, net revenue, fees, refunds, disputes, and payout timing.
-4. Compare to accounting/report totals.
-5. List differences and likely causes.
-
-Outputs: reconciliation summary, mismatches, follow-up actions.
-
-Verification: account/mode/period confirmed; gross/net definitions named.
-
-## Missing Document Queue
-
-Purpose: surface missing receipts, invoices, statements, or approvals.
-
-Inputs: transaction list, document repository, policy/rules.
-
-Steps:
-
-1. Match evidence to transactions.
-2. Group missing evidence by owner/vendor/category.
-3. Prioritize high-value or close-blocking items.
-4. Draft request list.
-
-Outputs: missing document queue and request text.
-
-Verification: queue references transaction ids or stable source rows.
+**Escalation**:
+- if close quality depends on unclear policy, escalate
 
 ## What Belongs in examples/
-
-Detailed role-played packets and sample outputs belong in `examples/`, not in this file.
+Use examples for:
+- close packets
+- expense approval packets
+- budget or variance summaries

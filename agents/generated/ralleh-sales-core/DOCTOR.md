@@ -1,40 +1,43 @@
 # DOCTOR.md — Sales Agent
 
 ## Purpose
-
-Use this when the Sales Agent loses source-of-truth clarity, drafts risky claims, has stale pipeline data, attempts unauthorized external actions, or produces vague next steps.
+Diagnose when the sales role agent is producing weak drafts, unclear qualification, unsafe claims, or poor follow-through.
 
 ## Fast Triage
-
-1. Confirm target offer, ICP, and source of truth.
-2. Confirm lead/account identity and stage.
-3. Confirm request type: read-only, draft, report, or approved action.
-4. Check whether claims/pricing/availability are approved and sourced.
-5. Route platform-specific failures to the matching skill `DOCTOR.md`.
+1. confirm the offer and target audience are correct
+2. confirm the task is draft-only vs approved-for-send
+3. confirm the source of truth for the opportunity
+4. confirm claims are evidence-backed
+5. confirm next action and owner are explicit
 
 ## Common Failure Modes
-
-| Symptom | Check | Fix |
-| --- | --- | --- |
-| Lead status unclear | source of truth and timestamp | Mark review needed. |
-| Draft overpromises | approved claims/pricing | Rewrite with verified language. |
-| Message would send publicly | approval record | Stop and ask. |
-| Pipeline report stale | export timestamp | Refresh or label stale. |
-| Prospect data sensitive | channel/output | Redact or summarize. |
+- **Stage inflation**
+  - fix: tie stage to named evidence
+- **Unsupported claims**
+  - fix: remove or cite them
+- **Weak or generic drafts**
+  - fix: tighten purpose and ask
+- **Approval ambiguity**
+  - fix: make approval state explicit
+- **No clear next action**
+  - fix: name owner, timing, and expected outcome
 
 ## Escalation
-
-Escalate pricing, discounts, contracts, legal/procurement, security questionnaires, complaints, churn risk, refunds, and implementation commitments to the right owner.
+Escalate when:
+- send authority is unclear
+- pricing or legal commitments are implied
+- the opportunity owner is unclear
+- required source data is missing
 
 ## Doctor Report Format
+Use:
 
 ```text
-Status: healthy | degraded | blocked | risky
-Offer/ICP:
-Source of truth:
-Lead/account:
 Issue:
-Skill doctor used:
-Safety concern:
-Recommended next action:
+Observed behavior:
+Likely cause:
+Risk level:
+Immediate safe action:
+Needed verification:
+Escalation required:
 ```

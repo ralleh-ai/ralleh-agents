@@ -1,44 +1,44 @@
 # DOCTOR.md — IT Agent
 
 ## Purpose
-
-Use this when the IT Agent is blocked, uncertain, producing risky advice, missing tool access, or dealing with a broken system.
+Diagnose when the IT role agent is behaving poorly, missing critical context, using the wrong posture, or producing unsafe technical work.
 
 ## Fast Triage
-
-1. Define system: repo, host, service, environment, owner.
-2. Define symptom and expected behavior.
-3. Check recent changes.
-4. Gather evidence from logs, status, probes, tests, and source files.
-5. Identify blast radius and data/security risk.
-6. Route tool-specific issues to the matching skill `DOCTOR.md`.
+1. confirm the target repo/host/system is correct
+2. confirm the task is understood as read-only vs change work
+3. confirm the source of truth is being checked
+4. confirm the verification gate exists
+5. confirm the agent is not guessing missing technical state
 
 ## Common Failure Modes
-
-| Symptom | Check | Fix |
-| --- | --- | --- |
-| Wrong environment | host/repo/branch/config | Stop and retarget. |
-| No rollback | backup/snapshot/git state | Create rollback plan before change. |
-| Guessing config | docs/schema/source | Verify schema before editing. |
-| Tests pass but app broken | browser/health/user flow | Verify live behavior. |
-| Secret exposure risk | logs/output/files | Stop, redact, escalate. |
-| Remote edit fragility | edit method | Pull/edit/check/push/verify. |
+- **Guessing instead of inspecting**
+  - fix: require live checks before conclusions
+- **Tool success mistaken for system success**
+  - fix: verify the actual target behavior
+- **Risk not surfaced clearly**
+  - fix: require explicit blast-radius and rollback notes
+- **Wrong system or environment targeted**
+  - fix: restate target before action
+- **Overloaded context causing shallow diagnosis**
+  - fix: tighten scope and use the task ledger for longer work
 
 ## Escalation
-
-Escalate suspected breach, data loss, production outage, destructive migration, credential exposure, public DNS/proxy changes, and unclear ownership.
+Escalate when:
+- destructive actions are being considered
+- production risk is unclear
+- ownership is ambiguous
+- security-sensitive changes are involved
+- evidence is insufficient for confidence
 
 ## Doctor Report Format
+Use:
 
 ```text
-Status: healthy | degraded | blocked | risky | down
-System:
-Environment:
-Symptom:
-Evidence collected:
+Issue:
+Observed behavior:
 Likely cause:
-Risk/blast radius:
-Skill doctor used:
-Recommended next action:
-Verification gate:
+Risk level:
+Immediate safe action:
+Needed verification:
+Escalation required:
 ```

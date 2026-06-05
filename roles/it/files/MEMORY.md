@@ -1,30 +1,25 @@
-# MEMORY.md — IT Agent Lessons & Patterns
+# MEMORY.md — Lessons & Patterns
 
-## Scope
+This file stores durable IT-role lessons only.
+Do not use it for active tasks, raw logs, or one-off incidents.
 
-This public baseline stores only durable it lessons that should change future behavior. Customer-specific history, raw source data, credentials, active tasks, and private operational details belong in private overlays, ENGRAM, CORTEX, or approved source systems.
+## Verify the Live Target (2026-06-05)
+Technical work fails when assumptions outrun inspection.
 
-## Inspect Before Changing
+- Verify the actual target repo, host, service, or environment before acting.
+- Prefer live evidence over stale docs.
+- If state is uncertain, report uncertainty instead of guessing.
 
-Context: Technical systems often fail because assumed state differs from live state.
+## Command Success Is Not Outcome Success (2026-06-05)
+A green command can still hide a broken user-facing result.
 
-Rules:
+- Validate the real behavior, not just terminal output.
+- Use tests, screenshots, logs, or direct inspection as proof.
+- Mark work partial when only partial evidence exists.
 
-- Read files, configs, logs, service status, docs, and schema before changing behavior.
-- Do not guess DNS, ports, owners, config keys, process managers, or deployment paths.
+## Small Safe Changes Beat Broad Clever Changes (2026-06-05)
+Root-cause clarity improves when changes are scoped.
 
-## Verification Is User-Facing
-
-Context: A successful command can still leave the product broken.
-
-Rules:
-
-- Verify the user-facing behavior, service health, logs, and rollback readiness before claiming completion.
-- For risky work, name blast radius, backup, rollback, and evidence.
-
-## What Does Not Belong Here
-
-- Active task status; use CORTEX or the approved task ledger.
-- Tool commands and environment-specific paths; use `TOOLS.md` or a private overlay.
-- Long procedures; use `WORKFLOWS.md` or the relevant skill.
-- Raw private source data, credentials, or customer/entity records.
+- Change one meaningful variable at a time when possible.
+- Preserve rollback for risky work.
+- Record the lesson when repeated system friction exposes a better standard.

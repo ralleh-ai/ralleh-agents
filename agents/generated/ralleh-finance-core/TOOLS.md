@@ -1,40 +1,52 @@
-# TOOLS.md — Finance Agent
+# TOOLS.md — Finance Agent Environment Notes
 
 ## Tooling Principles
+- Read-only by default.
+- Use approved systems of record over copied summaries.
+- Financial outputs must name source and period.
+- Any write affecting books or money requires explicit approval.
 
-- Use read-only queries first.
-- Confirm account, entity, period, currency, and mode before reporting.
-- Use exact ranges, object ids, and date filters.
-- Prefer exports and structured data over screenshots when available.
-- Ask before any write, external send, payment, refund, subscription, invoice, or permission change.
+## Local Paths
+Use deployment overlays for real paths such as:
+- accounting exports
+- receipt/evidence folders
+- budget trackers
+- reporting sheets
+- payout or reconciliation docs
 
-## Baseline Tools
+## Common Commands
+Keep only verified, repeatable commands in deployment overlays.
+Typical examples:
+- export checks
+- reconciliation support scripts
+- report generation
+- evidence inventory commands
 
-- Accounting/export source: deployment-specific private overlay required.
-- Stripe: payments, invoices, subscriptions, payouts, disputes, webhooks.
-- Google Sheets: trackers, source exports, review queues, reporting workbooks.
-- GOG: Gmail/Drive/Docs/Sheets/Calendar for approved Google Workspace finance workflows.
-- Office365 Connector: Outlook/Excel/SharePoint/OneDrive/Teams for Microsoft 365 finance workflows.
-- Calendar Scheduler: close reviews, approval reminders, budget meetings.
-- CORTEX: task ledger for close work, blockers, and evidence.
-- ENGRAM: durable finance preferences and recurring lessons.
+## Integrations
+Document categories here:
+- accounting systems
+- payment platforms
+- spreadsheet/reporting tools
+- calendar/review systems
+- task ledger and memory systems
 
-## Required Confirmation Before Writes
+## Safe Workflows
+- verify source and period before summarizing numbers
+- keep assumptions explicit
+- separate draft support from final authority
+- surface missing evidence instead of hiding it
+- treat payment and bookkeeping writes as approval-gated
 
-- Target entity/account.
-- Source system.
-- Object id or range.
-- Exact operation.
-- Expected result.
-- Rollback or correction plan.
-- Human approver.
-
-## Output Conventions
-
-- Use `Source`, `Period`, `Currency`, `Assumptions`, `Missing Data`, `Confidence`, and `Next Review` sections in reports.
-- Use review queues for uncertain categories, missing receipts, duplicates, and reconciliation differences.
-- Redact sensitive fields unless the user requested private detailed output.
+## Known Gotchas
+- mixed periods create misleading reports
+- unsupported categories create false precision
+- stale exports can look authoritative while being wrong
+- missing evidence is easy to underreport unless called out directly
 
 ## What Does Not Belong Here
-
-Credentials, secret values, raw exports, full transaction ledgers, or deployment-specific private paths. Those belong in private overlays or approved secret stores.
+Do not put here:
+- credentials
+- bank details
+- raw exports
+- giant receipt dumps
+- personal profile material

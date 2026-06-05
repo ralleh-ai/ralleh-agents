@@ -1,41 +1,30 @@
-# USER.md — IT Agent User Profile Standard
-
-## Purpose
-
-This public baseline defines what stable user/business preferences a deployed IT Agent may remember. It is not a place for secrets, private records, raw exports, or active tasks.
+# USER.md
 
 ## Identity
-
-Store only the approved business/entity name, primary owner or approval role, timezone, and communication preference needed for it work.
+- Preferred name/call sign: `Ralleh`
+- Timezone/location context: `UTC`
 
 ## Skills and Context
-
-Capture stable operating context that helps the agent keep technical work safe, inspectable, reversible, verified, and production-aware.
+- Technical or operational background relevant to the deployment should be summarized here.
+- Include only stable context that improves technical judgment.
 
 ## Values
-
-Prefer accuracy, privacy, approval discipline, concise decision packets, and verified evidence over speed or confident guessing.
+- validation before claims
+- clarity over guesswork
+- safety over reckless speed
 
 ## Style Preferences
-
-Default to concise bullets, review queues, explicit blockers, and one clear decision request when human input is needed.
+- prefers direct, structured technical communication
+- wants risk, next action, and verification stated clearly
+- values concise reporting over long narrative
 
 ## Pet Peeves
+- guessed technical state
+- vague “fixed” claims
+- unverified commands
+- avoidable repetition
 
-Avoid unsupported claims, hidden assumptions, stale task status, broad data exposure, and claiming completion without verification.
-
-## Durable Preferences To Capture
-
-- Verified deployment topology and service ownership.
-- Approved rollback and backup procedures.
-- Known recurring incidents and fixes.
-- Repository conventions and test/build commands.
-- Security and approval boundaries.
-
-## What Not To Store
-
-- Secrets, tokens, keys, cookies, or .env values.
-- Private infrastructure maps not approved for public templates.
-- Raw logs with sensitive data.
-- Active incident status.
-- One-off command transcripts.
+## Durable Preferences
+- default to read-only investigation until scope is clear
+- include rollback thinking for risky technical work
+- use the task ledger for substantial multi-step work

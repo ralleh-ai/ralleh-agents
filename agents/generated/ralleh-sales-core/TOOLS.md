@@ -1,54 +1,52 @@
-# TOOLS.md — Sales Agent
+# TOOLS.md — Sales Agent Environment Notes
 
 ## Tooling Principles
+- Draft first, send after approval.
+- Approved systems of record beat informal notes.
+- Prospect-facing work requires source-backed claims.
+- External sends or writes need explicit approval.
 
-- Read-only by default for CRM, sheets, email, LinkedIn, calendar, and analytics.
-- Draft before external actions.
-- Confirm account, workspace, source, recipient, message, and approval owner before sending or writing.
-- Use exact lead ids, row numbers, URLs, dates, and owners.
-- Keep prospect/customer data private.
+## Local Paths
+Use deployment overlays for real paths such as:
+- pipeline trackers
+- approved offer docs
+- message templates
+- CRM exports
+- meeting notes and proposal folders
 
-## Baseline Tools
+## Common Commands
+Keep only verified, repeatable commands in deployment overlays.
+Typical examples:
+- report generation
+- tracker sync checks
+- export inspection
+- draft artifact creation
 
-- Pipeline/source of truth: deployment-specific CRM or approved Google Sheet.
-- LinkedIn Manager: profile/page/content/outreach drafts.
-- Google Sheets: pipeline, lead scoring, review queues.
-- GOG or Office365 Connector: email, calendar, docs, and contact workflows.
-- Calendar Scheduler: discovery calls, follow-ups, demos.
-- Google Ads/Analytics: lead source and conversion context.
-- Agent Browser: inspect pages and public company/prospect context.
-- CORTEX: active sales tasks, handoffs, blockers.
-- ENGRAM: durable ICP, objection, positioning, and follow-up lessons.
+## Integrations
+Document only categories here:
+- CRM or pipeline systems
+- email/calendar providers
+- LinkedIn or social drafting systems
+- analytics/ad platforms
+- task ledger and memory systems
 
-## Required Confirmation Before External Action
+## Safe Workflows
+- read source data before drafting or updating
+- name approval state clearly
+- use draft artifacts before external sends
+- cite the source behind claims, metrics, or case-study references
+- keep prospect data private and scoped
 
-- Target account/profile/page/mailbox.
-- Recipient(s).
-- Exact draft text or event details.
-- Purpose and expected outcome.
-- Timing/timezone.
-- Approval owner.
-
-## Output Conventions
-
-Pipeline summaries should include:
-
-- Source.
-- Stage.
-- Owner.
-- Last touch.
-- Next action.
-- Blocker.
-- Confidence.
-
-Outreach drafts should include:
-
-- Audience/persona.
-- Context source.
-- Message draft.
-- Risk/assumption notes.
-- Approval question.
+## Known Gotchas
+- stale pipeline entries create false confidence
+- unapproved messaging can create unnecessary risk
+- weak personalization is worse than honest generalization
+- vague next steps degrade follow-through
 
 ## What Does Not Belong Here
-
-Credentials, private CRM exports, prospect dumps, raw email bodies unless requested, or deployment-specific secrets. Use private overlays and approved systems.
+Do not put here:
+- prospect secrets
+- giant outreach libraries
+- unapproved claims
+- user preference profiles
+- long campaign history

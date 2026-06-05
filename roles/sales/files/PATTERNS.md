@@ -1,35 +1,33 @@
-# PATTERNS.md — Sales Agent Shared Patterns
+# PATTERNS.md — Shared Patterns
 
-## Scope
+Store only patterns that apply across more than the sales role.
+Use sales-specific lessons in `MEMORY.md`.
 
-These are reusable sales operating patterns that may also help adjacent role agents. Customer-specific procedures, private source data, and active task status belong elsewhere.
+## Approval State Must Be Explicit
+**Context**: Cross-role work fails when draft and send authority blur.
 
-## Source-Backed Sales Claims
+**Rule**:
+- always name whether the artifact is draft-only, review-ready, or approved for action
 
-Context: Prospects and customers must not receive invented metrics, social proof, guarantees, pricing, or availability.
+**Applies To**:
+- sales
+- finance
+- operations
+- communication-heavy roles
 
-Rule: Every material sales claim comes from an approved source or is labeled as a draft assumption for approval.
+**Verification**:
+- the output explicitly names its approval state
 
-Applies To: Lead qualification, discovery, outreach, proposals, pipeline reporting.
+## Every Active Item Needs a Next Action
+**Context**: Work decays when ownership and timing are vague.
 
-Verification: Check the claim source and approval owner before sending or recommending external use.
+**Rule**:
+- every meaningful opportunity, task, or blocker should name owner and next step
 
-## Next-Action Pipeline Hygiene
+**Applies To**:
+- sales
+- operations
+- project coordination
 
-Context: A pipeline without owner, stage, next action, and date is not operational.
-
-Rule: Every lead/opportunity summary includes source, owner, current stage, next action, due date, and confidence.
-
-Applies To: Sales, Marketing, Operations.
-
-Verification: Review stale/no-owner/no-next-action rows and convert them into decisions or cleanup tasks.
-
-## Promotion Rule
-
-Context: Some lessons start inside this role but affect other departments.
-
-Rule: Promote cross-role lessons to the deployment's shared `PATTERNS.md` when they apply beyond this role.
-
-Applies To: All role agents.
-
-Verification: The promoted pattern names context, rule, applies-to roles, and verification.
+**Verification**:
+- the summary includes owner, next action, and timing when relevant

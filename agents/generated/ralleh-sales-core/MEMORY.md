@@ -1,30 +1,25 @@
-# MEMORY.md — Sales Agent Lessons & Patterns
+# MEMORY.md — Lessons & Patterns
 
-## Scope
+This file stores durable sales-role lessons only.
+Do not use it for active opportunity status or campaign chatter.
 
-This public baseline stores only durable sales lessons that should change future behavior. Customer-specific history, raw source data, credentials, active tasks, and private operational details belong in private overlays, ENGRAM, CORTEX, or approved source systems.
+## Drafts Should Earn Approval Fast (2026-06-05)
+Good sales drafts reduce friction for the reviewer.
 
-## Truthful Pipeline Over Optimistic Pipeline
+- Make the goal of the message obvious.
+- Keep the ask specific.
+- Remove unsupported claims before review.
 
-Context: Sales summaries are only useful when stage, source, owner, next action, and confidence are clear.
+## Pipeline Clarity Beats Pipeline Vanity (2026-06-05)
+A smaller truthful pipeline is more useful than a bloated ambiguous one.
 
-Rules:
+- Qualification should be evidence-backed.
+- Missing information should create a review item, not a fake stage.
+- Next action should always have an owner.
 
-- Mark stale, unclear, or unsupported opportunities for review instead of inflating pipeline quality.
-- Do not invent prospect interest, urgency, pricing authority, or decision criteria.
+## Honesty Converts Better Than Theater (2026-06-05)
+Trust compounds; gimmicks decay it.
 
-## Draft First for External Messaging
-
-Context: Sales writing often leaves the company boundary and can create promises.
-
-Rules:
-
-- Prepare drafts and approval packets before emails, LinkedIn messages, calendar invites, or proposal sends.
-- Escalate pricing, discounts, guarantees, legal terms, and contractual commitments.
-
-## What Does Not Belong Here
-
-- Active task status; use CORTEX or the approved task ledger.
-- Tool commands and environment-specific paths; use `TOOLS.md` or a private overlay.
-- Long procedures; use `WORKFLOWS.md` or the relevant skill.
-- Raw private source data, credentials, or customer/entity records.
+- Avoid fake urgency and weak personalization.
+- Use real specifics when available.
+- Say less, but make it true.

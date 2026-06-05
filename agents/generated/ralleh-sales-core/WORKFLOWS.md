@@ -1,111 +1,108 @@
 # Sales Workflows
 
 ## Workflow Index
-
-- Lead qualification.
-- Discovery-call preparation.
-- Proposal follow-up.
-- Pipeline review.
-- Outreach draft review.
+- lead qualification
+- outreach drafting
+- discovery preparation
+- follow-up and next-step tracking
 
 ## Lead Qualification
+**Purpose**: determine whether an opportunity deserves active attention.
 
-Purpose: classify a lead and recommend next action.
+**Inputs**:
+- account or lead details
+- source of lead
+- approved ICP or qualification criteria
 
-Inputs:
+**Steps**:
+1. inspect source and available evidence
+2. compare against qualification criteria
+3. identify missing data or risk
+4. recommend stage and next action
 
-- Lead source, company/person, role, request/intent, firmographic notes, prior touches, ICP criteria.
+**Outputs**:
+- qualification summary
+- suggested stage
+- next action
 
-Steps:
+**Verification**:
+- source, criteria, and rationale are named
 
-1. Confirm source and timestamp.
-2. Match lead to ICP criteria.
-3. Identify intent, pain, budget/timing signals, and missing data.
-4. Assign stage and confidence.
-5. Recommend next action or review question.
+**Escalation**:
+- if key info is missing, route to review instead of forcing a decision
 
-Outputs:
+## Outreach Drafting
+**Purpose**: create a clear draft ready for approval.
 
-- Qualification summary.
-- Stage recommendation.
-- Missing data.
-- Draft next action.
+**Inputs**:
+- target account
+- offer context
+- approved positioning
 
-Verification:
+**Steps**:
+1. define the goal of the message
+2. draft concise language
+3. remove unsupported claims
+4. make the ask explicit
 
-- Source and timestamp named.
-- Assumptions labeled.
+**Outputs**:
+- outreach draft
+- approval note
 
-## Discovery-Call Preparation
+**Verification**:
+- claims are supportable and tone matches the role
 
-Purpose: prepare the owner/sales lead for a prospect call.
+**Escalation**:
+- if the message depends on unclear pricing, proof, or policy, escalate
 
-Inputs: account/person, website/profile, prior messages, goal, calendar details, approved offer notes.
+## Discovery Preparation
+**Purpose**: prepare useful context before a meeting.
 
-Steps:
+**Inputs**:
+- account background
+- known opportunity context
+- prior communication if available
 
-1. Read current account context.
-2. Summarize likely needs and known facts.
-3. Draft agenda and discovery questions.
-4. Flag risks and unknowns.
-5. Prepare follow-up template.
+**Steps**:
+1. summarize the account and opportunity
+2. identify likely questions and gaps
+3. prepare goals and suggested next steps
 
-Outputs: call brief, agenda, questions, risk notes, post-call capture fields.
+**Outputs**:
+- discovery brief
 
-Verification: facts cite source; questions map to known gaps.
+**Verification**:
+- brief is specific, honest, and actionable
 
-## Proposal Follow-Up
+**Escalation**:
+- if the account context is too weak, say so instead of pretending depth
 
-Purpose: prepare a follow-up after a proposal, quote, or sales conversation.
+## Follow-Up and Next-Step Tracking
+**Purpose**: keep opportunities moving without vagueness.
 
-Inputs: proposal/quote, last conversation, objections, timeline, approved terms.
+**Inputs**:
+- current stage
+- latest interaction
+- owner and approval state
 
-Steps:
+**Steps**:
+1. identify the real next action
+2. define owner and timing
+3. prepare follow-up draft if needed
+4. record blockers
 
-1. Confirm proposal version and approved terms.
-2. Summarize status and buyer concerns.
-3. Draft follow-up with one clear call to action.
-4. Identify approval needed before sending.
+**Outputs**:
+- next-step summary
+- optional follow-up draft
 
-Outputs: follow-up draft, assumptions, next action, approval question.
+**Verification**:
+- owner, timing, and approval state are explicit
 
-Verification: no unapproved pricing/terms included.
-
-## Pipeline Review
-
-Purpose: produce a review-ready pipeline snapshot.
-
-Inputs: CRM/sheet export, date, owner, stages, filters.
-
-Steps:
-
-1. Confirm source and timestamp.
-2. Group leads by stage and owner.
-3. Identify stale opportunities and missing next actions.
-4. Surface blockers and decision needs.
-5. Recommend prioritized follow-up list.
-
-Outputs: pipeline summary, stale list, blocker list, next-action queue.
-
-Verification: counts match source; stale criteria named.
-
-## Outreach Draft Review
-
-Purpose: draft or improve a sales message without sending.
-
-Inputs: target persona/account, context source, offer, desired outcome, tone constraints.
-
-Steps:
-
-1. Confirm audience and source context.
-2. Draft concise, relevant message.
-3. Remove unsupported claims and pressure tactics.
-4. Add approval question.
-
-Outputs: draft message, variants if requested, risk notes.
-
-Verification: message is draft-only and claims are sourced.
+**Escalation**:
+- if ownership or approval is unclear, escalate before sending or updating
 
 ## What Belongs in examples/
-
-Detailed example briefs, qualification summaries, and follow-up drafts belong in `examples/`.
+Use examples for:
+- lead qualification packets
+- discovery briefs
+- proposal follow-up drafts

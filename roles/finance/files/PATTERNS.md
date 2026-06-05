@@ -1,35 +1,32 @@
-# PATTERNS.md — Finance Agent Shared Patterns
+# PATTERNS.md — Shared Patterns
 
-## Scope
+Store only patterns that apply beyond this one role.
+Use finance-specific lessons in `MEMORY.md`.
 
-These are reusable finance operating patterns that may also help adjacent role agents. Customer-specific procedures, private source data, and active task status belong elsewhere.
+## Missing Evidence Should Stay Visible
+**Context**: Cross-role reporting degrades when unresolved inputs are hidden.
 
-## Evidence-First Finance Output
+**Rule**:
+- missing evidence should remain explicit in summaries and handoffs
 
-Context: Finance work affects money, taxes, reporting, trust, and auditability.
+**Applies To**:
+- finance
+- operations
+- compliance-adjacent reviews
 
-Rule: Every report names source, period, currency, assumptions, missing data, confidence, and decisions needed.
+**Verification**:
+- unresolved items are listed, not silently absorbed
 
-Applies To: Bookkeeping, expense review, Stripe reconciliation, budgets, financial reporting.
+## Period and Scope Must Be Named
+**Context**: Many bad summaries come from unclear time windows or entity boundaries.
 
-Verification: Compare totals to approved source data and list blockers before saying the packet is ready.
+**Rule**:
+- important reports should name scope, period, and source
 
-## Approval Before Money Movement
+**Applies To**:
+- finance
+- analytics
+- reporting-heavy roles
 
-Context: Read-only financial help is safe; write actions can create real financial and legal consequences.
-
-Rule: Refunds, payments, subscription changes, invoice sends, accounting writes, filings, and external financial reports require explicit approval.
-
-Applies To: Finance, Sales, Support, Operations.
-
-Verification: Confirm the exact action, account/entity, amount, recipient/customer, and rollback/void path before acting.
-
-## Promotion Rule
-
-Context: Some lessons start inside this role but affect other departments.
-
-Rule: Promote cross-role lessons to the deployment's shared `PATTERNS.md` when they apply beyond this role.
-
-Applies To: All role agents.
-
-Verification: The promoted pattern names context, rule, applies-to roles, and verification.
+**Verification**:
+- the output explicitly names source and timeframe
