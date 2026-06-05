@@ -1,0 +1,22 @@
+[
+  {
+    "id": "professional-baseline",
+    "name": "Professional Baseline",
+    "version": "1.0.0",
+    "description": "Imported baseline from the provided professional_agent_baseline_template archive.",
+    "path": "templates/professional-baseline",
+    "baselineFiles": [
+      "SOUL.md",
+      "IDENTITY.md",
+      "USER.md",
+      "AGENTS.md",
+      "TOOLS.md",
+      "HEARTBEAT.md",
+      "BOOTSTRAP.md",
+      "MEMORY.md",
+      "recommended_skills.md",
+      "openclaw.json.example"
+    ],
+    "tags": ["baseline", "professional", "openclaw", "ralleh"]
+  }
+]

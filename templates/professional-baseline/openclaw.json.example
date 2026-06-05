@@ -1,0 +1,51 @@
+{
+  "comment": "Example openclaw.json for Ralleh Core Professional Baseline. Customize paths, models, and settings. Place in ~/.openclaw/ or per-agent config location. Restart gateway after changes.",
+  "agent": {
+    "model": "anthropic/claude-3-5-sonnet-20241022",  // Or current best reasoning model via your provider/LiteLLM/OpenRouter. Use strongest for orchestration/analysis; route simpler via AGENTS logic or skills.
+    "defaults": {
+      "workspace": "~/.openclaw/workspace",  // Or per-agent e.g. "~/.openclaw/agents/ralleh/workspace". Supports ~ expansion.
+      "thinking": "high",  // Default for complex tasks; can override per call.
+      "heartbeat": true,   // Enable for automation, long tasks, health checks, follow-ups, self-improvement.
+      "cron": true
+    }
+  },
+  "gateway": {
+    "port": 18789,  // Default or custom.
+    "verbose": false
+  },
+  "security": {
+    "dm_pairing": true,  // Recommended for main sessions.
+    "sandbox_non_main": true  // Sandbox for isolated/group sessions.
+  },
+  "channels": {
+    "comment": "Configure your primary channels (iMessage, WhatsApp, Discord, Slack, etc.) and allowlists. See docs for details.",
+    "allowlist": []  // Populate with trusted identifiers.
+  },
+  "models": {
+    "comment": "If using LiteLLM or multi-provider routing for model assignment/evaluations in AGENTS.md: Configure here or in LiteLLM proxy. Define aliases for reasoning, fast, coding, vision, etc. Agent will reference in task profiling.",
+    "reasoning": "anthropic/claude-3-5-sonnet-20241022",
+    "fast": "openai/gpt-4o-mini",  // Example; adjust to your available.
+    "coding": "anthropic/claude-3-5-sonnet-20241022"  // Or dedicated coding model.
+  },
+  "memory": {
+    "comment": "Hybrid setup. Engram/Remnic plugin handles advanced semantic/graph. Built-in for daily logs.",
+    "engram_enabled": true,  // After installing/configuring the plugin.
+    "daily_logs": true
+  },
+  "skills": {
+    "comment": "Core skills for baseline. Install via UI/CLI; some may have config here or in their own files.",
+    "enabled": [
+      "browser",
+      "github",
+      "canvas",
+      "heartbeat",
+      "imsg",
+      "discord",
+      "wacli",
+      "peekaboo",
+      "whisper-transcribe",  // Example name; use actual.
+      "engram-remnic"  // Or your exact plugin name.
+    ]
+  },
+  "comment_further": "For multi-agent: Use separate configs or workspace isolation + shared Engram. For Ralleh.com client instances: Consistent baseline + overrides. Monitor token usage/costs via provider dashboards or custom tracking in reflections. Update models as new best-in-class release. Git your workspace for prompt/memory versioning."
+}

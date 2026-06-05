@@ -1,0 +1,17 @@
+[
+  {
+    "id": "example-professional-agent",
+    "name": "Example Professional Agent",
+    "kind": "generated",
+    "sourceTemplate": "professional-baseline",
+    "version": "1.0.0",
+    "status": "draft",
+    "owner": "Ralleh",
+    "purpose": "Demonstrates the generation flow from the baseline template",
+    "tags": [
+      "example",
+      "baseline"
+    ],
+    "path": "agents/generated/example-professional-agent"
+  }
+]
