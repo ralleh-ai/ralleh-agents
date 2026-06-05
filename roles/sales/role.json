@@ -3,13 +3,25 @@
   "name": "Sales",
   "description": "Lead qualification, outreach support, pipeline hygiene, scheduling, and sales operations role.",
   "defaultTemplate": "professional-baseline",
-  "defaultSkills": [
-    "LinkedInManager",
-    "GoogleSheets",
-    "CalendarScheduler",
-    "Gog",
-    "Office365Connector"
-  ],
+  "composition": {
+    "README.md": "role-overlay",
+    "SOUL.md": "role-overlay",
+    "IDENTITY.md": "role-overlay",
+    "AGENTS.md": "role-overlay",
+    "SKILLS.md": "generated",
+    "TOOLS.md": "role-overlay",
+    "DOCTOR.md": "role-overlay",
+    "GUIDELINES.md": "role-overlay",
+    "WORKFLOWS.md": "role-overlay",
+    "MEMORY.md": "role-overlay",
+    "USER.md": "role-overlay",
+    "PATTERNS.md": "role-overlay",
+    "BOOTSTRAP.md": "template",
+    "HEARTBEAT.md": "template",
+    "recommended_skills.md": "template",
+    "openclaw.json.example": "template"
+  },
+  "defaultSkills": ["LinkedInManager","GoogleSheets","CalendarScheduler","Gog","Office365Connector"],
   "optionalSkills": ["GoogleAds", "GoogleAnalytics", "AgentBrowser", "Cortex", "Engram", "PromptDefense"],
   "tags": ["role", "sales", "pipeline", "outreach"]
 }

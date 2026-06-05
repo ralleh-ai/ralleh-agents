@@ -58,3 +58,11 @@ Override with:
 ## Direction
 
 Role data is now owned here. The old role-agent material in `ralleh-skills/agents/*` should be treated as legacy and phased out to avoid duplication.
+
+## Phase 3 controls
+
+This repo now includes:
+- explicit file ownership in `roles/<role>/role.json`
+- role package audit tooling
+- size-discipline checks for role overlays
+- CI validation for registry + role package quality

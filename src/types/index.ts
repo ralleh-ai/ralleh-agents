@@ -1,4 +1,5 @@
 export type AgentKind = 'generated' | 'custom';
+export type CompositionOwner = 'template' | 'role-overlay' | 'generated';
 
 export interface TemplateRecord {
   id: string;
@@ -38,6 +39,7 @@ export interface RoleRecord {
   name: string;
   description: string;
   defaultTemplate: string;
+  composition: Record<string, CompositionOwner>;
   defaultSkills: string[];
   optionalSkills?: string[];
   tags?: string[];
@@ -69,4 +71,10 @@ export interface AgentConfig {
   role?: string;
   extraSkills?: string[];
   selectedOptionalSkills?: string[];
+}
+
+export interface RoleAuditIssue {
+  level: 'error' | 'warn';
+  file: string;
+  message: string;
 }
