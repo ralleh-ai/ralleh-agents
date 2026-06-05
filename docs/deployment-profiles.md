@@ -2,39 +2,40 @@
 
 ## Goal
 
-Phase 6 extends the system from role and runtime alignment into deployment and policy synthesis.
+Deployment profiles extend the system from role and runtime alignment into deployable policy.
 
-A strong agent package should not only describe:
-- who the agent is
-- what skills it has
-- how it should behave at runtime
-
-It should also express the deployment contract:
-- model posture
-- tool posture
-- approval posture
-- verification posture
-- session expectations for long work
+They define the policy contract that should govern a deployed agent package.
 
 ## Profile location
 
 Deployment profiles live under:
 - `profiles/deployment/*.json`
 
+## What a deployment profile defines
+
+A deployment profile currently captures:
+- session policy
+- model policy
+- tool policy
+- approval policy
+- verification policy
+
+This moves the system closer to a deployable operating contract rather than a descriptive file set.
+
 ## Current output
 
-Generated agents now include:
+Generated agents include:
 - `deployment.json`
 - `agent.json.deploymentProfile`
 
-## Why this matters
+## Why deployment profiles matter
 
-This closes a major gap between documentation and execution.
+A good agent can still be deployed badly.
 
-The package can now shape:
-- files
-- skills
-- runtime posture
-- deployment policy
+Deployment profiles help reduce that risk by making expectations explicit:
+- what kind of model posture fits the role
+- what tool actions are expected or blocked
+- where approval must intervene
+- what counts as acceptable verification
 
-as one system.
+This is one of the places where the repository shifts from documentation toward operational policy.

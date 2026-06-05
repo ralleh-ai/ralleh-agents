@@ -2,25 +2,29 @@
 
 ## Goal
 
-Every file in an agent package should have a clear owner and a clear reason to exist.
+Every file in an agent package should have a clear owner, a clear reason to exist, and a clear relationship to the rest of the system.
 
-This repo uses three composition sources:
+Composition is how this repository prevents agent packages from collapsing into duplication and ambiguity.
 
-- **template** — reusable baseline shared across roles
-- **role-overlay** — role-specific behavior and operating posture
-- **generated** — files created by the generator from role/template/skill selection
+## Composition sources
 
-## Ownership Rules
+This system currently uses three file-ownership sources:
+
+- **template** — reusable baseline files shared across roles
+- **role-overlay** — role-specific files that shape mission, posture, and behavior
+- **generated** — files created from composition outputs such as selected skills and policy profiles
+
+## Ownership rules
 
 ### Template-owned
-These should usually come from the base template:
+These usually come from the baseline template:
 - `BOOTSTRAP.md`
 - `HEARTBEAT.md`
 - `recommended_skills.md`
 - `openclaw.json.example`
 
 ### Role-overlay-owned
-These should usually be role-specific:
+These are usually role-specific:
 - `README.md`
 - `SOUL.md`
 - `IDENTITY.md`
@@ -34,23 +38,30 @@ These should usually be role-specific:
 - `PATTERNS.md`
 
 ### Generated
-These are produced during composition:
+These are emitted during generation:
 - `SKILLS.md`
 - `skills.json`
+- `runtime.json`
+- `deployment.json`
 - `agent.json`
 
-## Why this matters
+## Why the ownership split matters
 
-This split prevents duplication and keeps each file optimized:
-- template files stay reusable
-- role files stay role-specific
-- generated files stay factual and derived
+Without ownership boundaries, the system starts to repeat itself:
+- templates begin carrying role specifics
+- roles start duplicating skill runbooks
+- generated files begin pretending to be authored files
+- docs drift apart in meaning
+
+A clean composition model prevents that.
 
 ## Audit expectation
 
 A role package should be auditable for:
 - required file presence
-- composition ownership correctness
-- size discipline
+- ownership correctness
 - section discipline
+- size discipline
 - generation compatibility
+
+Composition is not just about assembling files. It is about preserving coherence while the system grows.

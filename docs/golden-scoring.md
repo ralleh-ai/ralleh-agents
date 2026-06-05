@@ -2,40 +2,54 @@
 
 ## Purpose
 
-Phase 4 introduces a role-package scoring model so the system can evaluate whether a role package is:
+Golden scoring exists to give the system a shared language for quality.
+
+Without a scoring model, people can say a role package is “good” or “clean” while meaning completely different things. This repository uses scoring to make quality more inspectable and less subjective.
+
+## Current verdicts
+
+Role packages are currently scored as:
 - `golden`
 - `usable`
 - `bloated`
 - `risky`
 - `misplaced`
 
-## Current scoring rules
+## Current scoring logic
 
 ### Golden
-- all required files present
-- all required sections present
-- all files under size caps
-- composition ownership matches expectations
+The package has:
+- required files present
+- required sections present
+- files under configured size caps
+- correct ownership expectations
 
 ### Usable
-- structurally sound, but with warnings that do not break correctness
+The package is structurally sound but still has warnings that should eventually be cleaned up.
 
 ### Bloated
-- one or more files exceed the configured size caps
+One or more files exceed the configured size caps and risk becoming inefficient or confused.
 
 ### Risky
-- critical quality problem that compromises safe operation
+A serious quality problem weakens safe operation or clarity.
 
 ### Misplaced
-- file ownership or section structure is seriously wrong, suggesting content is in the wrong place
+Content or ownership is significantly wrong, suggesting the package is structurally confused.
 
-## Why this matters
+## Why scoring matters
 
-Great agents are not just present; they are shaped well.
+The point is not vanity.
+The point is to create pressure toward coherence.
 
-This scoring system helps enforce:
-- file responsibility clarity
-- size discipline
-- section discipline
-- composition correctness
-- repeatable quality reviews
+A good scoring system helps the repository prevent slow decay through:
+- unnoticed bloat
+- missing sections
+- blurred ownership
+- role drift
+- claims of quality without evidence
+
+## Limits
+
+Scoring is useful, but it is not the whole truth.
+
+A package can pass a structural audit and still need better judgment, better role language, or better deployment policy. The scoring model is a floor, not the final word on excellence.

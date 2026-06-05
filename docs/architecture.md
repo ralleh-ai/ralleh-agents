@@ -2,47 +2,121 @@
 
 ## Goal
 
-Provide a single repo where Ralleh can:
+The architecture of `ralleh-agents` is designed around one central idea:
 
-- keep reusable agent templates
-- generate new agents consistently
-- preserve custom agents as first-class assets
+**agent quality improves when composition is explicit.**
 
-## Model
+A strong agent should not depend on one oversized prompt carrying identity, memory, workflow, tools, and safety all at once. That approach tends to decay into duplication, vagueness, and accidental contradiction.
 
-### Templates
-Templates are canonical starting points. They should be stable, reusable, and safe to clone.
+Instead, this system separates the layers that matter and gives each one a clear job.
 
-### Generated agents
-Generated agents begin life from a template and keep a reference to `sourceTemplate`.
+## Core layers
 
-### Custom agents
-Custom agents are hand-tuned or promoted generated agents that have diverged materially from their template.
+### Template layer
+Templates provide the reusable baseline.
 
-## Baseline import
+They define:
+- broad operating structure
+- baseline identity shape
+- baseline memory strategy
+- reusable bootstrap and heartbeat posture
 
-The initial template baseline came from the provided archive and is stored at:
+Templates should remain generic, reusable, and free of deployment-specific or personal residue.
 
-- `templates/professional-baseline/`
+### Role layer
+Roles give the baseline a direction.
 
-That folder is preserved as the source baseline so future generation stays faithful to the original structure.
+They define:
+- mission and posture
+- role-specific operating character
+- which files should be overridden locally
+- which runtime and deployment profiles fit the role
+- which skills are core versus optional
 
-## Rendering model
+### Skill layer
+Skills live in `ralleh-skills`.
 
-The generator currently performs light placeholder substitution for:
+This repo intentionally does not duplicate skill workflows. It selects from the skill library and records those selections as part of the agent package.
 
-- `[AGENT_NAME]`
-- `[CLIENT_NAME_OR_COMPANY]`
-- `[CHOOSE_APPROPRIATE_EMOJI]`
-- `[PRIMARY_LOCATION_OR_TIMEZONE]`
-- `[CLIENT_ROLE_OR_BUSINESS_DESCRIPTION]`
-- `[LIST_MAJOR_PROJECTS_OR_RESPONSIBILITIES_WITH_BRIEF_STATUS]`
-- `[DESCRIBE_ANY_KNOWN_SECURITY_CONCERNS_OR_PAST_INCIDENTS_AT_HIGH_LEVEL_ONLY — e.g. "Heightened caution around unexpected links and social engineering attempts"]`
-- `[DIRECT / STRUCTURED / CONCISE / DETAILED — any specific style notes]`
-- `[WHAT_THE_AGENT_MAY_DO_AUTONOMOUSLY_VS_MUST_CONFIRM]`
-- `[MEDICAL, LEGAL, FINANCIAL, REGULATED_TOPICS — e.g. "Research only; always include professional consultation disclaimer"]`
-- `[e.g. Direct, insightful, structured output with clear sections and actionable items. Avoid corporate fluff.]`
-- `[e.g. Overly verbose responses, unverified claims, etc.]`
-- `[e.g. Token efficiency, rigorous validation, proactive status updates within bounds]`
+### Runtime layer
+Runtime profiles define how the active agent should behave when reasoning and using tools.
 
-This is enough for a useful v1 while preserving the original template content.
+They capture:
+- model posture
+- tool posture
+- approval posture
+- bootstrap expectations
+
+### Deployment layer
+Deployment profiles define policy at the deployment boundary.
+
+They capture:
+- model policy
+- tool policy
+- approval policy
+- verification policy
+- session constraints for long or risky work
+
+### Generated layer
+Generated artifacts make the composition visible.
+
+These include:
+- `agent.json`
+- `SKILLS.md`
+- `skills.json`
+- `runtime.json`
+- `deployment.json`
+
+Generated artifacts matter because they make the final assembled agent inspectable and auditable.
+
+## Ownership model
+
+The system is intentionally split between two repositories.
+
+### `ralleh-agents`
+Owns:
+- templates
+- roles
+- overlays
+- generation
+- manifests
+- runtime profiles
+- deployment profiles
+- quality controls
+
+### `ralleh-skills`
+Owns:
+- reusable skills
+- runbooks
+- safety guidance
+- capability documentation
+- agent file standards and audit guidance
+
+This split prevents the same concept from being defined in two places.
+
+## Quality model
+
+Architecture is not only about composition; it is also about control.
+
+This repo includes:
+- explicit composition ownership
+- file-size discipline
+- required-section audits
+- role scoring
+- CI enforcement
+
+The purpose of these controls is not bureaucracy. It is to preserve clarity as the system grows.
+
+## Why this architecture matters
+
+A good agent system scales not by accumulating words, but by improving the relationships between its parts.
+
+When the distinctions are clean:
+- roles stay sharper
+- templates stay reusable
+- skills stay authoritative
+- runtime posture stays inspectable
+- deployment policy stays explicit
+- generated agents stay trustworthy
+
+That is the architectural aim of this repository.
