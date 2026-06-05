@@ -1,6 +1,20 @@
 {
   "role": "it",
   "source": "roles/it/role.json",
+  "overlayFiles": [
+    "AGENTS.md",
+    "DOCTOR.md",
+    "GUIDELINES.md",
+    "IDENTITY.md",
+    "MEMORY.md",
+    "PATTERNS.md",
+    "README.md",
+    "SKILLS.md",
+    "SOUL.md",
+    "TOOLS.md",
+    "USER.md",
+    "WORKFLOWS.md"
+  ],
   "skills": [
     {
       "name": "GitHub",

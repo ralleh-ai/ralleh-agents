@@ -41,6 +41,19 @@ function buildRoleSkillSelection(root: string, skillsRepoRoot: string, roleId: s
   return { resolved, sources };
 }
 
+function applyRoleOverlay(root: string, roleId: string, targetPath: string): string[] {
+  const overlayDir = path.join(root, 'roles', roleId, 'files');
+  if (!fs.existsSync(overlayDir)) return [];
+  const copied: string[] = [];
+  for (const file of fs.readdirSync(overlayDir)) {
+    const src = path.join(overlayDir, file);
+    const dest = path.join(targetPath, file);
+    fs.copyFileSync(src, dest);
+    copied.push(file);
+  }
+  return copied.sort();
+}
+
 export function createAgent(root: string, skillsRepoRoot: string, config: AgentConfig): AgentRecord {
   const role = config.role || null;
   const roleRecord = role ? loadRole(root, role) : null;
@@ -65,6 +78,8 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
 
   copyDir(templatePath, targetPath);
   removeIfExists(path.join(targetPath, 'template.json'));
+
+  const overlayFiles = role ? applyRoleOverlay(root, role, targetPath) : [];
 
   const replacements: Record<string, string> = {
     '[AGENT_NAME]': name,
@@ -109,6 +124,7 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
       `# SKILLS.md - ${name}`,
       '',
       `Role source: roles/${role}/role.json`,
+      `Role overlay files: ${overlayFiles.length ? overlayFiles.join(', ') : 'none'}`,
       ...(selected.sources.length > 1 ? [`Legacy reference: ${selected.sources.slice(1).join(', ')}`, ''] : ['']),
       '## Selected Skills',
       '',
@@ -118,6 +134,7 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
     writeJson(path.join(targetPath, 'skills.json'), {
       role,
       source: `roles/${role}/role.json`,
+      overlayFiles,
       skills: selected.resolved,
       selectedOptionalSkills: config.selectedOptionalSkills || [],
       extraSkills: config.extraSkills || []
