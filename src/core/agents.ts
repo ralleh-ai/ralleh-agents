@@ -4,7 +4,7 @@ import { copyDir, exists, readJson, removeIfExists, replaceInFile, walkFiles, wr
 import { loadRole } from './roles.js';
 import { loadRuntimeProfile } from './runtime.js';
 import { loadDeploymentProfile } from './deployment.js';
-import { buildOpenClawManifest } from './openclaw-manifest.js';
+import { buildOpenClawManifest, buildOpenClawConfigStub } from './openclaw-manifest.js';
 import { legacyRoleSkillsExists, legacyRoleSkillsPath, parseLegacyRoleSkills, resolveSkillsByName } from './skills.js';
 import type { AgentConfig, AgentRecord, SkillRef, TemplateRecord } from '../types/index.js';
 
@@ -154,14 +154,16 @@ export function createAgent(root: string, skillsRepoRoot: string, config: AgentC
     if (deploymentProfile) {
       writeJson(path.join(targetPath, 'deployment.json'), deploymentProfile);
     }
-    writeJson(path.join(targetPath, 'openclaw.agent.json'), buildOpenClawManifest({
+    const manifestArgs = {
       id,
       name,
       role,
       runtimeProfile,
       deploymentProfile,
       skills: selected.resolved.map((s) => s.name)
-    }));
+    };
+    writeJson(path.join(targetPath, 'openclaw.agent.json'), buildOpenClawManifest(manifestArgs));
+    writeJson(path.join(targetPath, 'openclaw.config.stub.json'), buildOpenClawConfigStub(manifestArgs));
   }
 
   const registryPath = path.join(root, 'registry', 'agents.json');

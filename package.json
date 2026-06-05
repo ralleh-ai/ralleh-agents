@@ -12,7 +12,8 @@
     "audit:roles": "npm run build && node dist/cli/audit-roles.js",
     "audit:roles:report": "npm run build && node dist/cli/audit-roles.js",
     "audit:runtime": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js",
-    "phase7:check": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js"
+    "phase7:check": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js",
+    "phase8:check": "npm run build && node dist/cli/validate-registry.js && node dist/cli/audit-roles.js"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

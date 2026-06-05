@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "openclaw-agent-manifest.v1",
+  "schemaVersion": "openclaw-agent-manifest.v2",
   "agent": {
     "id": "ralleh-it-core",
     "name": "Ralleh IT Core",
@@ -50,6 +50,9 @@
       "primaryClass": "strong-reasoning",
       "fallbackClass": "fast-efficient",
       "specialistClass": "coding-specialist",
+      "primaryAlias": "Grok",
+      "fallbackAlias": "gemini-flash-lite",
+      "specialistAlias": "github-copilot/gpt-5.4",
       "defaultReasoning": "high"
     },
     "tools": {
@@ -74,6 +77,22 @@
         "destructive-production-change",
         "credential-change",
         "routing-change"
+      ],
+      "suggestedOpenClawTools": [
+        "read",
+        "write",
+        "edit",
+        "exec",
+        "process",
+        "browser",
+        "web_fetch",
+        "web_search",
+        "sessions_spawn",
+        "sessions_yield",
+        "subagents",
+        "memory_search",
+        "memory_get",
+        "canvas"
       ]
     },
     "approvals": {

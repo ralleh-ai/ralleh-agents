@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "openclaw-agent-manifest.v1",
+  "schemaVersion": "openclaw-agent-manifest.v2",
   "agent": {
     "id": "ralleh-sales-core",
     "name": "Ralleh Sales Core",
@@ -35,6 +35,9 @@
       "primaryClass": "clear-writer",
       "fallbackClass": "fast-efficient",
       "specialistClass": "strong-reasoning",
+      "primaryAlias": "github-copilot/gpt-5.4",
+      "fallbackAlias": "gemini-flash-lite",
+      "specialistAlias": "Grok",
       "defaultReasoning": "medium"
     },
     "tools": {
@@ -58,6 +61,19 @@
         "external-send",
         "crm-write",
         "pricing-commitment"
+      ],
+      "suggestedOpenClawTools": [
+        "read",
+        "write",
+        "web_search",
+        "web_fetch",
+        "browser",
+        "sessions_spawn",
+        "sessions_yield",
+        "subagents",
+        "memory_search",
+        "memory_get",
+        "message"
       ]
     },
     "approvals": {

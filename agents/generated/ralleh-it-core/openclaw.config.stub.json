@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "openclaw-config-stub.v1",
+  "agent": {
+    "id": "ralleh-it-core",
+    "name": "Ralleh IT Core",
+    "role": "it"
+  },
+  "defaults": {
+    "model": "Grok",
+    "fallbackModel": "gemini-flash-lite",
+    "reasoning": "high",
+    "toolsAllow": [
+      "read",
+      "write",
+      "edit",
+      "exec",
+      "process",
+      "browser",
+      "web_fetch",
+      "web_search",
+      "sessions_spawn",
+      "sessions_yield",
+      "subagents",
+      "memory_search",
+      "memory_get",
+      "canvas"
+    ]
+  },
+  "safety": {
+    "approvalMode": "explicit-for-risky",
+    "blockedWithoutApproval": [
+      "destructive-production-change",
+      "credential-change",
+      "routing-change"
+    ],
+    "requiredFor": [
+      "production-writes",
+      "security-sensitive-actions",
+      "destructive-ops"
+    ]
+  },
+  "bootstrap": {
+    "mustRead": [
+      "README.md",
+      "IDENTITY.md",
+      "SOUL.md",
+      "GUIDELINES.md",
+      "WORKFLOWS.md",
+      "SKILLS.md"
+    ],
+    "mustCheck": [
+      "source-of-truth",
+      "target-environment",
+      "verification-gate"
+    ]
+  },
+  "verification": {
+    "requiredEvidence": [
+      "live-inspection-or-test",
+      "named-verification-gate"
+    ],
+    "subagentCompletionIsProof": false
+  }
+}

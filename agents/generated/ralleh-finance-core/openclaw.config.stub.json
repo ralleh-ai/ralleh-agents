@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "openclaw-config-stub.v1",
+  "agent": {
+    "id": "ralleh-finance-core",
+    "name": "Ralleh Finance Core",
+    "role": "finance"
+  },
+  "defaults": {
+    "model": "Grok",
+    "fallbackModel": "gemini-flash-lite",
+    "reasoning": "high",
+    "toolsAllow": [
+      "read",
+      "write",
+      "web_search",
+      "web_fetch",
+      "browser",
+      "sessions_spawn",
+      "sessions_yield",
+      "subagents",
+      "memory_search",
+      "memory_get"
+    ]
+  },
+  "safety": {
+    "approvalMode": "read-only-first",
+    "blockedWithoutApproval": [
+      "money-movement",
+      "bookkeeping-write",
+      "final-filing"
+    ],
+    "requiredFor": [
+      "money-actions",
+      "system-of-record-writes",
+      "refunds",
+      "filings"
+    ]
+  },
+  "bootstrap": {
+    "mustRead": [
+      "README.md",
+      "IDENTITY.md",
+      "SOUL.md",
+      "GUIDELINES.md",
+      "WORKFLOWS.md",
+      "SKILLS.md"
+    ],
+    "mustCheck": [
+      "entity",
+      "period",
+      "currency",
+      "source-of-truth"
+    ]
+  },
+  "verification": {
+    "requiredEvidence": [
+      "named-source",
+      "named-period",
+      "explicit-assumptions-or-gaps"
+    ],
+    "subagentCompletionIsProof": false
+  }
+}

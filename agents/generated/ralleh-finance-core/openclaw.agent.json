@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "openclaw-agent-manifest.v1",
+  "schemaVersion": "openclaw-agent-manifest.v2",
   "agent": {
     "id": "ralleh-finance-core",
     "name": "Ralleh Finance Core",
@@ -40,6 +40,9 @@
       "primaryClass": "strong-reasoning",
       "fallbackClass": "fast-efficient",
       "specialistClass": "review-specialist",
+      "primaryAlias": "Grok",
+      "fallbackAlias": "gemini-flash-lite",
+      "specialistAlias": "Grok",
       "defaultReasoning": "high"
     },
     "tools": {
@@ -62,6 +65,18 @@
         "money-movement",
         "bookkeeping-write",
         "final-filing"
+      ],
+      "suggestedOpenClawTools": [
+        "read",
+        "write",
+        "web_search",
+        "web_fetch",
+        "browser",
+        "sessions_spawn",
+        "sessions_yield",
+        "subagents",
+        "memory_search",
+        "memory_get"
       ]
     },
     "approvals": {
