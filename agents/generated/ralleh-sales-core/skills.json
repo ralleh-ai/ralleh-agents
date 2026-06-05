@@ -1,0 +1,59 @@
+{
+  "role": "sales",
+  "source": "roles/sales/role.json",
+  "overlayFiles": [
+    "AGENTS.md",
+    "DOCTOR.md",
+    "GUIDELINES.md",
+    "IDENTITY.md",
+    "MEMORY.md",
+    "PATTERNS.md",
+    "README.md",
+    "SKILLS.md",
+    "SOUL.md",
+    "TOOLS.md",
+    "USER.md",
+    "WORKFLOWS.md"
+  ],
+  "skills": [
+    {
+      "name": "LinkedInManager",
+      "path": "../ralleh-skills/skills/Marketing/LinkedInManager/README.md"
+    },
+    {
+      "name": "GoogleSheets",
+      "path": "../ralleh-skills/skills/Productivity/GoogleSheets/README.md"
+    },
+    {
+      "name": "CalendarScheduler",
+      "path": "../ralleh-skills/skills/Productivity/CalendarScheduler/README.md"
+    },
+    {
+      "name": "Gog",
+      "path": "../ralleh-skills/skills/Productivity/Gog/README.md"
+    },
+    {
+      "name": "Office365Connector",
+      "path": "../ralleh-skills/skills/Productivity/Office365Connector/README.md"
+    },
+    {
+      "name": "AgentBrowser",
+      "path": "../ralleh-skills/skills/Automation/AgentBrowser/README.md"
+    },
+    {
+      "name": "Cortex",
+      "path": "../ralleh-skills/skills/TaskManagement/Cortex/README.md"
+    },
+    {
+      "name": "OperatingProtocol",
+      "path": "../ralleh-skills/skills/Foundation/OperatingProtocol/README.md"
+    }
+  ],
+  "selectedOptionalSkills": [
+    "AgentBrowser",
+    "Cortex"
+  ],
+  "extraSkills": [
+    "OperatingProtocol"
+  ]
+}

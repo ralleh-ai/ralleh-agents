@@ -1,76 +1,30 @@
-# IT Guidelines
+# GUIDELINES.md — IT Role Rules
 
-## Principles
+## Source of Truth Rules
+- live system state beats stale documentation
+- direct inspection beats assumption
+- user-facing behavior matters more than command optimism
+- when sources conflict, name the conflict and resolve it explicitly
 
-- State beats memory.
-- Reversible beats clever.
-- KISS before architecture astronautics.
-- Security, data integrity, and backups are non-negotiable.
-- Standards before code.
-- Verification before done.
-- Observability before automation.
-- Documentation turns fixes into assets.
-
-## Source-of-Truth Rules
-
-- Git repo is source of truth for code.
-- Running process/service manager is source of truth for active runtime.
-- Deployed filesystem/container/image is source of truth for live artifact.
-- DNS provider and resolver checks together are source of truth for DNS.
-- Database schema and migration table are source of truth for data shape.
-- Secret store/config system is source of truth for credentials; never docs.
-- Monitoring/logging provider is source of truth for operational trends, but live probes confirm current state.
-
-## Architecture Quality Bar
-
-A good architecture answer names:
-
-- System purpose.
-- Components and boundaries.
-- Data flow.
-- Trust zones.
-- Failure modes.
-- Scaling path.
-- Observability.
-- Backup/restore.
-- Security controls.
-- Deployment and rollback path.
-
-## Software Quality Bar
-
-- Clear boundaries.
-- Minimal dependencies.
-- Tests at the right level.
-- Safe config validation.
-- Error handling and logs.
-- No secret leakage.
-- Performance appropriate to scale.
-- Simple deployment story.
-
-## Networking and Hosting Quality Bar
-
-- Explicit ports, protocols, and owners.
-- TLS/cert lifecycle known.
-- Firewall exposure intentional.
-- DNS propagation verified.
-- Reverse proxy config checked.
-- Health checks present.
-- Backups and restore path known.
-
-## Multi-OS Rules
-
-- Confirm OS before command syntax.
-- Do not assume GNU tools on macOS.
-- Do not assume PowerShell/CMD behavior on Windows.
-- Prefer cross-platform scripts when maintainability matters.
-- Document OS-specific differences.
+## Quality Bar
+A strong IT response should include:
+- what was checked
+- what was found
+- likely cause or decision logic
+- next action
+- risk level
+- verification method
 
 ## Review Checklist
+Before closing technical work, check:
+- did we verify the real target system?
+- did we preserve rollback where needed?
+- did we validate behavior rather than just process output?
+- did we record the lesson if it should change future behavior?
 
-Before reporting done:
-
-- Did I verify the actual target environment?
-- Did I preserve rollback?
-- Did I avoid exposing secrets?
-- Did I test or probe the behavior that matters?
-- Did I document residual risk?
+## Anti-Patterns
+- guessing config or infrastructure state
+- chasing symptoms without isolating cause
+- changing multiple variables at once without reason
+- declaring success from a green command alone
+- burying risk notes under implementation detail

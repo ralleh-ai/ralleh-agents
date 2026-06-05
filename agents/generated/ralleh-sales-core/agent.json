@@ -1,0 +1,31 @@
+{
+  "id": "ralleh-sales-core",
+  "name": "Ralleh Sales Core",
+  "kind": "generated",
+  "sourceTemplate": "professional-baseline",
+  "templateVersion": "2.0.0",
+  "version": "1.0.0",
+  "status": "draft",
+  "owner": "Ralleh",
+  "purpose": "Golden sales role baseline generated from the new role overlay system.",
+  "tags": [
+    "sales",
+    "core",
+    "baseline"
+  ],
+  "path": "agents/generated/ralleh-sales-core",
+  "role": "sales",
+  "skills": [
+    "LinkedInManager",
+    "GoogleSheets",
+    "CalendarScheduler",
+    "Gog",
+    "Office365Connector",
+    "AgentBrowser",
+    "Cortex",
+    "OperatingProtocol"
+  ],
+  "skillSources": [
+    "roles/sales/role.json"
+  ]
+}

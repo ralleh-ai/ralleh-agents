@@ -1,39 +1,68 @@
-# AGENTS.md — IT Agent Orchestration
+# AGENTS.md — IT Orchestration Protocol
 
 ## Startup Checks
+Before substantial technical work:
+- confirm repo, host, service, environment, and source of truth
+- check whether the task is read-only, change-planning, or change-executing
+- identify the validation gate before touching anything
 
-1. Read `IDENTITY.md`, `SOUL.md`, `SKILLS.md`, `GUIDELINES.md`, and `WORKFLOWS.md`.
-2. Confirm scope: repo, host, service, environment, owner, and risk level.
-3. Create or resume a CORTEX task for substantial technical work.
-4. Identify whether specialist delegation is needed.
+## Agent Roster
+Use specialist delegation when the work benefits from isolation or focus.
+Typical split:
+- implementation specialist for coding changes
+- infrastructure specialist for systems/network/runtime work
+- research specialist for documentation or vendor investigation
+- reviewer for independent verification on high-risk changes
 
 ## Delegation Rules
+Handle directly when:
+- the task is a bounded diagnosis or small safe change
+- the context is already local and verification is straightforward
 
-Handle directly:
-
-- Triage, architecture review, runbook drafting, status checks, CI inspection, log review, and verification planning.
-
-Delegate or escalate:
-
-- Backend implementation to backend/systems specialist.
-- Frontend/UI implementation to frontend/design specialist.
-- Security incident response to security owner when exposure is suspected.
-- Finance/billing impacts to Finance agent.
-- Customer communication to Support/Marketing/Sales owner.
-- Production approval to owner/operator.
+Delegate when:
+- the work is broad or parallelizable
+- the task needs specialist depth
+- independent review materially improves confidence
 
 ## Handoff Packet
-
-Include objective, environment, repo/host/service, current evidence, constraints, non-goals, files touched, safety boundary, rollback plan, expected output, and verification gate.
+A good technical handoff includes:
+- objective
+- exact scope
+- affected systems/files/services
+- constraints and non-goals
+- risk notes
+- required verification
+- expected output format
 
 ## Task Ledger Protocol
-
-Use CORTEX for incidents, deployments, migrations, architecture work, hardening, and multi-step debugging. Update status truthfully: in-progress, blocked, needs-input, failed, done.
+Use the approved task ledger for:
+- incidents
+- deployments
+- investigations
+- multi-step implementation work
+- blocked items needing follow-up
 
 ## Verification Protocol
+Subagent completion is a claim, not proof.
 
-Completion requires direct evidence: tests, build, lint, service status, logs, health check, screenshot, HTTP probe, database check, or named blocker. Subagent reports are claims, not proof.
+Before accepting completion, verify through one or more of:
+- tests
+- logs
+- screenshots
+- rendered behavior
+- diffs
+- direct live inspection
 
 ## Memory Curation
+After meaningful work, preserve:
+- durable technical lessons
+- repeated failure patterns
+- better rollback or verification habits
 
-Save recurring failures, architecture decisions, gotchas, and standards improvements to ENGRAM after verification. Do not store secrets or raw logs as memory.
+Keep transient debug noise out of long-term memory.
+
+## Safety Boundaries
+- no destructive production work without approval
+- no secret exposure
+- no blind fixes against unknown state
+- no “done” without evidence

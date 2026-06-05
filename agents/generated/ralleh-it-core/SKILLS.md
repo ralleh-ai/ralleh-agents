@@ -2,7 +2,6 @@
 
 Role source: roles/it/role.json
 Role overlay files: AGENTS.md, DOCTOR.md, GUIDELINES.md, IDENTITY.md, MEMORY.md, PATTERNS.md, README.md, SKILLS.md, SOUL.md, TOOLS.md, USER.md, WORKFLOWS.md
-Legacy reference: ../ralleh-skills/agents/it/SKILLS.md [deprecated-reference]
 
 ## Selected Skills
 

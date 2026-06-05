@@ -32,6 +32,41 @@
     "path": "agents/generated/ralleh-core"
   },
   {
+    "id": "ralleh-finance-core",
+    "name": "Ralleh Finance Core",
+    "kind": "generated",
+    "sourceTemplate": "professional-baseline",
+    "templateVersion": "2.0.0",
+    "version": "1.0.0",
+    "status": "draft",
+    "owner": "Ralleh",
+    "purpose": "Golden finance role baseline generated from the new role overlay system.",
+    "tags": [
+      "finance",
+      "core",
+      "baseline"
+    ],
+    "path": "agents/generated/ralleh-finance-core",
+    "role": "finance",
+    "skills": [
+      "Bookkeeper",
+      "ExpenseTracker",
+      "FinancialReporter",
+      "Stripe",
+      "GoogleSheets",
+      "Gog",
+      "Office365Connector",
+      "CalendarScheduler",
+      "Cortex",
+      "Engram",
+      "PromptDefense",
+      "OperatingProtocol"
+    ],
+    "skillSources": [
+      "roles/finance/role.json"
+    ]
+  },
+  {
     "id": "ralleh-it-core",
     "name": "Ralleh IT Core",
     "kind": "generated",
@@ -75,8 +110,38 @@
       "OperatingProtocol"
     ],
     "skillSources": [
-      "roles/it/role.json",
-      "../ralleh-skills/agents/it/SKILLS.md [deprecated-reference]"
+      "roles/it/role.json"
+    ]
+  },
+  {
+    "id": "ralleh-sales-core",
+    "name": "Ralleh Sales Core",
+    "kind": "generated",
+    "sourceTemplate": "professional-baseline",
+    "templateVersion": "2.0.0",
+    "version": "1.0.0",
+    "status": "draft",
+    "owner": "Ralleh",
+    "purpose": "Golden sales role baseline generated from the new role overlay system.",
+    "tags": [
+      "sales",
+      "core",
+      "baseline"
+    ],
+    "path": "agents/generated/ralleh-sales-core",
+    "role": "sales",
+    "skills": [
+      "LinkedInManager",
+      "GoogleSheets",
+      "CalendarScheduler",
+      "Gog",
+      "Office365Connector",
+      "AgentBrowser",
+      "Cortex",
+      "OperatingProtocol"
+    ],
+    "skillSources": [
+      "roles/sales/role.json"
     ]
   }
 ]

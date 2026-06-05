@@ -42,7 +42,6 @@
     "OperatingProtocol"
   ],
   "skillSources": [
-    "roles/it/role.json",
-    "../ralleh-skills/agents/it/SKILLS.md [deprecated-reference]"
+    "roles/it/role.json"
   ]
 }

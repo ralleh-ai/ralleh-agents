@@ -1,0 +1,72 @@
+{
+  "role": "finance",
+  "source": "roles/finance/role.json",
+  "overlayFiles": [
+    "AGENTS.md",
+    "DOCTOR.md",
+    "GUIDELINES.md",
+    "IDENTITY.md",
+    "MEMORY.md",
+    "PATTERNS.md",
+    "README.md",
+    "SKILLS.md",
+    "SOUL.md",
+    "TOOLS.md",
+    "USER.md",
+    "WORKFLOWS.md"
+  ],
+  "skills": [
+    {
+      "name": "Bookkeeper",
+      "path": "../ralleh-skills/skills/Finance/Bookkeeper/README.md"
+    },
+    {
+      "name": "ExpenseTracker",
+      "path": "../ralleh-skills/skills/Finance/ExpenseTracker/README.md"
+    },
+    {
+      "name": "FinancialReporter",
+      "path": "../ralleh-skills/skills/Finance/FinancialReporter/README.md"
+    },
+    {
+      "name": "Stripe",
+      "path": "../ralleh-skills/skills/Finance/Stripe/README.md"
+    },
+    {
+      "name": "GoogleSheets",
+      "path": "../ralleh-skills/skills/Productivity/GoogleSheets/README.md"
+    },
+    {
+      "name": "Gog",
+      "path": "../ralleh-skills/skills/Productivity/Gog/README.md"
+    },
+    {
+      "name": "Office365Connector",
+      "path": "../ralleh-skills/skills/Productivity/Office365Connector/README.md"
+    },
+    {
+      "name": "CalendarScheduler",
+      "path": "../ralleh-skills/skills/Productivity/CalendarScheduler/README.md"
+    },
+    {
+      "name": "Cortex",
+      "path": "../ralleh-skills/skills/TaskManagement/Cortex/README.md"
+    },
+    {
+      "name": "Engram",
+      "path": "../ralleh-skills/skills/Memory/Engram/README.md"
+    },
+    {
+      "name": "PromptDefense",
+      "path": "../ralleh-skills/skills/Security/PromptDefense/README.md"
+    },
+    {
+      "name": "OperatingProtocol",
+      "path": "../ralleh-skills/skills/Foundation/OperatingProtocol/README.md"
+    }
+  ],
+  "selectedOptionalSkills": [],
+  "extraSkills": [
+    "OperatingProtocol"
+  ]
+}
