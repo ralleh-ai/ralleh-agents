@@ -1,42 +1,92 @@
-# USER.md - The Human / Client I Serve (Template)
+# USER.md - User / Organization Context Template
 
-**Instructions**: This file provides context about the person or organization the agent serves. 
-Replace all `[PLACEHOLDER]` values with accurate, client-specific information. 
-Keep this file private and up-to-date. The agent reads it at the start of relevant sessions.
+Purpose: durable context about the person, family, team, or organization the agent serves.
+
+Keep this file private, factual, and current. Include only information that materially improves judgment, planning, recall, and execution.
 
 ---
 
 ## Core Identity
 - **Name / Organization**: `[CLIENT_NAME_OR_COMPANY]`
-- **Primary Location / Context**: `[PRIMARY_LOCATION_OR_TIMEZONE]`
-- **Role / Business**: `[CLIENT_ROLE_OR_BUSINESS_DESCRIPTION]`
+- **Primary Time Zone / Location Context**: `[PRIMARY_LOCATION_OR_TIMEZONE]`
+- **Role / Business Context**: `[CLIENT_ROLE_OR_BUSINESS_DESCRIPTION]`
 
-## Key Projects & Responsibilities
+## Communication Preferences
+- Preferred tone: `[DIRECT / STRUCTURED / CONCISE / DETAILED — any specific style notes]`
+- Strong dislikes: `[e.g. unverified claims, filler, overexplaining, vague status updates]`
+- What good looks like: `[e.g. clear recommendations, actionable next steps, concise updates, explicit risks]`
+
+## Decision Boundaries
+- Safe to do without asking: `[WHAT_THE_AGENT_MAY_DO_AUTONOMOUSLY_VS_MUST_CONFIRM]`
+- Must confirm first: `[e.g. public communications, irreversible changes, financial actions, credential changes, sensitive outreach]`
+- Topics requiring extra care: `[MEDICAL, LEGAL, FINANCIAL, REGULATED_TOPICS — e.g. research and planning only, not professional advice]`
+
+## Ongoing Responsibilities and Projects
 `[LIST_MAJOR_PROJECTS_OR_RESPONSIBILITIES_WITH_BRIEF_STATUS]`
 
-Examples of what to include:
-- Software development projects (languages/frameworks, hosting)
-- Business operations or client work
-- Content, marketing, or affiliate initiatives
-- Infrastructure / deployment environments (VPS, cloud, self-hosted)
-- Research or personal interest areas (with appropriate boundaries)
+Examples of useful entries:
+- product and software projects
+- client operations
+- research programs
+- infrastructure and hosting
+- content systems
+- family/education administration
+- travel or relocation planning
 
-## Important Context & Constraints
-- **Security & Privacy Posture**: `[DESCRIBE_ANY_KNOWN_SECURITY_CONCERNS_OR_PAST_INCIDENTS_AT_HIGH_LEVEL_ONLY — e.g. "Heightened caution around unexpected links and social engineering attempts"]`
-- **Communication Preferences**: `[DIRECT / STRUCTURED / CONCISE / DETAILED — any specific style notes]`
-- **Decision Authority**: `[WHAT_THE_AGENT_MAY_DO_AUTONOMOUSLY_VS_MUST_CONFIRM]`
-- **Topics Requiring Extra Care / Disclaimers**: `[MEDICAL, LEGAL, FINANCIAL, REGULATED_TOPICS — e.g. "Research only; always include professional consultation disclaimer"]`
+## Important Context and Preferences
+- **Security & Privacy Posture**: `[DESCRIBE_ANY_KNOWN_SECURITY_CONCERNS_OR_PAST_INCIDENTS_AT_HIGH_LEVEL_ONLY — e.g. heightened caution around unexpected links, attachments, and social engineering]`
+- **Operational Priorities**: `[e.g. validation, speed with safety, maintainability, cost awareness, token efficiency, strong memory discipline]`
+- **Working Style**: `[e.g. proactive but bounded, direct, low-fluff, high-verification]`
 
-## Preferences & Style Notes
-- Interaction style the user prefers: `[e.g. Direct, insightful, structured output with clear sections and actionable items. Avoid corporate fluff.]`
-- Any strong dislikes or triggers: `[e.g. Overly verbose responses, unverified claims, etc.]`
-- Recurring priorities or focus areas: `[e.g. Token efficiency, rigorous validation, proactive status updates within bounds]`
+## Optional Domain Context
+Include these only when they are relevant to the user or deployment.
+
+### Farm / Homesteading / Travel
+Examples:
+- permits and regulatory research
+- travel planning, including culinary or beach preferences
+- ice cream or food business exploration
+- resin preservation research
+- lifestyle planning with work continuity
+
+### Education / Family Administration
+Examples:
+- tuition tracking
+- 1098-T reminders
+- tax-credit support notes
+- loan or reimbursement tracking
+
+### Health / Research Topics
+Examples:
+- peptide or supplement research interests
+- meal-planning constraints
+- sleep or recovery research
+
+Rule: frame these as research, organization, and planning support only. Do not present medical, legal, or financial advice as authoritative.
+
+### Project Context
+Examples:
+- Focusor.ai
+- Pledgebook
+- Affilio
+- FocusPanel
+- Engram
+- OpenClaw custom UIs
+- multi-agent teams
+
+Document only the level of detail that helps the agent make better decisions.
 
 ## Update Protocol
-When new durable facts emerge (new projects, changed constraints, preference shifts, security events), update this file with clear, concise entries. 
-The agent should propose structured updates when it detects relevant new information during sessions.
+Update this file when durable facts change:
+
+- new projects or responsibilities
+- preference shifts
+- changed boundaries
+- new risk patterns
+- important life or business context that affects planning
+
+The agent should suggest updates when it notices stable new patterns.
 
 ---
 
-**This file makes the agent personal and effective for the specific user/client.**  
-Keep it accurate, minimal, and focused on what materially improves the agent's judgment and helpfulness.
+This file should stay clean, high-signal, and specific to the actual user or organization.
