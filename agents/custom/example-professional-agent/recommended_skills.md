@@ -1,30 +1,30 @@
-# Recommended Skills for Ralleh Core Professional Baseline
+# Recommended Skills for the Professional Agent Baseline
 
 Install via OpenClaw Skills tab, CLI (`openclaw skills install <name>`), or ClawHub registry. After install, document details in `skills_notes/<name>.md` and update TOOLS.md.
 
 **Priority Tier 1 (Core for Baseline Capabilities)**:
 - **browser**: Web automation, research, verification, data extraction. Essential for analysis, planning, danger detection (scam verification), travel/vendor research.
-- **github**: Full repo, issue, PR, CI management. Critical for dev workflows (Focusor, Pledgebook, OpenClaw, Engram), code review, status tracking, orchestration artifacts.
-- **canvas**: Visual planning, diagrams, task boards, status dashboards, UI concepts (FocusPanel/Jarvis). Great for orchestration overviews and reducing token-heavy text.
+- **github**: Full repo, issue, PR, and CI management. Critical for development workflows, code review, status tracking, and orchestration artifacts in the repositories this agent manages.
+- **canvas**: Visual planning, diagrams, task boards, status dashboards, and UI concepts. Great for orchestration overviews and reducing token-heavy text.
 - **heartbeat / cron / nodes**: Automation, long-running task monitoring, periodic health/maintenance, follow-ups, self-improvement triggers, background steps. **Foundational for many listed capabilities.**
 - **engram / remnic / @remnic/plugin-openclaw** (or your isbe-bot/engram): **Highest priority memory upgrade**. Semantic vector search, knowledge graph, temporal/entity memory, multi-agent sharing, lessons store. Enables true "remembering", self-learning from mistakes, advanced context retrieval. Update AGENTS.md session init and reflections to use it.
 - **imsg / discord / wacli (WhatsApp) / slack**: Channel integrations for user/team/client communication, status updates, delegation handoffs, follow-ups. Configure allowlists/security.
 
 **Priority Tier 2 (High Value for Professional Use)**:
-- **peekaboo / camsnap / vision tools**: Screenshots, vision analysis, document capture, security monitoring. Supports validation, UI work, physical context if needed (farm?).
+- **peekaboo / camsnap / vision tools**: Screenshots, vision analysis, document capture, and security monitoring. Supports validation, UI work, and physical-context inspection when that is part of the deployment.
 - **whisper or transcription skill**: Accurate speech-to-text for voice notes, meetings, dictation. Post-process into structured notes/action items/summaries.
 - **search / web-research skill** (or Perplexity-like): Efficient structured research to supplement browser. Good for quick facts, vendor comparisons, permit info.
 - **PDF / document handling & summarization**: Contracts, research papers, permits, tax documents, and specifications. Extract, summarize, and validate.
 - **code execution / terminal / sandboxed runner / LSP helpers**: Run tests, lints, scripts, REPL for .NET, Nuxt/TS, Go, Python. Critical for validation in dev tasks and "finding right tool".
-- **translation skill or strong model access**: High-quality, context-aware translation for travel (Thailand/Vietnam), research, multi-lang content.
+- **translation skill or strong model access**: High-quality, context-aware translation for research, multilingual content, international operations, or user support.
 
-**Priority Tier 3 (Ralleh.com / Ops / Security / Future)**:
+**Priority Tier 3 (Ops / Security / Future)**:
 - Cloud provider tools: DigitalOcean CLI/API, Hostinger equivalents, general SSH/HTTP for VPS fleet management, monitoring, provisioning (consistent baseline deployments for clients).
 - Tailscale / networking management: For secure multi-VPS / agent fleet connectivity and admin oversight.
 - Docker / container / OpenClaw status tools: Health checks on gateways, instances, resources.
 - Security/audit: Linters, vuln scanners, malware/pattern detectors if available in ecosystem. Enhance danger detection.
 - Advanced orchestration: Any workflow engine, sub-agent management, or consensus/voting skills (or build custom). Supports "Creating, Planning, Orchestration Workflows", "Consensus", "Agent Model Assignment".
-- Future/Custom: Domain-specific (farm permits/business setup, peptide research pipeline, travel planner with booking research, high-protein meal prep generator). Build and document thoroughly.
+- Future/Custom: Domain-specific workflows for the real deployment scope, such as compliance research, booking/research flows, support automation, internal reporting, or specialized planning pipelines. Build and document thoroughly.
 
 **Installation & Documentation Workflow**:
 1. Install skill.
@@ -36,7 +36,7 @@ Install via OpenClaw Skills tab, CLI (`openclaw skills install <name>`), or Claw
 
 **Notes for Your Stack**:
 - Emphasize skills that support token efficiency (structured output, summarization), security (verification, isolation), orchestration (tracking, delegation, status), memory (Engram), and dev (GitHub, code exec, browser for testing).
-- For Ralleh.com multi-VPS/client work: Skills enabling consistent provisioning, monitoring, and admin of remote OpenClaw instances.
+- For multi-VPS, client, or internal platform work: Skills enabling consistent provisioning, monitoring, and admin of remote agent/runtime instances.
 - Security Post-Incident: Prioritize skills that aid verification, input analysis, and safe execution.
 - After major installs or env changes: Re-run relevant parts of BOOTSTRAP.md or full heartbeat for health confirmation.
 

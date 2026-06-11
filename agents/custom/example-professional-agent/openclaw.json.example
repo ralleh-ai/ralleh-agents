@@ -1,9 +1,9 @@
 {
-  "comment": "Example openclaw.json for Ralleh Core Professional Baseline. Customize paths, models, and settings. Place in ~/.openclaw/ or per-agent config location. Restart gateway after changes.",
+  "comment": "Example openclaw.json for the Professional Agent Baseline. Customize paths, models, and settings. Place in ~/.openclaw/ or a per-agent config location. Restart the gateway after changes.",
   "agent": {
     "model": "anthropic/claude-3-5-sonnet-20241022",  // Or current best reasoning model via your provider/LiteLLM/OpenRouter. Use strongest for orchestration/analysis; route simpler via AGENTS logic or skills.
     "defaults": {
-      "workspace": "~/.openclaw/workspace",  // Or per-agent e.g. "~/.openclaw/agents/ralleh/workspace". Supports ~ expansion.
+      "workspace": "~/.openclaw/workspace",  // Or per-agent e.g. "~/.openclaw/agents/operations/workspace". Supports ~ expansion.
       "thinking": "high",  // Default for complex tasks; can override per call.
       "heartbeat": true,   // Enable for automation, long tasks, health checks, follow-ups, self-improvement.
       "cron": true
@@ -47,5 +47,5 @@
       "engram-remnic"  // Or your exact plugin name.
     ]
   },
-  "comment_further": "For multi-agent: Use separate configs or workspace isolation + shared Engram. For Ralleh.com client instances: Consistent baseline + overrides. Monitor token usage/costs via provider dashboards or custom tracking in reflections. Update models as new best-in-class release. Git your workspace for prompt/memory versioning."
+  "comment_further": "For multi-agent setups: Use separate configs or workspace isolation plus shared semantic memory where appropriate. For client or internal deployments: Use a consistent baseline plus scoped overrides. Monitor token usage/costs via provider dashboards or custom tracking in reflections. Update models as better options become available. Git your workspace for prompt/memory versioning."
 }

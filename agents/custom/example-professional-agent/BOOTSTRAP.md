@@ -3,7 +3,7 @@
 **Purpose**: One-time (or reset) setup to bring a new or existing OpenClaw workspace to this professional baseline standard. Covers directory structure, git, core files, skill installation guidance, Engram integration, security hardening reminders, initial memory seeding, and verification. 
 
 **When to Run**: 
-- First time setting up this baseline for a new agent/workspace (e.g., dedicated "Ralleh Core" or team agent).
+- First time setting up this baseline for a new agent/workspace (e.g., a professional operations agent, team coordinator, specialist agent, or department agent).
 - After major workspace reset or corruption.
 - Periodically (e.g., quarterly) as a "full professional refresh" to ensure all components are current and optimized.
 - Trigger via: "Read BOOTSTRAP.md and execute the full professional baseline initialization protocol step by step. Confirm and pause at major sections for approval."
@@ -25,7 +25,7 @@
    - `git init` (if not already).
    - `git checkout -b main` or ensure on main branch.
    - Add `.gitignore` if needed (e.g., ignore large binaries, temp files, but **never** ignore memory/ or the .md prompt files — they are the agent's brain).
-   - Initial commit example after files are in place: `git add . && git commit -m "Initialize Ralleh Core professional baseline v1.0"`
+   - Initial commit example after files are in place: `git add . && git commit -m "Initialize professional agent baseline v1.0"`
    - **Recommendation**: Add private remote (GitHub/GitLab self-hosted or encrypted backup) for offsite versioning of prompts and memory. Or rsync to secure NAS/VPS.
 
 3. **Copy/Verify Core Baseline Files**:
@@ -49,11 +49,11 @@
      - Migrate legacy if needed (`remnic openclaw migrate-engram` or equivalent).
    - **Update AGENTS.md Session Init**: Ensure it queries Engram for semantic/entity/temporal context alongside file reads.
    - **Seed Initial Data** (if fresh):
-     - Entities: Projects (Focusor.ai, Pledgebook, etc.), key people/agents (sub-bots, team), tools/skills, vendors (peptide research), travel plans, security incidents (high-level, private).
+     - Entities: The real projects, services, teams, tools, vendors, environments, and incidents relevant to this deployment.
      - Lessons/Reflections: Any known past patterns or bootstrap notes.
      - Task States: Current open work if migrating.
    - Test: In a session, ask agent to "Query Engram for relevant context on [project] and summarize."
-   - **Benefit**: Enables true long-term memory, pattern recognition ("similar past orchestration challenges"), shared state across your agent fleet (ralleh-bot + specialists), and advanced self-improvement.
+   - **Benefit**: Enables true long-term memory, pattern recognition ("similar past orchestration challenges"), shared state across your agent fleet, and advanced self-improvement.
 
 3. **Daily + Curated Discipline**:
    - Confirm agent understands read-first, atomic write, concrete-only updates.
@@ -64,9 +64,9 @@
 ## Phase 3: Skills & Capabilities Installation
 1. **Core Recommended Skills** (Install via OpenClaw UI/CLI or ClawHub):
    - browser, github, canvas, heartbeat/cron enhancements, communication channels (imsg/discord/wacli/slack as relevant), vision (Peekaboo), transcription (Whisper), search/research, PDF handling, code execution/terminal (sandboxed), Engram/Remnic plugin (priority #1 for memory).
-   - Ralleh/VPS specific: Any cloud CLI (DigitalOcean, Hostinger if available), Tailscale/ networking tools, Docker/OpenClaw status, fleet monitoring.
+   - Environment-specific: Any cloud CLI, networking tools, Docker/OpenClaw status tooling, fleet monitoring, or internal platform utilities required by this deployment.
    - Security: Linters, audit helpers, vuln scanners if ecosystem provides.
-   - Future/Custom: Orchestration engines, consensus tools, domain-specific (farm permits, travel planners, peptide research pipelines).
+   - Future/Custom: Orchestration engines, consensus tools, and domain-specific workflows needed by the real deployment.
 
 2. **Post-Install Documentation**:
    - For each new skill: Create/update `skills_notes/<skill>.md` with:
@@ -106,7 +106,7 @@
 4. **Initial Seeding & Test**:
    - Create initial daily memory log noting "Professional baseline bootstrap completed [date]. Core files in place, git initialized, Engram configured (if done), key skills noted."
    - Seed MEMORY.md or Engram with current project statuses, open loops, key constraints/preferences from USER.md.
-   - Run a test session: "You are now operating under the full Ralleh Core professional baseline. Perform initialization confirmation, health check, and a sample task: [simple analysis or plan]. Report readiness and any issues."
+   - Run a test session: "You are now operating under the full professional agent baseline. Perform initialization confirmation, health check, and a sample task: [simple analysis or plan]. Report readiness and any issues."
 
 ---
 
@@ -122,8 +122,8 @@
    - This README (in baseline_setup) serves as external guide; keep workspace-focused files lean.
 
 3. **Handoff to Operations**:
-   - Once verified: Agent is ready for production use on real work (project orchestration, Ralleh client setups, dev on Focusor/Pledgebook/FocusPanel/Engram/OpenClaw, security monitoring, travel/farm planning, etc.).
-   - Establish rhythm: Use for daily work → Heartbeat runs → Reflections improve baseline over time.
+   - Once verified: Agent is ready for production use on real work within its assigned scope (project orchestration, client operations, engineering, support, monitoring, research, or other defined responsibilities).
+   - Establish rhythm: Use for daily work → heartbeat runs → reflections improve baseline over time.
    - For multi-agent fleet: Repeat bootstrap for specialized agents with lighter SOUL/AGENTS + shared Engram + coordination protocols in main AGENTS.md.
 
 ---
@@ -141,4 +141,4 @@ Run it step-by-step with confirmations. It embodies "System Maintenance", "Healt
 
 *Once done, commit to git and begin using. The agent will help maintain and evolve this baseline going forward.* 🦞
 
-**Bootstrap Version**: v1.0 (Professional Baseline for Ralleh Core / advanced OpenClaw ops)
+**Bootstrap Version**: v1.0 (Professional baseline for advanced OpenClaw-style ops)

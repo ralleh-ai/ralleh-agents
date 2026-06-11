@@ -1,4 +1,4 @@
-# TOOLS.md - Ralleh Core Capability Map, Usage Notes & Environment Specifics
+# TOOLS.md - Professional Agent Capability Map, Usage Notes & Environment Specifics
 
 **Purpose**: Detailed guidance on available tools/skills, when/how to use them optimally (including token efficiency, reliability, security), environment-specific configurations, gotchas, and examples. This complements per-skill `SKILL.md` files. Update as skills are added or env changes. Read relevant sections during task planning.
 
@@ -10,7 +10,7 @@
 These are core to the platform. Master their SKILL.md and cross-ref here.
 
 ### Browser Automation & Research
-- **Use When**: Web research, verification, data extraction, form interactions, monitoring pages, competitor analysis, travel research (Thailand/Vietnam), vendor checks (peptide sources, suppliers), permit research (CO ag/cannabis/ice cream), security verification (scam sites, malware reports).
+- **Use When**: Web research, verification, data extraction, form interactions, monitoring pages, competitor analysis, vendor checks, compliance or permit research, and security verification (scam sites, malware reports).
 - **Best Practices**:
   - Start with targeted navigation + snapshot or targeted queries. Avoid full-page dumps.
   - For research: Use summarization mode or post-process with strong model. Always capture sources/URLs for validation.
@@ -20,7 +20,7 @@ These are core to the platform. Master their SKILL.md and cross-ref here.
 - **Notes**: Maintain logged-in profiles carefully (or use fresh for research). Combine with search skills for best results. Log useful sites or patterns in memory/Engram.
 
 ### GitHub Integration
-- **Use When**: Code review, issue/PR management (your repos: Focusor.ai, Pledgebook, OpenClaw custom, Engram, Ralleh-related, client work), repo state inspection, automation (labels, milestones, CI checks), deployment tracking.
+- **Use When**: Code review, issue/PR management, repo state inspection, automation (labels, milestones, CI checks), and deployment tracking for the repositories this agent actually manages.
 - **Best Practices**:
   - Auth: Use your configured credentials/tokens securely. Scope minimally.
   - Workflow: For changes — branch → edit (via tools or local) → PR → review (self or delegate) → merge with checks.
@@ -30,12 +30,12 @@ These are core to the platform. Master their SKILL.md and cross-ref here.
 - **skills_notes/github.md**: Add auth setup, common commands, gotchas (e.g., large repos, rate limits).
 
 ### Canvas (Visual Workspace)
-- **Use When**: Complex planning, architecture diagrams, workflow visualization, task boards, UI mockups (for FocusPanel/Jarvis concepts), status dashboards, mind maps for analysis.
+- **Use When**: Complex planning, architecture diagrams, workflow visualization, task boards, UI mockups, status dashboards, and mind maps for analysis.
 - **Best Practices**: Use for high-signal visual output. Export or reference in reports. Combine with structured text plans. Great for orchestration overviews or presenting to user/sub-agents.
 - **Token Note**: Visuals reduce need for long textual descriptions.
 
 ### Communication Channels (imsg, discord, wacli/WhatsApp, slack, etc.)
-- **Use When**: User interaction, team coordination (Shane/Rick bots?), client comms (Ralleh.com), notifications, follow-ups.
+- **Use When**: User interaction, team coordination, client or stakeholder communication, notifications, and follow-ups.
 - **Best Practices**: 
   - Respect channel type (DM vs group). Never leak private data in groups.
   - For automation: Structured, non-spammy updates. Use for status/check-ins on delegated tasks.
@@ -43,7 +43,7 @@ These are core to the platform. Master their SKILL.md and cross-ref here.
 - **Security**: Verify recipients. For sensitive: Prefer encrypted/verified channels.
 
 ### Vision & Capture (Peekaboo, camsnap)
-- **Use When**: Screenshot analysis (UI bugs, diagrams, physical farm/equipment if relevant), security cam monitoring, document scanning, visual verification.
+- **Use When**: Screenshot analysis (UI bugs, diagrams, physical equipment or spaces if relevant), security cam monitoring, document scanning, and visual verification.
 - **Best Practices**: Targeted captures + AI vision description or structured extraction. Privacy-respecting (don't over-capture personal spaces without need).
 
 ### Other Core/Utility Skills
@@ -52,13 +52,13 @@ These are core to the platform. Master their SKILL.md and cross-ref here.
 - **Speech-to-Text (Whisper or equiv)**: Transcription of voice notes, meetings, voicemails. High accuracy; post-process for summaries/action items.
 - **Translation Skills/Models**: For multi-language (travel planning, research). Context-preserving.
 - **Search/Research Skills** (web or local): Supplement browser. Structured results preferred.
-- **Code Execution / Terminal / LSP-like**: For running tests, lints, scripts, REPL exploration. Sandbox where possible. Critical for validation in dev workflows (Focusor .NET, Nuxt, Go Engram, etc.).
+- **Code Execution / Terminal / LSP-like**: For running tests, lints, scripts, and REPL exploration. Sandbox where possible. Critical for validation in software and automation workflows across the stacks this agent supports.
 - **PDF/Doc Handling** (ecosystem skills): For contracts, research papers, permits, and tax documents. Extract, summarize, and validate.
 
 ---
 
 ## 2. Environment Specifics & Configuration Notes
-**Primary Dev Machine**: Mac Mini (fresh macOS, primary for OpenClaw gateway/dev). Paths: ~/projects/ or equivalent for Focusor.ai, Pledgebook, etc. External monitor setup for MacBook.
+**Primary Environment**: Replace this section with the actual host, workstation, runtime, or deployment environments this agent uses. Include only the paths, hosts, clouds, and platform notes that materially improve execution.
 
 **Security Posture** (Critical Context):
 - PIA VPN: Prefer always-on or enforced for sensitive ops.
@@ -68,24 +68,19 @@ These are core to the platform. Master their SKILL.md and cross-ref here.
 - No overstep: Agent does not initiate crypto transactions or handle sensitive creds.
 
 **Cloud & Deployments**:
-- Azure: Focusor.ai hosting/config.
-- Hostinger / DigitalOcean VPS: Client OpenClaw instances, Ralleh fleet. Tailscale for secure networking between instances/admin.
-- Monitoring: Skills or custom for VPS status, Docker/OpenClaw gateway health, resource use, logs. For Ralleh.com: Provisioning workflows, admin oversight of sub-bots.
-- Self-hosted emphasis: Prioritize local-first where possible (Engram local vector/graph).
+- Record the real hosting, cloud, VPS, container, SaaS, and networking environments for this deployment.
+- Monitoring: Note how to check service status, gateway health, resource use, logs, provisioning workflows, and admin oversight for the actual systems this agent manages.
+- Self-hosted emphasis: Prioritize local-first where possible when that matches the deployment architecture.
 
 **Projects & Codebases** (Deep Context):
-- Focusor.ai: C# .NET MVC on Azure — web app dev, auth (ASP.NET Identity + affiliate tracking), accessibility.
-- Pledgebook: Nuxt (Vue) blockchain app.
-- Affilio: Affiliate content engineering pipelines.
-- FocusPanel: AI ensembles/collective intelligence on OpenClaw — Three.js futuristic UIs, voice, HUD elements, Jarvis-like.
-- Engram (isbe-bot/engram or Remnic fork): Memory core for OpenClaw — integrate deeply for semantic recall, entity management, lessons, multi-agent sharing. Configure plugin, use in session init and reflections.
-- OpenClaw Custom: Agent orchestration, multi-VPS, custom skills/UIs, SOUL/AGENTS optimization (this baseline itself).
+- Replace this list with the actual projects, products, services, or internal systems this agent supports.
+- For each project, capture stack, hosting, ownership boundaries, and any verification or deployment notes the agent will repeatedly need.
+- Keep this section deployment-specific. Do not leave the template author's projects here.
 
-**Personal/Farm/Other**:
-- Farm ops: Research support for legal grows, permits, suppliers (ice cream mix, resin kits), business setup (resmory.com?).
-- Travel: Thailand (4mo scenic/culinary), Vietnam (1mo beach/luxury). Planning, bookings research, remote work continuity, cultural/culinary notes.
+**Additional Domains**:
+- Add personal, research, or operational domains only when they are genuinely part of the deployed agent's responsibilities.
 - Health/research topics: Treat supplement, peptide, or other health-related topics as research synthesis only with explicit professional-boundary language and source verification.
-- Education administration: Support education-finance tracking, tax-document reminders, and loan/planning implications when relevant to the deployment.
+- Education, travel, compliance, or other specialty topics should appear here only when relevant to the deployment.
 
 **Models & Routing (Token/Model Awareness)**:
 - Available via direct providers, OpenRouter, LiteLLM, or OpenClaw config: Strong reasoning (Claude 3.5/4 family or current top), fast/cheap for simple, coding specialists, vision, long-context.
@@ -110,7 +105,7 @@ Install via OpenClaw Skills interface or CLI. Prioritize for your use cases:
 11. PDF/doc extraction/summarization.
 12. Any terminal/code execution with safety/sandbox (for .NET, Nuxt, Go, Python scripts, testing).
 13. Security/audit related (vuln scanners, linters if not in code tools).
-14. For Ralleh.com/VPS: Any cloud provider CLI/API skills (DigitalOcean, Hostinger if exist; or general HTTP/SSH), Tailscale management, Docker/OpenClaw status.
+14. For hosted environments and VPS operations: Any cloud provider CLI/API skills, networking management, Docker/container status, gateway status, and secure remote admin tooling relevant to this deployment.
 15. Future: Custom orchestration skill, consensus/voting tool, advanced workflow engine.
 
 After install: Create/update `skills_notes/<skill-name>.md` with usage examples, token tips, env config, gotchas specific to your setup (e.g., GitHub token scopes for your repos, browser profiles for logged-in research, Engram connection string or local path).
@@ -131,7 +126,7 @@ After install: Create/update `skills_notes/<skill-name>.md` with usage examples,
 - New skill installed? Immediately document in this file (high-level) + detailed `skills_notes/<name>.md`.
 - Env change (new VPS, project, security tool)? Update relevant sections.
 - Periodic (heartbeat or manual): Review this file for staleness. Suggest updates.
-- Custom Skills: For gaps in orchestration, advanced planning, specific business logic (e.g., Ralleh provisioning), or farm/travel/peptide research pipelines. Document thoroughly.
+- Custom Skills: For gaps in orchestration, advanced planning, domain-specific business logic, or recurring research/operations pipelines. Document thoroughly.
 
 **This TOOLS.md turns raw capabilities into reliable, efficient, context-aware power.** Master it alongside SKILL.md files. It evolves with your stack.
 

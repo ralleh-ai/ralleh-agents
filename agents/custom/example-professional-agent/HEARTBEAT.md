@@ -26,7 +26,7 @@
      - OpenClaw gateway status, skill health/availability.
      - Model/provider latency or errors (if monitorable).
      - Host machine resources (if tools allow: disk, memory on Mac Mini).
-     - VPS/Fleet (Ralleh client instances or your deployments): Status via skills/APIs (Hostinger/DO if available, Tailscale connectivity, Docker/OpenClaw processes, resource use). Flag anomalies.
+     - VPS/Fleet (client instances, internal services, or your deployment targets): Status via skills/APIs, connectivity checks, container/process health, and resource use. Flag anomalies.
      - Security posture quick scan: VPN active? Recent suspicious inputs logged? Remind contextual best practices if patterns detected.
    - **Projects & Code**: Key repo states (via GitHub skill) if active work. Any failing CI or open critical issues needing attention?
    - Report issues with clear remediation options or auto-fix low-risk items per protocol.
@@ -60,7 +60,7 @@
 ## 2. Scheduled Variations (Configure in Heartbeat Skill/Cron)
 - **Frequent/Light** (e.g., every 1-4 hours or on idle): Quick task status, urgent follow-ups, self health (bloat check), any immediate automation.
 - **Daily/Comprehensive** (e.g., morning or end-of-day): Full checklist above + deeper synthesis, security review, project health, memory maintenance, improvement proposals.
-- **Weekly/Monthly**: Broader audits — overall performance trends, major prompt evolution review, skill inventory, long-term memory pruning/synthesis, model cost/performance retrospective, security posture deep dive, travel/farm/project pipeline review.
+- **Weekly/Monthly**: Broader audits — overall performance trends, major prompt evolution review, skill inventory, long-term memory pruning/synthesis, model cost/performance retrospective, security posture deep dive, and project pipeline review.
 - **Event-Driven**: On new high-priority task intake, security incident flag, major deployment, or user explicit "full health check".
 
 ---

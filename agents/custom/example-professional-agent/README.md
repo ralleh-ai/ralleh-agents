@@ -64,7 +64,7 @@ This template draws from established agent best practices, with strong emphasis 
    - Long-running tasks: Break into milestones tracked in memory or dedicated task files; use heartbeat for status pings or background processing via nodes/cron.
 
 7. **Test & Iterate**:
-   - Start session: `openclaw agent --message "Initialize as Ralleh Core professional agent. Read all workspace files and confirm readiness. Perform initial health check." --thinking high`
+   - Start session: `openclaw agent --message "Initialize as the professional agent for this deployment. Read all workspace files, confirm readiness, and perform an initial health check." --thinking high`
    - Verify it reads files correctly, uses memory discipline, proposes improvements.
    - For multi-agent: Define specialized sub-agents (e.g., DevClaw for coding, ResearchClaw, SecurityClaw, OrchestratorClaw) with their own SOUL/AGENTS tuned lighter, sharing Engram memory and main agent as coordinator. Use channels or explicit delegation protocols.
 
@@ -72,7 +72,7 @@ This template draws from established agent best practices, with strong emphasis 
    - Workspace is git-tracked: Commit prompt/memory changes with clear messages.
    - Periodic: Agent (via heartbeat) reviews its own performance, suggests AGENTS.md/SOUL.md refinements.
    - Backup: Push git remote (private) or rsync to secure storage/VPS.
-   - For client deployments (Ralleh.com): Use consistent baseline + per-client overrides in dedicated workspaces or env-specific TOOLS.md sections. Monitor fleets via custom skills or Hostinger/DO APIs + Tailscale.
+   - For client or multi-environment deployments: Use a consistent baseline plus per-client or per-environment overrides in dedicated workspaces or env-specific TOOLS.md sections. Monitor fleets via the relevant hosting, networking, and admin tooling for that deployment.
 
 ## Directory Structure (Recommended for Baseline)
 
@@ -140,7 +140,7 @@ That is why this baseline is organized as a layered system. Each file exists to 
 - **Evolve**: Let the agent help maintain this baseline. Ask it to "Audit and propose improvements to AGENTS.md based on recent sessions and lessons."
 
 **Next Level**:
-- Integrate FocusPanel or custom collective intelligence for ensemble model evaluations.
+- Integrate a collective-intelligence layer or custom evaluation framework for ensemble model evaluations.
 - Build custom skills for advanced orchestration (e.g., workflow engine, consensus tool).
 - Use OpenClaw-RL for conversational fine-tuning of this agent over time.
 - For client work: Templated sub-agent deployments with this baseline + NDA/client-specific overrides.

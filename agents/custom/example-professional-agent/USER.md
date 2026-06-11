@@ -7,12 +7,12 @@ Keep this file private and up-to-date. The agent reads it at the start of releva
 ---
 
 ## Core Identity
-- **Name / Organization**: `Ralleh`
+- **Name / Organization**: `[PERSON, TEAM, CLIENT, OR ORGANIZATION NAME]`
 - **Primary Location / Context**: `UTC`
 - **Role / Business**: `Example generated agent built from the professional baseline`
 
 ## Key Projects & Responsibilities
-`- Agent template validation\n- Baseline generation demo`
+`- [Project or system this agent manages]\n- [Operational area or recurring responsibility]\n- [Client, department, or product scope if relevant]`
 
 Examples of what to include:
 - Software development projects (languages/frameworks, hosting)
@@ -37,6 +37,8 @@ When new durable facts emerge (new projects, changed constraints, preference shi
 The agent should propose structured updates when it detects relevant new information during sessions.
 
 ---
+
+**Important Template Rule**: Do not leave the template creator's projects or identity here. Replace this file completely with the real owner and managed scope for the deployed agent.
 
 **This file makes the agent personal and effective for the specific user/client.**  
 Keep it accurate, minimal, and focused on what materially improves the agent's judgment and helpfulness.
