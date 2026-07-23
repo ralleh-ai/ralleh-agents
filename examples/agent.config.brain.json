@@ -1,0 +1,15 @@
+{
+  "agent_id": "ralleh-brain-core",
+  "role": "brain",
+  "runtime_profile": "profiles/runtime/brain-core.json",
+  "deployment_profile": "profiles/deployment/brain-core.json",
+  "packet_schema": "brain-packet/v1",
+  "modes": [
+    "compact",
+    "extended"
+  ],
+  "hooks": {
+    "preflight": "brain.preflight",
+    "reflect": "brain.reflect"
+  }
+}

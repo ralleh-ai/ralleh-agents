@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-07-23T02:25:55.384101Z",
+  "scenario_count": 5,
+  "compact": {
+    "count": 4,
+    "avg_tokens": 161.5,
+    "max_tokens": 172,
+    "hard_limit": 300,
+    "within_hard_limit": true
+  },
+  "extended": {
+    "count": 1,
+    "avg_tokens": 796,
+    "max_tokens": 796,
+    "hard_limit": 1200,
+    "within_hard_limit": true
+  },
+  "quality": {
+    "avg_retrieval_quality_score": 0.69,
+    "min_retrieval_quality_score": 0.62,
+    "max_retrieval_quality_score": 0.77
+  },
+  "audit": {
+    "token_budget_events": 34,
+    "token_budget_alerts": 26
+  },
+  "rows": [
+    {
+      "id": "p1",
+      "mode": "compact",
+      "packet_tokens_est": 172,
+      "confidence_overall": 0.76,
+      "retrieval_quality_score": 0.68,
+      "missing_info_count": 1,
+      "reflect_logged_at": "2026-07-23T02:25:55.379121Z",
+      "has_sensitive_entities": false
+    },
+    {
+      "id": "p2",
+      "mode": "compact",
+      "packet_tokens_est": 160,
+      "confidence_overall": 0.77,
+      "retrieval_quality_score": 0.77,
+      "missing_info_count": 1,
+      "reflect_logged_at": "2026-07-23T02:25:55.380394Z",
+      "has_sensitive_entities": true
+    },
+    {
+      "id": "p3",
+      "mode": "extended",
+      "packet_tokens_est": 796,
+      "confidence_overall": 0.76,
+      "retrieval_quality_score": 0.68,
+      "missing_info_count": 1,
+      "reflect_logged_at": "2026-07-23T02:25:55.381800Z",
+      "has_sensitive_entities": false
+    },
+    {
+      "id": "p4",
+      "mode": "compact",
+      "packet_tokens_est": 156,
+      "confidence_overall": 0.78,
+      "retrieval_quality_score": 0.7,
+      "missing_info_count": 1,
+      "reflect_logged_at": "2026-07-23T02:25:55.383191Z",
+      "has_sensitive_entities": false
+    },
+    {
+      "id": "p5",
+      "mode": "compact",
+      "packet_tokens_est": 158,
+      "confidence_overall": 0.62,
+      "retrieval_quality_score": 0.62,
+      "missing_info_count": 1,
+      "reflect_logged_at": "2026-07-23T02:25:55.383809Z",
+      "has_sensitive_entities": false
+    }
+  ],
+  "note": "Bootstrap pilot baseline only; 2-week live pilot still required."
+}

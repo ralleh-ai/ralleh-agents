@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-07-23T03:59:12.928684Z",
+  "thresholds": {
+    "min_days_elapsed": 14.0,
+    "min_checkpoints": 10,
+    "max_target_exceeded_rate": 0.5,
+    "max_hard_overrun_rate": 0.85,
+    "min_retrieval_quality": 0.6
+  },
+  "criteria": [
+    {
+      "name": "pilot_window_elapsed",
+      "value": 0.02,
+      "target": ">= 14.0 days",
+      "passed": false
+    },
+    {
+      "name": "checkpoint_count",
+      "value": 6,
+      "target": ">= 10",
+      "passed": false
+    },
+    {
+      "name": "target_exceeded_rate",
+      "value": 0.496,
+      "target": "<= 0.5",
+      "passed": true
+    },
+    {
+      "name": "hard_overrun_rate",
+      "value": 0.762,
+      "target": "<= 0.85",
+      "passed": true
+    },
+    {
+      "name": "retrieval_quality",
+      "value": 0.69,
+      "target": ">= 0.6",
+      "passed": true
+    }
+  ],
+  "pilot_acceptance_passed": false
+}

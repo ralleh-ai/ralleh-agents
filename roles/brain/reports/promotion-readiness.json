@@ -1,0 +1,20 @@
+{
+  "files": {
+    "ok": true,
+    "missing": []
+  },
+  "logs": {
+    "ok": true,
+    "missing": []
+  },
+  "pilot": {
+    "ok": false,
+    "compact_within_limit": true,
+    "extended_within_limit": true,
+    "scenario_count": 5,
+    "live_window_complete": false,
+    "acceptance_passed": false,
+    "live_pilot_done": false
+  },
+  "ready_for_stable_promotion": false
+}

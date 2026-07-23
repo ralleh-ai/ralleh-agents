@@ -1,0 +1,12 @@
+{
+  "cached_at": "2026-07-23T03:36:30.384202Z",
+  "entity": {
+    "id": "employee-vault-agent",
+    "type": "employee",
+    "name": "VAULT",
+    "summary": "Knowledge crystallization specialist role for high-judgment synthesis.",
+    "confidence": 0.9,
+    "freshness_status": "fresh",
+    "classification": "internal"
+  }
+}

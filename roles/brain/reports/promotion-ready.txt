@@ -1,0 +1,1 @@
+RED | PROMOTION_READY=0 | blockers=acceptance,criterion:checkpoint_count,criterion:pilot_window_elapsed,live_window

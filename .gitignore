@@ -1,4 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS
 .DS_Store
-node_modules/
-.tmp/
-dist/
+Thumbs.db

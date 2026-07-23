@@ -1,0 +1,12 @@
+{
+  "cached_at": "2026-07-23T03:36:30.384044Z",
+  "entity": {
+    "id": "product-vault",
+    "type": "product",
+    "name": "Ralleh Vault",
+    "summary": "Knowledge crystallization subsystem for durable source-cited memory.",
+    "confidence": 0.84,
+    "freshness_status": "fresh",
+    "classification": "internal"
+  }
+}

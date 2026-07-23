@@ -1,0 +1,11 @@
+{
+  "agent_id": "ralleh-brain-core",
+  "name": "Ralleh BRAIN Core",
+  "role": "brain",
+  "version": "0.2.0",
+  "last_updated": "2026-07-23T05:15:37Z",
+  "generated_from": "roles/brain",
+  "runtime": "runtime.json",
+  "deployment": "deployment.json",
+  "skills": "skills.json"
+}

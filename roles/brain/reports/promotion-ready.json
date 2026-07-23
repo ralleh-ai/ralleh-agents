@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-07-23T03:59:12.991826Z",
+  "promotion_ready": false,
+  "signal": 0,
+  "line": "RED | PROMOTION_READY=0 | blockers=acceptance,criterion:checkpoint_count,criterion:pilot_window_elapsed,live_window",
+  "blockers": [
+    "acceptance",
+    "criterion:checkpoint_count",
+    "criterion:pilot_window_elapsed",
+    "live_window"
+  ]
+}

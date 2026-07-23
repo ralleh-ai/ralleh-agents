@@ -1,0 +1,12 @@
+{
+  "cached_at": "2026-07-23T03:36:30.382637Z",
+  "entity": {
+    "id": "product-sales-channel-manager",
+    "type": "product",
+    "name": "Sales Channel Manager",
+    "summary": "Sales workflow and channel orchestration system in active workspace development.",
+    "confidence": 0.7,
+    "freshness_status": "fresh",
+    "classification": "internal"
+  }
+}

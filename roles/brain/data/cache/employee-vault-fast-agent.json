@@ -1,0 +1,12 @@
+{
+  "cached_at": "2026-07-23T03:36:30.384334Z",
+  "entity": {
+    "id": "employee-vault-fast-agent",
+    "type": "employee",
+    "name": "VAULT-FAST",
+    "summary": "High-throughput processing role for triage and normalization tasks.",
+    "confidence": 0.9,
+    "freshness_status": "fresh",
+    "classification": "internal"
+  }
+}

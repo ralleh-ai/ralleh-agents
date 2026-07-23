@@ -1,0 +1,47 @@
+[
+  {
+    "id": "employee-ralleh",
+    "type": "employee",
+    "name": "Ralleh",
+    "summary": "Primary owner and strategic decision-maker for company context systems.",
+    "owner": "orchestrator",
+    "source": "IDENTITY.md",
+    "last_verified_at": "2026-07-23T00:00:00Z",
+    "classification": "internal",
+    "confidence": 0.7,
+    "tags": ["owner"],
+    "related": ["product-ralleh-brain", "product-vault"],
+    "stale": false,
+    "missing_fields": ["contact"]
+  },
+  {
+    "id": "employee-vault-agent",
+    "type": "employee",
+    "name": "VAULT",
+    "summary": "Knowledge crystallization specialist role for high-judgment synthesis.",
+    "owner": "orchestrator",
+    "source": "ralleh-agents/roles/vault/IDENTITY.md",
+    "last_verified_at": "2026-07-23T00:00:00Z",
+    "classification": "internal",
+    "confidence": 0.9,
+    "tags": ["agent-role"],
+    "related": ["product-vault"],
+    "stale": false,
+    "missing_fields": []
+  },
+  {
+    "id": "employee-vault-fast-agent",
+    "type": "employee",
+    "name": "VAULT-FAST",
+    "summary": "High-throughput processing role for triage and normalization tasks.",
+    "owner": "orchestrator",
+    "source": "ralleh-agents/roles/vault-fast/IDENTITY.md",
+    "last_verified_at": "2026-07-23T00:00:00Z",
+    "classification": "internal",
+    "confidence": 0.9,
+    "tags": ["agent-role"],
+    "related": ["product-vault"],
+    "stale": false,
+    "missing_fields": []
+  }
+]

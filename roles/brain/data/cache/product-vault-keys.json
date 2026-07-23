@@ -1,0 +1,12 @@
+{
+  "cached_at": "2026-07-23T03:36:30.383797Z",
+  "entity": {
+    "id": "product-vault-keys",
+    "type": "product",
+    "name": "Vault Key Ledger",
+    "summary": "Restricted content redacted.",
+    "confidence": 0.51,
+    "freshness_status": "fresh",
+    "classification": "restricted"
+  }
+}

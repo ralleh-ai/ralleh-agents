@@ -1,0 +1,253 @@
+{
+  "generated_at": "2026-07-23T03:59:12.996602Z",
+  "ok": true,
+  "steps": [
+    {
+      "script": "kpi_report.py",
+      "returncode": 0,
+      "ok": true,
+      "json": {
+        "generated_at": "2026-07-23T03:59:12.811496Z",
+        "token": {
+          "count": 42,
+          "avg_before_trim": 690.21,
+          "avg_after_trim": 434.36,
+          "compact_avg_after_trim": 242.79,
+          "extended_avg_after_trim": 861.69,
+          "hard_overrun_rate": 0.762,
+          "target_exceeded_rate": 0.5
+        },
+        "security": {
+          "sensitive_retrieval_events": 17,
+          "restricted_retrieval_events": 4,
+          "confidential_retrieval_events": 13
+        },
+        "quality": {
+          "pilot_avg_retrieval_quality": 0.69,
+          "pilot_min_retrieval_quality": 0.62,
+          "pilot_max_retrieval_quality": 0.77,
+          "pilot_scenarios": 5
+        },
+        "ops": {
+          "reflect_event_count": 27,
+          "token_budget_alert_count": 32
+        }
+      },
+      "stderr": ""
+    },
+    {
+      "script": "live_pilot_tracker.py",
+      "returncode": 0,
+      "ok": true,
+      "json": {
+        "created_at": "2026-07-23T03:35:57.192401Z",
+        "pilot_start_at": "2026-07-23T03:35:57.192623Z",
+        "checkpoints": [
+          {
+            "at": "2026-07-23T03:35:57.192623Z",
+            "compact_avg_after_trim": 249,
+            "extended_avg_after_trim": 892.64,
+            "target_exceeded_rate": 0.474,
+            "hard_overrun_rate": 0.763,
+            "pilot_avg_retrieval_quality": 0.69,
+            "reflect_event_count": 27,
+            "token_budget_alert_count": 29,
+            "readiness_flag": false
+          },
+          {
+            "at": "2026-07-23T03:48:28.637652Z",
+            "compact_avg_after_trim": 242.79,
+            "extended_avg_after_trim": 861.69,
+            "target_exceeded_rate": 0.5,
+            "hard_overrun_rate": 0.762,
+            "pilot_avg_retrieval_quality": 0.69,
+            "reflect_event_count": 27,
+            "token_budget_alert_count": 32,
+            "readiness_flag": false
+          },
+          {
+            "at": "2026-07-23T03:48:59.088304Z",
+            "compact_avg_after_trim": 242.79,
+            "extended_avg_after_trim": 861.69,
+            "target_exceeded_rate": 0.5,
+            "hard_overrun_rate": 0.762,
+            "pilot_avg_retrieval_quality": 0.69,
+            "reflect_event_count": 27,
+            "token_budget_alert_count": 32,
+            "readiness_flag": false
+          },
+          {
+            "at": "2026-07-23T03:49:18.420989Z",
+            "compact_avg_after_trim": 242.79,
+            "extended_avg_after_trim": 861.69,
+            "target_exceeded_rate": 0.5,
+            "hard_overrun_rate": 0.762,
+            "pilot_avg_retrieval_quality": 0.69,
+            "reflect_event_count": 27,
+            "token_budget_alert_count": 32,
+            "readiness_flag": false
+          },
+          {
+            "at": "2026-07-23T03:57:06.118717Z",
+            "compact_avg_after_trim": 242.79,
+            "extended_avg_after_trim": 861.69,
+            "target_exceeded_rate": 0.5,
+            "hard_overrun_rate": 0.762,
+            "pilot_avg_retrieval_quality": 0.69,
+            "reflect_event_count": 27,
+            "token_budget_alert_count": 32,
+            "readiness_flag": false
+          },
+          {
+            "at": "2026-07-23T03:59:12.854744Z",
+            "compact_avg_after_trim": 242.79,
+            "extended_avg_after_trim": 861.69,
+            "target_exceeded_rate": 0.5,
+            "hard_overrun_rate": 0.762,
+            "pilot_avg_retrieval_quality": 0.69,
+            "reflect_event_count": 27,
+            "token_budget_alert_count": 32,
+            "readiness_flag": false
+          }
+        ],
+        "notes": [
+          {
+            "at": "2026-07-23T03:35:57.192623Z",
+            "note": "bootstrap kickoff checkpoint"
+          },
+          {
+            "at": "2026-07-23T03:48:28.637652Z",
+            "note": "scheduled daily checkpoint"
+          },
+          {
+            "at": "2026-07-23T03:48:59.088304Z",
+            "note": "scheduled daily checkpoint"
+          },
+          {
+            "at": "2026-07-23T03:49:18.420989Z",
+            "note": "scheduled daily checkpoint"
+          },
+          {
+            "at": "2026-07-23T03:57:06.118717Z",
+            "note": "scheduled daily checkpoint"
+          },
+          {
+            "at": "2026-07-23T03:59:12.854744Z",
+            "note": "scheduled daily checkpoint"
+          }
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "script": "live_pilot_tracker.py",
+      "returncode": 0,
+      "ok": true,
+      "json": {
+        "pilot_started": true,
+        "status": "in_progress",
+        "days_elapsed": 0.02,
+        "checkpoints": 6,
+        "avg_target_exceeded_rate": 0.496,
+        "latest_target_exceeded_rate": 0.5,
+        "avg_retrieval_quality": 0.69,
+        "latest_retrieval_quality": 0.69,
+        "ready_for_2week_gate": false
+      },
+      "stderr": ""
+    },
+    {
+      "script": "pilot_acceptance_report.py",
+      "returncode": 0,
+      "ok": true,
+      "json": {
+        "generated_at": "2026-07-23T03:59:12.928684Z",
+        "thresholds": {
+          "min_days_elapsed": 14.0,
+          "min_checkpoints": 10,
+          "max_target_exceeded_rate": 0.5,
+          "max_hard_overrun_rate": 0.85,
+          "min_retrieval_quality": 0.6
+        },
+        "criteria": [
+          {
+            "name": "pilot_window_elapsed",
+            "value": 0.02,
+            "target": ">= 14.0 days",
+            "passed": false
+          },
+          {
+            "name": "checkpoint_count",
+            "value": 6,
+            "target": ">= 10",
+            "passed": false
+          },
+          {
+            "name": "target_exceeded_rate",
+            "value": 0.496,
+            "target": "<= 0.5",
+            "passed": true
+          },
+          {
+            "name": "hard_overrun_rate",
+            "value": 0.762,
+            "target": "<= 0.85",
+            "passed": true
+          },
+          {
+            "name": "retrieval_quality",
+            "value": 0.69,
+            "target": ">= 0.6",
+            "passed": true
+          }
+        ],
+        "pilot_acceptance_passed": false
+      },
+      "stderr": ""
+    },
+    {
+      "script": "promotion_readiness.py",
+      "returncode": 1,
+      "ok": true,
+      "json": {
+        "files": {
+          "ok": true,
+          "missing": []
+        },
+        "logs": {
+          "ok": true,
+          "missing": []
+        },
+        "pilot": {
+          "ok": false,
+          "compact_within_limit": true,
+          "extended_within_limit": true,
+          "scenario_count": 5,
+          "live_window_complete": false,
+          "acceptance_passed": false,
+          "live_pilot_done": false
+        },
+        "ready_for_stable_promotion": false
+      },
+      "stderr": ""
+    },
+    {
+      "script": "promotion_ready_notifier.py",
+      "returncode": 0,
+      "ok": true,
+      "json": {
+        "generated_at": "2026-07-23T03:59:12.991826Z",
+        "promotion_ready": false,
+        "signal": 0,
+        "line": "RED | PROMOTION_READY=0 | blockers=acceptance,criterion:checkpoint_count,criterion:pilot_window_elapsed,live_window",
+        "blockers": [
+          "acceptance",
+          "criterion:checkpoint_count",
+          "criterion:pilot_window_elapsed",
+          "live_window"
+        ]
+      },
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "id": "brain-phase0-foundation",
+      "title": "Complete Phase 0 foundation scaffolding",
+      "status": "done",
+      "owner": "orchestrator",
+      "priority": "high",
+      "dependencies": [],
+      "blockers": [],
+      "deadline": "2026-07-24T00:00:00Z",
+      "entities": ["product-ralleh-brain"],
+      "updated_at": "2026-07-23T02:03:00Z"
+    },
+    {
+      "id": "brain-phase1-context-engine",
+      "title": "Implement compact packet + reflect hooks",
+      "status": "in_progress",
+      "owner": "orchestrator",
+      "priority": "critical",
+      "dependencies": ["brain-phase0-foundation"],
+      "blockers": ["missing_package_tooling_validate_scripts"],
+      "deadline": "2026-07-30T00:00:00Z",
+      "entities": ["product-ralleh-brain", "employee-ralleh"],
+      "updated_at": "2026-07-23T02:05:00Z"
+    },
+    {
+      "id": "brain-phase2-intelligence-layer",
+      "title": "Add work graph, staleness, contradictions, and cache layering",
+      "status": "in_progress",
+      "owner": "orchestrator",
+      "priority": "high",
+      "dependencies": ["brain-phase1-context-engine"],
+      "blockers": [],
+      "deadline": "2026-08-06T00:00:00Z",
+      "entities": ["product-ralleh-brain"],
+      "updated_at": "2026-07-23T02:06:00Z"
+    }
+  ],
+  "links": [
+    { "from": "brain-phase1-context-engine", "to": "brain-phase0-foundation", "type": "depends_on" },
+    { "from": "brain-phase2-intelligence-layer", "to": "brain-phase1-context-engine", "type": "depends_on" }
+  ]
+}

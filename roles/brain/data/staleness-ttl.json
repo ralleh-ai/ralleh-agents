@@ -1,0 +1,11 @@
+{
+  "client": { "soft_days": 7, "hard_days": 30 },
+  "employee": { "soft_days": 30, "hard_days": 90 },
+  "financial": { "soft_days": 7, "hard_days": 30 },
+  "task": { "soft_days": 1, "hard_days": 7 },
+  "legal": { "soft_days": 90, "hard_days": 180 },
+  "product": { "soft_days": 14, "hard_days": 60 },
+  "service": { "soft_days": 14, "hard_days": 60 },
+  "project": { "soft_days": 7, "hard_days": 30 },
+  "decision": { "soft_days": 30, "hard_days": 120 }
+}

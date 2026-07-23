@@ -1,0 +1,5 @@
+{
+  "extends": "../../../profiles/runtime/brain-core.json",
+  "packet_schema": "brain-packet/v1",
+  "default_mode": "compact"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "job_id": "brain-curation-daily",
+    "name": "BRAIN daily curation refresh",
+    "schedule": { "kind": "cron", "expr": "0 6 * * *", "tz": "UTC" },
+    "purpose": "Refresh hot cache summaries and stale flags for active entities",
+    "status": "spec-only"
+  },
+  {
+    "job_id": "brain-audit-weekly",
+    "name": "BRAIN weekly staleness/contradiction audit",
+    "schedule": { "kind": "cron", "expr": "0 7 * * 1", "tz": "UTC" },
+    "purpose": "Generate weekly risk report for stale and conflicting records",
+    "status": "spec-only"
+  },
+  {
+    "job_id": "brain-pilot-daily-cycle",
+    "name": "BRAIN daily pilot governance cycle",
+    "schedule": { "kind": "cron", "expr": "30 7 * * *", "tz": "UTC" },
+    "purpose": "Run pilot_daily_cycle.py to produce KPI, checkpoint, acceptance, and readiness reports",
+    "status": "spec-only"
+  },
+  {
+    "job_id": "brain-readiness-weekly",
+    "name": "BRAIN weekly promotion readiness check",
+    "schedule": { "kind": "cron", "expr": "45 7 * * 1", "tz": "UTC" },
+    "purpose": "Run promotion_readiness.py and track blockers",
+    "status": "spec-only"
+  },
+  {
+    "job_id": "brain-archive-monthly",
+    "name": "BRAIN monthly archive and compaction",
+    "schedule": { "kind": "cron", "expr": "0 8 1 * *", "tz": "UTC" },
+    "purpose": "Archive low-signal context and compact long-lived summaries",
+    "status": "spec-only"
+  }
+]

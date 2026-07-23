@@ -1,0 +1,12 @@
+{
+  "cached_at": "2026-07-23T03:36:30.382756Z",
+  "entity": {
+    "id": "employee-ralleh",
+    "type": "employee",
+    "name": "Ralleh",
+    "summary": "Primary owner and strategic decision-maker for company context systems.",
+    "confidence": 0.7,
+    "freshness_status": "fresh",
+    "classification": "internal"
+  }
+}

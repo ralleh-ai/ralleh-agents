@@ -1,0 +1,11 @@
+{
+  "pilot_started": true,
+  "status": "in_progress",
+  "days_elapsed": 0.02,
+  "checkpoints": 6,
+  "avg_target_exceeded_rate": 0.496,
+  "latest_target_exceeded_rate": 0.5,
+  "avg_retrieval_quality": 0.69,
+  "latest_retrieval_quality": 0.69,
+  "ready_for_2week_gate": false
+}

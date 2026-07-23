@@ -1,0 +1,67 @@
+[
+  {
+    "id": "p1",
+    "request_summary": "Acme budget and product status",
+    "mode": "compact",
+    "reflect": {
+      "session_id": "pilot",
+      "request_summary": "Acme budget and product status",
+      "entities_updated": ["client-acme"],
+      "decisions_made": ["ask_budget_before_commit"],
+      "tasks_changed": ["brain-phase1-context-engine"],
+      "notes": "Budget missing; asked targeted question."
+    }
+  },
+  {
+    "id": "p2",
+    "request_summary": "client intel notes vault key ledger",
+    "mode": "compact",
+    "reflect": {
+      "session_id": "pilot",
+      "request_summary": "client intel notes vault key ledger",
+      "entities_updated": ["product-client-intel-notes", "product-vault-keys"],
+      "decisions_made": ["restricted_omitted_in_compact"],
+      "tasks_changed": ["brain-phase2-intelligence-layer"],
+      "notes": "Confirmed confidential redaction and restricted exclusion."
+    }
+  },
+  {
+    "id": "p3",
+    "request_summary": "sales channel manager current milestone and blockers",
+    "mode": "extended",
+    "reflect": {
+      "session_id": "pilot",
+      "request_summary": "sales channel manager current milestone and blockers",
+      "entities_updated": ["product-sales-channel-manager"],
+      "decisions_made": ["phase2_dependency_review"],
+      "tasks_changed": ["brain-phase2-intelligence-layer"],
+      "notes": "Dependency graph inspected for milestone planning."
+    }
+  },
+  {
+    "id": "p4",
+    "request_summary": "Ralleh ownership and vault roadmap status",
+    "mode": "compact",
+    "reflect": {
+      "session_id": "pilot",
+      "request_summary": "Ralleh ownership and vault roadmap status",
+      "entities_updated": ["employee-ralleh", "product-vault"],
+      "decisions_made": ["request_roadmap_status_update"],
+      "tasks_changed": ["brain-phase1-context-engine"],
+      "notes": "Roadmap status remained medium-impact missing field."
+    }
+  },
+  {
+    "id": "p5",
+    "request_summary": "acme acme acme acme acme acme acme acme acme acme acme acme acme acme acme acme",
+    "mode": "compact",
+    "reflect": {
+      "session_id": "pilot",
+      "request_summary": "token stress compact",
+      "entities_updated": [],
+      "decisions_made": ["trimmed_to_budget"],
+      "tasks_changed": [],
+      "notes": "Token stress sample to verify budget trimming behavior."
+    }
+  }
+]

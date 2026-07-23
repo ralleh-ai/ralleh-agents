@@ -1,0 +1,47 @@
+[
+  {
+    "id": "client-acme",
+    "type": "client",
+    "name": "Acme Industries",
+    "summary": "Priority client with active roadmap and quarterly planning cadence.",
+    "owner": "orchestrator",
+    "source": "BRAIN_AGENT_DEVELOPMENT.md",
+    "last_verified_at": "2026-07-23T00:00:00Z",
+    "classification": "internal",
+    "confidence": 0.62,
+    "tags": ["priority", "active"],
+    "related": ["product-ralleh-brain"],
+    "stale": false,
+    "missing_fields": ["budget", "contract_pointer"]
+  },
+  {
+    "id": "client-northstar",
+    "type": "client",
+    "name": "Northstar Advisory",
+    "summary": "Context placeholder seeded for registry structure testing.",
+    "owner": "orchestrator",
+    "source": "roles/brain/data/entities/clients.json",
+    "last_verified_at": "2026-07-23T00:00:00Z",
+    "classification": "internal",
+    "confidence": 0.35,
+    "tags": ["seed"],
+    "related": [],
+    "stale": false,
+    "missing_fields": ["status", "active_projects"]
+  },
+  {
+    "id": "client-horizon",
+    "type": "client",
+    "name": "Horizon Labs",
+    "summary": "Context placeholder seeded for entity model validation.",
+    "owner": "orchestrator",
+    "source": "roles/brain/data/entities/clients.json",
+    "last_verified_at": "2026-07-23T00:00:00Z",
+    "classification": "internal",
+    "confidence": 0.35,
+    "tags": ["seed"],
+    "related": [],
+    "stale": false,
+    "missing_fields": ["status", "nda_pointer"]
+  }
+]

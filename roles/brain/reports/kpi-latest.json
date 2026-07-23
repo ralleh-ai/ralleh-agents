@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-07-23T03:59:12.811496Z",
+  "token": {
+    "count": 42,
+    "avg_before_trim": 690.21,
+    "avg_after_trim": 434.36,
+    "compact_avg_after_trim": 242.79,
+    "extended_avg_after_trim": 861.69,
+    "hard_overrun_rate": 0.762,
+    "target_exceeded_rate": 0.5
+  },
+  "security": {
+    "sensitive_retrieval_events": 17,
+    "restricted_retrieval_events": 4,
+    "confidential_retrieval_events": 13
+  },
+  "quality": {
+    "pilot_avg_retrieval_quality": 0.69,
+    "pilot_min_retrieval_quality": 0.62,
+    "pilot_max_retrieval_quality": 0.77,
+    "pilot_scenarios": 5
+  },
+  "ops": {
+    "reflect_event_count": 27,
+    "token_budget_alert_count": 32
+  }
+}

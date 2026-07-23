@@ -1,0 +1,5 @@
+{
+  "extends": "../../../profiles/deployment/brain-core.json",
+  "agent_id": "ralleh-brain-core",
+  "role": "brain"
+}

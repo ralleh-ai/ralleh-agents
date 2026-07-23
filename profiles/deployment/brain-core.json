@@ -1,0 +1,24 @@
+{
+  "deployment_id": "brain-core",
+  "role": "brain",
+  "runtime_profile": "profiles/runtime/brain-core.json",
+  "security": {
+    "classification_levels": [
+      "public",
+      "internal",
+      "confidential",
+      "restricted"
+    ],
+    "compact_excludes": [
+      "restricted"
+    ],
+    "audit_sensitive_retrievals": true,
+    "redaction_required_for_confidential": true,
+    "default_classification_on_ambiguity": "confidential"
+  },
+  "operations": {
+    "allow_external_actions": false,
+    "allow_autonomous_execution": false,
+    "reflect_required_for_updates": true
+  }
+}

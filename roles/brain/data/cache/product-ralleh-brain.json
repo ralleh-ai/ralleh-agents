@@ -1,0 +1,12 @@
+{
+  "cached_at": "2026-07-23T03:36:30.382472Z",
+  "entity": {
+    "id": "product-ralleh-brain",
+    "type": "product",
+    "name": "Ralleh BRAIN",
+    "summary": "Central context system that assembles compact, cited, and secure context packets.",
+    "confidence": 0.9,
+    "freshness_status": "fresh",
+    "classification": "internal"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brain-entity-record/v1",
+  "title": "BRAIN Entity Record v1",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "name",
+    "summary",
+    "owner",
+    "source",
+    "last_verified_at",
+    "classification",
+    "confidence",
+    "tags",
+    "related",
+    "stale",
+    "missing_fields"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "type": {
+      "enum": [
+        "client",
+        "service",
+        "product",
+        "employee",
+        "project",
+        "task",
+        "financial",
+        "legal",
+        "decision"
+      ]
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 600 },
+    "owner": { "type": "string", "minLength": 1 },
+    "source": { "type": "string", "minLength": 1 },
+    "last_verified_at": { "type": "string", "format": "date-time" },
+    "classification": {
+      "enum": ["public", "internal", "confidential", "restricted"]
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "related": { "type": "array", "items": { "type": "string" } },
+    "stale": { "type": "boolean" },
+    "stale_reason": {
+      "type": ["string", "null"],
+      "description": "Explanation of why this record is marked stale. Null if not stale."
+    },
+    "missing_fields": { "type": "array", "items": { "type": "string" } },
+    "conflict_annotation": {
+      "type": ["string", "null"],
+      "description": "Conflict marker when two or more sources disagree on a field. Format: '[conflict: source_a vs source_b on field_name]'. Null if no active conflict."
+    },
+    "conflict_resolution_task_id": {
+      "type": ["string", "null"],
+      "description": "Cortex task ID assigned to resolve the active conflict. Null if no conflict or already resolved."
+    },
+    "replayed": {
+      "type": "boolean",
+      "description": "Set true if this record was reconstructed from session history replay due to a reflect write failure."
+    }
+  },
+  "additionalProperties": false
+}

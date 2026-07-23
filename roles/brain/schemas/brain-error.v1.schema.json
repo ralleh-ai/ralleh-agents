@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brain-error/v1",
+  "title": "BRAIN Error Response v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "code",
+    "reason",
+    "recoverable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "brain-error/v1"
+    },
+    "code": {
+      "type": "string",
+      "enum": [
+        "invalid_request",
+        "schema_validation_failure",
+        "classification_gate",
+        "tool_unavailable",
+        "token_budget_exceeded",
+        "reflect_write_failure",
+        "entity_not_found",
+        "internal_error"
+      ],
+      "description": "Machine-readable error code."
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Human-readable explanation of what failed and why."
+    },
+    "request_summary": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Echo of the original request_summary, if available."
+    },
+    "recoverable": {
+      "type": "boolean",
+      "description": "True if the caller can retry or adjust the request to recover. False if the failure requires investigation."
+    },
+    "retry_hint": {
+      "type": "string",
+      "description": "Optional guidance on how to recover or retry. Only present when recoverable=true."
+    },
+    "affected_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tools that were unavailable or failed, if relevant."
+    }
+  },
+  "additionalProperties": false
+}

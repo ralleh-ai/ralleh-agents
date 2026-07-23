@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brain-packet/v1",
+  "title": "BRAIN Context Packet v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "mode",
+    "request_summary",
+    "entities",
+    "relevant_history",
+    "risks_and_blockers",
+    "missing_info",
+    "confidence_overall",
+    "recommended_action",
+    "packet_tokens_est"
+  ],
+  "properties": {
+    "schema": {
+      "const": "brain-packet/v1"
+    },
+    "mode": {
+      "enum": ["compact", "extended"]
+    },
+    "request_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entity"
+      }
+    },
+    "relevant_history": {
+      "type": "string",
+      "maxLength": 300,
+      "description": "Compact mode max ~300 chars (~75 tokens). Extended mode callers may request expanded history separately."
+    },
+    "risks_and_blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "missing_info": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/missingInfo"
+      }
+    },
+    "confidence_overall": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "recommended_action": {
+      "type": "string",
+      "maxLength": 600
+    },
+    "retrieval_quality_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "packet_tokens_est": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "tool_degraded": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of tools that were unavailable during packet assembly. Packet is best-effort."
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/timelineEvent"
+      }
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/citation"
+      }
+    },
+    "dependency_graph": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "alternative_interpretations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "extended_risk_analysis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "if": {
+    "properties": { "mode": { "const": "extended" } },
+    "required": ["mode"]
+  },
+  "then": {
+    "required": [
+      "timeline",
+      "citations",
+      "dependency_graph",
+      "alternative_interpretations",
+      "extended_risk_analysis"
+    ]
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "entity": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "name",
+        "summary",
+        "confidence",
+        "source"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "summary": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Origin of this entity data: Engram, Vault, Cortex, MEMORY.md, etc."
+        },
+        "classification": {
+          "enum": ["public", "internal", "confidential", "restricted"]
+        },
+        "stale": { "type": "boolean" },
+        "classification_unverifiable": {
+          "type": "boolean",
+          "description": "Set true when classification cannot be confirmed due to tool degradation. Entity is included as redacted summary with caveat."
+        }
+      },
+      "additionalProperties": true
+    },
+    "missingInfo": {
+      "type": "object",
+      "required": ["field", "impact"],
+      "properties": {
+        "field": { "type": "string" },
+        "impact": {
+          "enum": ["high", "medium", "low"]
+        },
+        "question": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "Entity this gap belongs to, if applicable."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Why this field matters for the current request."
+        },
+        "queued_for_followup": {
+          "type": "boolean",
+          "description": "Whether this gap has been added to the curation backlog."
+        }
+      },
+      "additionalProperties": true
+    },
+    "citation": {
+      "type": "object",
+      "required": ["claim", "source", "last_verified_at"],
+      "properties": {
+        "claim": { "type": "string" },
+        "source": { "type": "string" },
+        "last_verified_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "timelineEvent": {
+      "type": "object",
+      "required": ["at", "event"],
+      "properties": {
+        "at": { "type": "string", "format": "date-time" },
+        "event": { "type": "string" },
+        "entity_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

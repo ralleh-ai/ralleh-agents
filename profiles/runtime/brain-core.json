@@ -1,0 +1,28 @@
+{
+  "profile_id": "brain-core",
+  "role": "brain",
+  "mode": "context-intelligence",
+  "defaults": {
+    "packet_mode": "compact",
+    "packet_schema": "brain-packet/v1",
+    "enforce_citations": true,
+    "classification_enforcement": true,
+    "token_budgets": {
+      "compact_target": 150,
+      "compact_hard": 300,
+      "extended_target": 600,
+      "extended_hard": 1200,
+      "entity_card_target": 80,
+      "entity_card_hard": 150,
+      "gap_question_target": 30,
+      "gap_question_hard": 50,
+      "reflect_target": 100,
+      "reflect_hard": 200
+    }
+  },
+  "retrieval_layers": [
+    "hot-cache",
+    "curated-memory",
+    "source-of-truth"
+  ]
+}

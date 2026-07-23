@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brain-work-graph/v1",
+  "title": "BRAIN Work Graph v1",
+  "type": "object",
+  "required": ["tasks", "links"],
+  "properties": {
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "owner", "priority", "entities", "updated_at"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "status": { "enum": ["todo", "in_progress", "blocked", "done"] },
+          "owner": { "type": "string" },
+          "priority": { "enum": ["low", "medium", "high", "critical"] },
+          "dependencies": { "type": "array", "items": { "type": "string" } },
+          "blockers": { "type": "array", "items": { "type": "string" } },
+          "deadline": { "type": "string", "format": "date-time" },
+          "entities": { "type": "array", "items": { "type": "string" } },
+          "updated_at": { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "type"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "type": { "enum": ["depends_on", "blocked_by", "related"] }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,19 @@
+{
+  "required": [
+    "Engram",
+    "Cortex",
+    "RallehVault",
+    "OpenClawA2A",
+    "N8NAgent",
+    "TokenDoctor",
+    "PromptDefense"
+  ],
+  "recommended": [
+    "DiagramMaker",
+    "CalendarScheduler",
+    "SQLite",
+    "Postgres",
+    "Qdrant",
+    "Pgvector"
+  ]
+}

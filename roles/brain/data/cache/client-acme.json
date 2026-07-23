@@ -1,0 +1,12 @@
+{
+  "cached_at": "2026-07-23T03:36:30.383915Z",
+  "entity": {
+    "id": "client-acme",
+    "type": "client",
+    "name": "Acme Industries",
+    "summary": "Priority client with active roadmap and quarterly planning cadence.",
+    "confidence": 0.62,
+    "freshness_status": "fresh",
+    "classification": "internal"
+  }
+}

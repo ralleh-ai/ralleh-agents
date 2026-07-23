@@ -1,0 +1,44 @@
+{
+  "role_id": "brain",
+  "name": "Ralleh BRAIN",
+  "version": "0.2.0",
+  "last_updated": "2026-07-23T05:15:37Z",
+  "owner": "Ralleh Orchestrator",
+  "purpose": "Central context intelligence layer; assemble structured, cited, token-efficient context packets for other agents.",
+  "is_execution_agent": false,
+  "packet_schema": "brain-packet/v1",
+  "error_schema": "brain-error/v1",
+  "classification_levels": [
+    "public",
+    "internal",
+    "confidential",
+    "restricted"
+  ],
+  "composition": {
+    "role_overlay_files": [
+      "SOUL.md",
+      "IDENTITY.md",
+      "AGENTS.md",
+      "GUIDELINES.md",
+      "WORKFLOWS.md",
+      "MEMORY.md",
+      "TOOLS.md",
+      "PATTERNS.md",
+      "DOCTOR.md",
+      "USER.md"
+    ],
+    "generated_package_target": "agents/generated/ralleh-brain-core"
+  },
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-07-23",
+      "summary": "Schema fixes: entity.source required, missingInfo extensible, entity-record adds stale_reason/conflict_annotation, brain-error/v1 added, work-graph links additionalProperties consistent. Workflow fixes: brain.preflight Engram fallback, brain.reflect write-ordering (WAL), audit log at retrieval time. brain.message removed; rules folded into brain.preflight. GUIDELINES: confidence_overall weighting function, relevant_history maxLength, Minimum Viable Seeded State, Behavioral Invariant #8. PATTERNS: contradiction severity defined, confidence_overall formula documented, reflect write-back ordering. DOCTOR: F7 Engram-specific fallback, triage step 6 correct log reference. AGENTS: PATTERNS+WORKFLOWS added to session start ritual, five tools clarification. Dual-repo sync script added."
+    },
+    {
+      "version": "0.1.0",
+      "date": "2026-07-23",
+      "summary": "Initial golden-standard rewrite. All role overlay files authored. Schemas created. VAULT/VAULT-FAST BRAIN-awareness added."
+    }
+  ]
+}
