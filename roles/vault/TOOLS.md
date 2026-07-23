@@ -1,17 +1,40 @@
-# TOOLS.md — VAULT
+# TOOLS.md — VAULT Tool Posture
 
-## Preferred Operations
+## Tooling Principles
 
-- Deep read and synthesis over canonical notes
-- Link audits and provenance checks
-- Quality-first crystallization
-- Classification verification for sensitive vault content
+- Use the smallest deterministic tool that proves correctness. Read the file; don't rely on memory.
+- Validate with the doctor script before marking any batch complete — never skip this step.
+- Prefer file/read/doctor evidence over in-context claims.
+- Treat JSON API contracts as typed — never omit required fields from a BRAIN response.
+- Check that `sources` paths are real files before committing a canonical note.
 
-## BRAIN Integration
+## Integrations
 
-VAULT serves as BRAIN's L3 source-of-truth retrieval layer.
+### Vault skill contract
+Primary operational contract: `skills/vault/SKILL.md`
 
-**Incoming BRAIN queries arrive as:**
+### Validation tool
+```bash
+python3 skills/vault/scripts/vault_doctor.py --vault-root vault/ --strict
+```
+Run strict mode after every crystallization batch. Non-strict mode is for exploratory checks only.
+
+### Runbooks (authoritative step-by-step procedures)
+- `skills/vault/runbooks/crystallize.md` — finalize canonical notes from drafts
+- `skills/vault/runbooks/query.md` — retrieve with citations
+- `skills/vault/runbooks/maintain.md` — hygiene, archival, link repair
+- `skills/vault/runbooks/status.md` — health report generation
+- `skills/vault/runbooks/promote.md` — promote material to Engram or BRAIN registry
+
+### Templates
+- `skills/vault/templates/` — type templates for concept, decision, entity, insight, meeting, procedure, project
+
+### Frontmatter schema
+- `skills/vault/schemas/frontmatter.md` — required fields, valid enum values, constraints
+
+### BRAIN integration API
+
+**Inbound query (BRAIN → VAULT):**
 ```json
 {
   "caller": "ralleh-brain-core",
@@ -22,26 +45,27 @@ VAULT serves as BRAIN's L3 source-of-truth retrieval layer.
 }
 ```
 
-**VAULT response format:**
+**Response (VAULT → BRAIN):**
 ```json
 {
-  "source_path": "vault/path/to/note.md",
-  "summary": "1-3 sentence summary",
-  "classification": "...",
-  "last_verified_at": "ISO-8601",
-  "confidence": 0.0-1.0,
+  "source_path": "vault/wiki/path/to/note.md",
+  "summary": "1-3 sentence summary of canonical content",
+  "classification": "public | internal | confidential | restricted",
+  "last_verified_at": "ISO-8601 timestamp",
+  "confidence": 0.85,
   "redacted": false
 }
 ```
 
-Never return raw `restricted` content. Always summarize or redact per classification level.
+Confidence scoring guide:
+- `0.9–1.0`: complete frontmatter, non-empty sources, no conflicts, strict doctor passes
+- `0.6–0.89`: minor gaps (missing related links, 1 weak source), no approval failures
+- `0.3–0.59`: draft status, partial sources, or open conflicts noted in note body
+- `0.0–0.29`: unresolvable conflict, missing evidence, or classification block — escalate
 
-## Escalation
+## What Does Not Belong Here
 
-- Send throughput/triage tasks → VAULT-FAST
-- Seek human approval → for deletions, merges, high-stakes rewrites
-
-## Vault Skill
-
-Core operational procedures are in the vault skill:
-`ralleh-skills/skills/vault/SKILL.md`
+- Personal reminders or calendar items unrelated to knowledge quality.
+- Client secrets, API keys, or credentials.
+- Workflow policy (belongs in `GUIDELINES.md` and `WORKFLOWS.md`).
+- Operational runbook text (belongs in `skills/vault/runbooks/`).

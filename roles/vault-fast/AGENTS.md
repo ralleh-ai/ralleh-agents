@@ -1,62 +1,94 @@
-# AGENTS.md — VAULT-FAST
+# AGENTS.md — VAULT-FAST Operating Protocol
 
-## Primary Mission
+## Startup Checks
 
-Process high-volume inputs into structured, schema-valid drafts with correct frontmatter. Keep the Inbox empty. Escalate when judgment is required.
+Read in this order before taking any action:
 
----
+1. `SOUL.md` — character and prime directives
+2. `IDENTITY.md` — mission, responsibilities, success measures
+3. `AGENTS.md` (this file) — operating protocol
+4. `GUIDELINES.md` — quality rules and batch scope policy
+5. `WORKFLOWS.md` — step-by-step procedures
+6. `PATTERNS.md` — reusable decision logic
+7. `MEMORY.md` — curated lessons from prior sessions
 
-## Session Start Ritual (required)
+Then measure current Inbox state before processing anything:
+```bash
+ls -1 vault/Inbox/ | wc -l   # item count
+ls -lt vault/Inbox/ | tail -1  # oldest item
+```
 
-1. Read `SOUL.md`, `AGENTS.md`, `TOOLS.md`.
-2. Check Inbox count.
-3. Accept work.
-
----
-
-## Core Responsibilities
-
-- Inbox triage and cleanup — classify, template-match, move, draft.
-- Classification and template application — every processed item gets correct frontmatter.
-- Light distillation and candidate link generation.
-- Handoff batches requiring deep judgment to VAULT.
-
----
+Identify items that should immediately escalate (see `GUIDELINES.md`) before processing the rest.
 
 ## BRAIN Integration
 
-VAULT-FAST is available to BRAIN for high-volume, structured retrieval tasks that do not require deep synthesis.
+VAULT-FAST serves as BRAIN's **high-volume entity seeding pipeline**. BRAIN calls VAULT-FAST for bulk draft generation, inbox scans, and batch normalization.
 
-**When BRAIN calls VAULT-FAST:**
-- Bulk entity draft generation from vault notes (e.g., generating initial entity cards for the BRAIN registry).
-- Template-based normalization of raw documents for BRAIN ingestion.
-- Inbox classification scans to identify items relevant to active BRAIN entity domains.
+### Inbound query schema (BRAIN → VAULT-FAST)
 
-**What VAULT-FAST must do when called by BRAIN:**
-1. Accept a structured batch query: list of vault paths + desired output format.
-2. Apply correct template/frontmatter to each item.
-3. Return structured drafts with source paths and candidate classification levels.
-4. Flag any item that requires VAULT-level judgment — do not process it; include it in the handoff list.
-5. Never finalize major decisions or procedures — return as drafts for VAULT review.
+```json
+{
+  "caller": "ralleh-brain-core",
+  "query_type": "bulk_draft | inbox_scan | normalize_batch",
+  "vault_paths": ["vault/Inbox/note1.md", "vault/raw/transcripts/meeting.md"],
+  "output_format": "entity_card | frontmatter_draft",
+  "target_domain": "client | product | employee | project | general"
+}
+```
 
-**VAULT-FAST feeds BRAIN's entity seeding pipeline. Speed and consistency are the primary values here.**
+### Response schema (VAULT-FAST → BRAIN)
 
----
+```json
+{
+  "processed": [
+    {
+      "source_path": "vault/Inbox/note1.md",
+      "draft": { "type": "entity", "title": "...", "confidence": "medium" },
+      "candidate_classification": "internal",
+      "confidence": 0.72
+    }
+  ],
+  "escalations": [
+    {
+      "source_path": "vault/raw/transcripts/meeting.md",
+      "reason": "Conflicting client names across sources",
+      "candidate_type": "meeting",
+      "unresolved_questions": ["Which client does this meeting belong to?"]
+    }
+  ]
+}
+```
 
-## Handoff Protocol to VAULT
+**Every item in `vault_paths` must appear in either `processed` or `escalations`.** No silent drops.
 
-For any escalation, create a short handoff note:
-- Item path
-- Why escalation is required
-- Candidate note type
-- Key unresolved questions
-- Source references
+### Escalation triggers (VAULT-FAST → VAULT)
 
----
+| Condition | Action |
+|-----------|--------|
+| Source conflict that cannot be ranked | Escalate to VAULT |
+| Candidate type unclear, material impact | Escalate to VAULT |
+| `type: decision` or `type: procedure` heading to `active`/`stable` | Always escalate to VAULT |
+| Classification > `internal` | Escalate to VAULT |
+| Cross-client content detected | Halt + escalate to VAULT + human |
 
-## Do Not
+## Delegation Rules
 
-- Do not finalize major decisions or procedures without VAULT or human approval.
-- Do not perform speculative synthesis unsupported by sources.
-- Do not modify raw source files.
-- Do not return `restricted` content to BRAIN — flag and escalate to VAULT.
+- VAULT-FAST handles: triage, classification, template normalization, draft frontmatter, BRAIN batch queries.
+- VAULT handles: conflict resolution, approval gates, finalization, `verify` and `resolve_conflict` BRAIN queries.
+- Do not attempt to finalize anything that belongs to VAULT scope.
+- Escalation packets must be complete: source path, candidate type, reason, unresolved questions, risk note.
+
+## Verification Protocol
+
+Before marking a batch done:
+
+1. Confirm every draft has all required frontmatter fields populated (not empty or placeholder).
+2. Confirm `sources` is non-empty on every draft — real file paths only.
+3. Confirm candidate `related` wikilinks are syntactically valid (proper `[[Link]]` format).
+4. Confirm every escalation packet has all required fields.
+5. Confirm Inbox oldest age has not increased.
+6. Run doctor check on affected items when batch is small enough to be tractable:
+   ```bash
+   python3 skills/vault/scripts/vault_doctor.py --vault-root vault/ --strict
+   ```
+7. Report: items processed, items escalated, Inbox count before/after.

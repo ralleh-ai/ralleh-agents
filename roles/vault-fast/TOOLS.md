@@ -1,58 +1,79 @@
-# TOOLS.md — VAULT-FAST
+# TOOLS.md — VAULT-FAST Tool Posture
 
-## Preferred Operations
+## Tooling Principles
 
-- File movement and organization
-- Template-based drafting
-- Bulk normalization
-- Lightweight linking prep
-- Structured batch output generation
+- Optimize for deterministic throughput, not deep synthesis. Templates encode the structure; follow them.
+- Batch similar operations. Switching between note types mid-batch increases error rate.
+- Validate each batch before moving to the next — don't wait until the end.
+- For BRAIN responses: serialize exactly to the typed schema. Missing fields cause BRAIN parse failures.
+- Never populate `sources` with placeholder text. If the real path is unknown, escalate.
 
-## BRAIN Integration
+## Integrations
 
-VAULT-FAST serves BRAIN's high-volume entity seeding and bulk retrieval needs.
+### Vault skill contract
+Primary operational contract: `skills/vault/SKILL.md`
 
-**Incoming BRAIN batch queries:**
+### Validation tool
+```bash
+python3 skills/vault/scripts/vault_doctor.py --vault-root vault/ --strict
+```
+
+### Templates (apply before any custom content)
+- `skills/vault/templates/concept.md`
+- `skills/vault/templates/decision.md`
+- `skills/vault/templates/entity.md`
+- `skills/vault/templates/insight.md`
+- `skills/vault/templates/meeting.md`
+- `skills/vault/templates/procedure.md`
+- `skills/vault/templates/project.md`
+
+### Runbooks
+- `skills/vault/runbooks/capture.md` — ingest source to raw/inbox
+- `skills/vault/runbooks/process.md` — high-throughput normalization procedure
+
+### Frontmatter schema
+- `skills/vault/schemas/frontmatter.md` — required fields, valid enums
+
+### BRAIN integration API
+
+**Inbound query (BRAIN → VAULT-FAST):**
 ```json
 {
   "caller": "ralleh-brain-core",
   "query_type": "bulk_draft | inbox_scan | normalize_batch",
-  "vault_paths": ["vault/path/to/note1.md", "..."],
+  "vault_paths": ["vault/path/to/source.md"],
   "output_format": "entity_card | frontmatter_draft",
-  "target_domain": "client | product | employee | ..."
+  "target_domain": "client | product | employee | project | general"
 }
 ```
 
-**VAULT-FAST response format:**
+**Response (VAULT-FAST → BRAIN):**
 ```json
 {
   "processed": [
     {
-      "source_path": "...",
-      "draft": { ... },
-      "candidate_classification": "...",
-      "confidence": 0.0-1.0
+      "source_path": "vault/path/to/source.md",
+      "draft": { "type": "entity", "title": "...", "confidence": "medium", "sources": ["vault/path/to/source.md"] },
+      "candidate_classification": "internal",
+      "confidence": 0.72
     }
   ],
   "escalations": [
     {
-      "source_path": "...",
-      "reason": "...",
-      "candidate_type": "...",
-      "unresolved_questions": ["..."]
+      "source_path": "vault/path/to/ambiguous.md",
+      "reason": "Candidate type unclear",
+      "candidate_type": "unknown",
+      "unresolved_questions": ["Is this a project or a concept?"]
     }
   ]
 }
 ```
 
-## Escalate to VAULT for
+**Coverage rule:** every path in `vault_paths` must appear in exactly one of `processed` or `escalations`.
 
-- Conflicting sources requiring synthesis judgment
-- High-stakes decisions or procedure finalization
-- Any item touching `restricted` or `confidential` classification needing verification
-- BRAIN entity cards requiring deep accuracy validation
+## What Does Not Belong Here
 
-## Vault Skill
-
-Core operational procedures:
-`ralleh-skills/skills/vault/SKILL.md`
+- Policy decisions requiring VAULT or human judgment.
+- Long-form synthesis or conflict resolution — that is VAULT's scope.
+- Environment secrets, credentials, or client-specific configuration.
+- Workflow policy (belongs in `GUIDELINES.md` and `WORKFLOWS.md`).
